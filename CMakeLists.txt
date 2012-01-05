@@ -1,0 +1,779 @@
+cmake_minimum_required(VERSION 2.6)
+
+if (CMAKE_COMPILER_IS_GNUCC)
+    set(CMAKE_CXX_FLAGS "-fstack-protector -fno-strict-aliasing -fno-rtti -fPIC -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS "-fstack-protector -fno-strict-aliasing -fPIC -fvisibility=hidden ${CMAKE_C_FLAGS}")
+endif ()
+
+if (TARGETING_PLAYBOOK)
+    set(CMAKE_CXX_FLAGS "-mtune=cortex-a9 -mfpu=vfpv3 -mthumb -mthumb-interwork ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS "-mtune=cortex-a9 -mfpu=vfpv3 -mthumb -mthumb-interwork ${CMAKE_C_FLAGS}")
+endif ()
+
+add_definitions(-D_FILE_OFFSET_BITS=64)
+add_definitions(-D_LARGEFILE64_SOURCE)
+
+add_subdirectory(third_party/harfbuzz)
+
+set(LIBNAME grskia)
+
+set(${LIBNAME}_publicheaders
+    include/core/SkTemplates.h
+    include/core/SkData.h
+    include/core/SkColor.h
+    include/core/SkFloatBits.h
+    include/core/SkMaskFilter.h
+    include/core/SkPreConfig.h
+    include/core/SkTSearch.h
+    include/core/SkPicture.h
+    include/core/SkColorPriv.h
+    include/core/SkChunkAlloc.h
+    include/core/SkMath.h
+    include/core/SkPoint.h
+    include/core/SkColorShader.h
+    include/core/SkRasterizer.h
+    include/core/SkPathEffect.h
+    include/core/SkBlitRow.h
+    include/core/SkComposeShader.h
+    include/core/SkPostConfig.h
+    include/core/SkLineClipper.h
+    include/core/SkScalerContext.h
+    include/core/SkDraw.h
+    include/core/SkTypeface.h
+    include/core/SkDither.h
+    include/core/SkRandom.h
+    include/core/SkPath.h
+    include/core/SkColorFilter.h
+    include/core/SkTypes.h
+    include/core/SkXfermode.h
+    include/core/SkDeque.h
+    include/core/SkRegion.h
+    include/core/SkFlattenable.h
+    include/core/SkUnitMapper.h
+    include/core/SkScalar.h
+    include/core/SkMetaData.h
+    include/core/SkBuffer.h
+    include/core/SkAutoKern.h
+    include/core/SkStroke.h
+    include/core/Sk64.h
+    include/core/SkSize.h
+    include/core/SkString.h
+    include/core/SkGlobals.h
+    include/core/SkScalarCompare.h
+    include/core/SkTime.h
+    include/core/SkMallocPixelRef.h
+    include/core/SkOSFile.h
+    include/core/SkBounder.h
+    include/core/SkPathMeasure.h
+    include/core/SkTDStack.h
+    include/core/SkDevice.h
+    include/core/SkPerspIter.h
+    include/core/SkBlitter.h
+    include/core/SkTRegistry.h
+    include/core/SkRelay.h
+    include/core/SkEndian.h
+    include/core/SkMatrix.h
+    include/core/SkBitmap.h
+    include/core/SkFloatingPoint.h
+    include/core/SkFixed.h
+    include/core/SkTDict.h
+    include/core/SkPixelRef.h
+    include/core/SkMask.h
+    include/core/SkReader32.h
+    include/core/SkRefCnt.h
+    include/core/SkShader.h
+    include/core/SkTDArray.h
+    include/core/SkPackBits.h
+    include/core/SkDrawLooper.h
+    include/core/SkTLazy.h
+    include/core/SkClipStack.h
+    include/core/SkEdgeClipper.h
+    include/core/SkPtrRecorder.h
+    include/core/SkDescriptor.h
+    include/core/SkTScopedPtr.h
+    include/core/SkRefDict.h
+    include/core/SkPaint.h
+    include/core/SkWriter32.h
+    include/core/SkThread.h
+    include/core/SkShape.h
+    include/core/SkUtils.h
+    include/core/SkRect.h
+    include/core/SkScan.h
+    include/core/SkGraphics.h
+    include/core/SkFontHost.h
+    include/core/SkAdvancedTypefaceMetrics.h
+    include/core/SkCanvas.h
+    include/core/SkDrawFilter.h
+    include/core/SkUnPreMultiply.h
+    include/core/SkFlate.h
+    include/core/SkThread_platform.h
+    include/core/SkStream.h
+    include/core/SkMMapStream.h
+    include/core/SkFDot6.h
+    include/core/SkGeometry.h
+    include/core/SkClampRange.h
+    include/views/SkOSWindow_Win.h
+    include/views/SkWidget.h
+    include/views/SkEvent.h
+    include/views/SkView.h
+    include/views/SkImageView.h
+    include/views/SkSystemEventTypes.h
+    include/views/SkBorderView.h
+    include/views/SkOSWindow_Unix.h
+    include/views/SkKey.h
+    include/views/SkOSWindow_SDL.h
+    include/views/SkTouchGesture.h
+    include/views/SkWindow.h
+    include/views/SkBGViewArtist.h
+    include/views/SkEventSink.h
+    include/views/SkOSMenu.h
+    include/views/SkApplication.h
+    include/views/SkOSWindow_Mac.h
+    include/views/SkScrollBarView.h
+    include/views/SkStackViewLayout.h
+    include/views/SkOSWindow_wxwidgets.h
+    include/views/SkWidgetViews.h
+    include/views/SkViewInflate.h
+    include/views/SkProgressBarView.h
+    include/animator/SkAnimatorView.h
+    include/animator/SkAnimator.h
+    include/images/SkImageRef.h
+    include/images/SkImageRef_GlobalPool.h
+    include/images/SkJpegUtility.h
+    include/images/SkImageDecoder.h
+    include/images/SkMovie.h
+    include/images/SkImageEncoder.h
+    include/images/SkPageFlipper.h
+    include/images/SkFlipPixelRef.h
+    include/ports/SkTypeface_win.h
+    include/ports/SkHarfBuzzFont.h
+    include/ports/SkTypeface_mac.h
+    include/ports/SkStream_Win.h
+    include/utils/SkNWayCanvas.h
+    include/utils/SkInterpolator.h
+    include/utils/SkUnitMappers.h
+    include/utils/SkProxyCanvas.h
+    include/utils/SkEGLContext.h
+    include/utils/SkParsePath.h
+    include/utils/SkCubicInterval.h
+    include/utils/SkBoundaryPatch.h
+    include/utils/SkLayer.h
+    include/utils/SkMeshUtils.h
+    include/utils/SkCamera.h
+    include/utils/SkParse.h
+    include/utils/SkCullPoints.h
+    include/utils/unix/keysym2ucs.h
+    include/utils/unix/XkeysToSkKeys.h
+    include/utils/mac/SkCGUtils.h
+    include/utils/SkDumpCanvas.h
+    include/utils/SkTextBox.h
+    include/utils/SkSfntUtils.h
+    include/utils/SkParsePaint.h
+    include/utils/SkNinePatch.h
+    include/utils/SkGLCanvas.h
+    include/text/SkTextLayout.h
+    include/svg/SkSVGBase.h
+    include/svg/SkSVGPaintState.h
+    include/svg/SkSVGAttribute.h
+    include/svg/SkSVGParser.h
+    include/svg/SkSVGTypes.h
+    include/effects/SkEmbossMaskFilter.h
+    include/effects/SkColorMatrix.h
+    include/effects/SkAvoidXfermode.h
+    include/effects/SkDrawExtraPathEffect.h
+    include/effects/SkPorterDuff.h
+    include/effects/SkRectShape.h
+    include/effects/SkDashPathEffect.h
+    include/effects/SkLayerDrawLooper.h
+    include/effects/SkColorMatrixFilter.h
+    include/effects/SkPixelXorXfermode.h
+    include/effects/SkTransparentShader.h
+    include/effects/SkDiscretePathEffect.h
+    include/effects/SkTableMaskFilter.h
+    include/effects/SkCornerPathEffect.h
+    include/effects/SkLayerRasterizer.h
+    include/effects/SkPaintFlagsDrawFilter.h
+    include/effects/SkKernel33MaskFilter.h
+    include/effects/SkBlurDrawLooper.h
+    include/effects/Sk1DPathEffect.h
+    include/effects/SkBlurMaskFilter.h
+    include/effects/SkGradientShader.h
+    include/effects/SkGroupShape.h
+    include/effects/Sk2DPathEffect.h
+    include/gpu/SkGrTexturePixelRef.h
+    include/gpu/SkGpuDevice.h
+    include/gpu/SkGr.h
+    include/gpu/SkGpuDeviceFactory.h
+    include/gpu/SkGpuCanvas.h
+    include/pdf/SkPDFFont.h
+    include/pdf/SkPDFTypes.h
+    include/pdf/SkPDFUtils.h
+    include/pdf/SkPDFDocument.h
+    include/pdf/SkPDFDevice.h
+    include/pdf/SkPDFFormXObject.h
+    include/pdf/SkPDFGraphicState.h
+    include/pdf/SkPDFShader.h
+    include/pdf/SkPDFCatalog.h
+    include/pdf/SkPDFStream.h
+    include/pdf/SkPDFPage.h
+    include/pdf/SkPDFImage.h
+    include/xml/SkJS.h
+    include/xml/SkXMLWriter.h
+    include/xml/SkBML_XMLParser.h
+    include/xml/SkDOM.h
+    include/xml/SkXMLParser.h
+    include/xml/SkBML_WXMLParser.h
+    include/config/sk_stdint.h
+    include/config/SkUserConfig.h
+    gpu/include/GrFontScaler.h
+    gpu/include/GrTArray.h
+    gpu/include/GrMatrix.h
+    gpu/include/GrAllocPool.h
+    gpu/include/GrGLIRect.h
+    gpu/include/GrTesselatedPathRenderer.h
+    gpu/include/GrTHashCache.h
+    gpu/include/GrMesh.h
+    gpu/include/GrGLInterface.h
+    gpu/include/GrGlyph.h
+    gpu/include/GrGLConfig_chrome.h
+    gpu/include/GrGLDefines.h
+    gpu/include/GrIPoint.h
+    gpu/include/GrNoncopyable.h
+    gpu/include/GrAtlas.h
+    gpu/include/GrClip.h
+    gpu/include/GrTextureCache.h
+    gpu/include/GrGpuVertex.h
+    gpu/include/GrRect.h
+    gpu/include/GrDrawTarget.h
+    gpu/include/GrPath.h
+    gpu/include/GrPathSink.h
+    gpu/include/GrConfig.h
+    gpu/include/GrAllocator.h
+    gpu/include/GrGLIndexBuffer.h
+    gpu/include/GrVertexBuffer.h
+    gpu/include/GrContext.h
+    gpu/include/GrInOrderDrawBuffer.h
+    gpu/include/GrTLList.h
+    gpu/include/GrTextContext.h
+    gpu/include/GrTDArray.h
+    gpu/include/GrGLVertexBuffer.h
+    gpu/include/GrPoint.h
+    gpu/include/GrTextStrike.h
+    gpu/include/GrColor.h
+    gpu/include/SkUIView.h
+    gpu/include/GrScalar.h
+    gpu/include/GrRefCnt.h
+    gpu/include/GrStencil.h
+    gpu/include/GrTexture.h
+    gpu/include/GrStringBuilder.h
+    gpu/include/GrGeometryBuffer.h
+    gpu/include/GrTBSearch.h
+    gpu/include/GrClipIterator.h
+    gpu/include/GrKey.h
+    gpu/include/GrPlotMgr.h
+    gpu/include/GrUserConfig.h
+    gpu/include/GrResource.h
+    gpu/include/GrIndexBuffer.h
+    gpu/include/GrSamplerState.h
+    gpu/include/GrContext_impl.h
+    gpu/include/GrStopwatch.h
+    gpu/include/FlingState.h
+    gpu/include/GrInstanceCounter.h
+    gpu/include/GrRectanizer.h
+    gpu/include/GrPathRenderer.h
+    gpu/include/GrGpu.h
+    gpu/include/GrGLTexture.h
+    gpu/include/GrRandom.h
+    gpu/include/GrTypes.h
+    gpu/include/GrPaint.h
+    gpu/include/GrMemory.h
+    gpu/include/GrGLConfig.h
+    gpu/include/GrTemplates.h
+    gpu/src/GrBufferAllocPool.h
+    gpu/src/GrRedBlackTree.h
+    gpu/src/GrGpuGLFixed.h
+    gpu/src/GrPathUtils.h
+    gpu/src/GrBinHashKey.h
+    gpu/src/GrTextStrike_impl.h
+    gpu/src/GrGpuGL.h
+    gpu/src/GrGpuGLShaders.h
+    gpu/src/GrGLProgram.h
+    src/core/SkBitmapProcState_matrix_clamp.h
+    src/core/SkStrokerPriv.h
+    src/core/SkTSort.h
+    src/core/SkBitmapSampler.h
+    src/core/SkEdgeBuilder.h
+    src/core/SkBitmapProcState_matrix.h
+    src/core/SkBitmapProcState_matrix_repeat.h
+    src/core/SkBitmapProcState_filter.h
+    src/core/SkQuadClipper.h
+    src/core/SkSpriteBlitter.h
+    src/core/SkBitmapShader16BilerpTemplate.h
+    src/core/SkScanPriv.h
+    src/core/SkFilterProc.h
+    src/core/SkTextFormatParams.h
+    src/core/SkFP.h
+    src/core/SkCordic.h
+    src/core/SkBitmapSamplerTemplate.h
+    src/core/SkSpriteBlitterTemplate.h
+    src/core/SkBlitBWMaskTemplate.h
+    src/core/SkBitmapShaderTemplate.h
+    src/core/SkFloat.h
+    src/core/SkPicturePlayback.h
+    src/core/SkTemplatesPriv.h
+    src/core/SkEdge.h
+    src/core/SkBitmapProcState_sample.h
+    src/core/SkAntiRun.h
+    src/core/SkPictureFlat.h
+    src/core/SkPathHeap.h
+    src/core/SkRegionPriv.h
+    src/core/SkBitmapProcState_shaderproc.h
+    src/core/SkCubicClipper.h
+    src/core/SkSinTable.h
+    src/core/SkGlyphCache.h
+    src/core/SkPictureRecord.h
+    src/core/SkConcaveToTriangles.h
+    src/core/SkCoreBlitters.h
+    src/core/ARGB32_Clamp_Bilinear_BitmapShader.h
+    src/core/SkBitmapProcShader.h
+    src/core/SkBitmapProcState.h
+    src/core/SkDrawProcs.h
+    src/views/SkViewPriv.h
+    src/views/SkTagList.h
+    src/animator/SkAnimateMaker.h
+    src/animator/SkDrawTextBox.h
+    src/animator/SkDisplayBounds.h
+    src/animator/SkSnapshot.h
+    src/animator/SkDisplayable.h
+    src/animator/SkDisplayScreenplay.h
+    src/animator/SkOperandInterpolator.h
+    src/animator/SkDrawEmboss.h
+    src/animator/SkTextOnPath.h
+    src/animator/SkOperand2.h
+    src/animator/SkDrawTo.h
+    src/animator/SkDrawColor.h
+    src/animator/SkDisplayInclude.h
+    src/animator/SkDrawDiscrete.h
+    src/animator/SkDrawClip.h
+    src/animator/SkDrawMatrix.h
+    src/animator/SkDrawPaint.h
+    src/animator/SkDrawSaveLayer.h
+    src/animator/SkDisplayNumber.h
+    src/animator/SkTDArray_Experimental.h
+    src/animator/SkDrawFull.h
+    src/animator/SkDump.h
+    src/animator/SkAnimatorScript.h
+    src/animator/SkDrawBitmap.h
+    src/animator/SkAnimateActive.h
+    src/animator/SkMemberInfo.h
+    src/animator/SkAnimateSet.h
+    src/animator/SkDisplayList.h
+    src/animator/SkDrawGroup.h
+    src/animator/SkPostParts.h
+    src/animator/SkDrawable.h
+    src/animator/SkDrawPoint.h
+    src/animator/SkDisplayPost.h
+    src/animator/SkDisplayInput.h
+    src/animator/SkDisplayMovie.h
+    src/animator/SkXMLAnimatorWriter.h
+    src/animator/SkDisplayMath.h
+    src/animator/SkAnimatorScript2.h
+    src/animator/SkAnimateProperties.h
+    src/animator/SkDrawLine.h
+    src/animator/SkIntArray.h
+    src/animator/SkBoundable.h
+    src/animator/SkDrawOval.h
+    src/animator/SkDrawDash.h
+    src/animator/SkDisplayAdd.h
+    src/animator/SkHitClear.h
+    src/animator/SkExtras.h
+    src/animator/SkDisplayTypes.h
+    src/animator/SkScript2.h
+    src/animator/SkDrawText.h
+    src/animator/SkDisplayType.h
+    src/animator/SkDrawTransparentShader.h
+    src/animator/SkDraw3D.h
+    src/animator/SkTypedArray.h
+    src/animator/SkPathParts.h
+    src/animator/SkDisplayEvents.h
+    src/animator/SkBase64.h
+    src/animator/SkOperand.h
+    src/animator/SkOpArray.h
+    src/animator/SkHitTest.h
+    src/animator/SkDrawBlur.h
+    src/animator/SkPaintParts.h
+    src/animator/SkDrawRectangle.h
+    src/animator/SkDisplayXMLParser.h
+    src/animator/SkDrawGradient.h
+    src/animator/SkDisplayEvent.h
+    src/animator/SkScriptRuntime.h
+    src/animator/SkScript.h
+    src/animator/SkScriptCallBack.h
+    src/animator/SkMatrixParts.h
+    src/animator/SkDisplayRandom.h
+    src/animator/SkDrawPath.h
+    src/animator/SkDisplayApply.h
+    src/animator/SkTextToPath.h
+    src/animator/SkAnimate.h
+    src/animator/SkAnimateBase.h
+    src/animator/SkDrawShader.h
+    src/images/bmpdecoderhelper.h
+    src/images/SkBitmap_RLEPixels.h
+    src/images/SkImageRefPool.h
+    src/images/SkScaledBitmapSampler.h
+    src/ports/SkImageRef_ashmem.h
+    src/ports/sk_predefined_gamma.h
+    src/svg/SkSVGRect.h
+    src/svg/SkSVGUse.h
+    src/svg/SkSVGDefs.h
+    src/svg/SkSVGLine.h
+    src/svg/SkSVGGroup.h
+    src/svg/SkSVGText.h
+    src/svg/SkSVGLinearGradient.h
+    src/svg/SkSVGClipPath.h
+    src/svg/SkSVGCircle.h
+    src/svg/SkSVGFeColorMatrix.h
+    src/svg/SkSVGElements.h
+    src/svg/SkSVGSVG.h
+    src/svg/SkSVGG.h
+    src/svg/SkSVGGradient.h
+    src/svg/SkSVGPath.h
+    src/svg/SkSVGFilter.h
+    src/svg/SkSVGEllipse.h
+    src/svg/SkSVGStop.h
+    src/svg/SkSVGPolyline.h
+    src/svg/SkSVGPolygon.h
+    src/svg/SkSVGImage.h
+    src/svg/SkSVGMetadata.h
+    src/svg/SkSVGRadialGradient.h
+    src/svg/SkSVGMask.h
+    src/svg/SkSVGSymbol.h
+    src/effects/SkEmbossMask.h
+    src/effects/SkRadialGradient_Table.h
+    src/effects/SkBitmapCache.h
+    src/effects/SkBlurMask.h
+    src/effects/SkEmbossMask_Table.h
+    src/xml/SkBML_Verbs.h
+    src/opts/SkBitmapProcState_opts_SSE2.h
+    src/opts/SkUtils_opts_SSE2.h
+    src/opts/SkBlitRow_opts_SSE2.h
+    gm/gm.h
+)
+
+set(${LIBNAME}_src_core
+    src/core/Sk64.cpp
+    src/core/SkAdvancedTypefaceMetrics.cpp
+    src/core/SkAlphaRuns.cpp
+    src/core/SkBitmap.cpp
+    src/core/SkBitmapProcShader.cpp
+    src/core/SkBitmapProcState.cpp
+    src/core/SkBitmapProcState_matrixProcs.cpp
+    src/core/SkBitmapSampler.cpp
+    src/core/SkBitmap_scroll.cpp
+    src/core/SkBlitRow_D16.cpp
+    src/core/SkBlitRow_D32.cpp
+    src/core/SkBlitRow_D4444.cpp
+    src/core/SkBlitter.cpp
+    src/core/SkBlitter_4444.cpp
+    src/core/SkBlitter_A1.cpp
+    src/core/SkBlitter_A8.cpp
+    src/core/SkBlitter_ARGB32.cpp
+    src/core/SkBlitter_RGB16.cpp
+    src/core/SkBlitter_Sprite.cpp
+    src/core/SkBuffer.cpp
+    src/core/SkCanvas.cpp
+    src/core/SkChunkAlloc.cpp
+    src/core/SkClipStack.cpp
+    src/core/SkColor.cpp
+    src/core/SkColorFilter.cpp
+    src/core/SkColorTable.cpp
+    src/core/SkConcaveToTriangles.cpp
+    src/core/SkComposeShader.cpp
+    src/core/SkCordic.cpp
+    src/core/SkCubicClipper.cpp
+    src/core/SkData.cpp
+    src/core/SkDebug.cpp
+    src/core/SkDeque.cpp
+    src/core/SkDevice.cpp
+    src/core/SkDither.cpp
+    src/core/SkDraw.cpp
+    src/core/SkEdge.cpp
+    src/core/SkEdgeBuilder.cpp
+    src/core/SkEdgeClipper.cpp
+    src/core/SkFilterProc.cpp
+    src/core/SkFlate.cpp
+    src/core/SkFlattenable.cpp
+    src/core/SkFloat.cpp
+    src/core/SkFloatBits.cpp
+    src/core/SkFontHost.cpp
+    src/core/SkGeometry.cpp
+    src/core/SkGlobals.cpp
+    src/core/SkGlyphCache.cpp
+    src/core/SkGraphics.cpp
+    src/core/SkLineClipper.cpp
+    src/core/SkMMapStream.cpp
+    src/core/SkMallocPixelRef.cpp
+    src/core/SkMask.cpp
+    src/core/SkMaskFilter.cpp
+    src/core/SkMath.cpp
+    src/core/SkMatrix.cpp
+    src/core/SkMemory_stdlib.cpp
+    src/core/SkMetaData.cpp
+    src/core/SkPackBits.cpp
+    src/core/SkPaint.cpp
+    src/core/SkPath.cpp
+    src/core/SkPathEffect.cpp
+    src/core/SkPathHeap.cpp
+    src/core/SkPathMeasure.cpp
+    src/core/SkPicture.cpp
+    src/core/SkPictureFlat.cpp
+    src/core/SkPicturePlayback.cpp
+    src/core/SkPictureRecord.cpp
+    src/core/SkPixelRef.cpp
+    src/core/SkPoint.cpp
+    src/core/SkPtrRecorder.cpp
+    src/core/SkQuadClipper.cpp
+    src/core/SkRasterizer.cpp
+    src/core/SkRect.cpp
+    src/core/SkRefDict.cpp
+    src/core/SkRegion.cpp
+    src/core/SkRegion_rects.cpp
+    src/core/SkRegion_path.cpp
+    src/core/SkScalar.cpp
+    src/core/SkScalerContext.cpp
+    src/core/SkScan.cpp
+    src/core/SkScan_AntiPath.cpp
+    src/core/SkScan_Antihair.cpp
+    src/core/SkScan_Hairline.cpp
+    src/core/SkScan_Path.cpp
+    src/core/SkShader.cpp
+    src/core/SkShape.cpp
+    src/core/SkSpriteBlitter_ARGB32.cpp
+    src/core/SkSpriteBlitter_RGB16.cpp
+    src/core/SkStream.cpp
+    src/core/SkString.cpp
+    src/core/SkStroke.cpp
+    src/core/SkStrokerPriv.cpp
+    src/core/SkTSearch.cpp
+    src/core/SkTypeface.cpp
+    src/core/SkUnPreMultiply.cpp
+    src/core/SkUtils.cpp
+    src/core/SkWriter32.cpp
+    src/core/SkXfermode.cpp
+    src/core/SkClampRange.cpp
+)
+
+if (TARGETING_PLAYBOOK)
+    set(${LIBNAME}_src_opts
+        src/opts/SkBlitRow_opts_arm.cpp
+        src/opts/SkBitmapProcState_opts_arm.cpp
+        src/opts/SkUtils_opts_none.cpp
+    )
+    set_property(SOURCE src/opts/SkBlitRow_opts_arm.cpp src/opts/SkBitmapProcState_opts_arm.cpp APPEND PROPERTY COMPILE_FLAGS -marm)
+else ()
+    set(${LIBNAME}_src_opts
+        src/opts/SkBlitRow_opts_none.cpp
+        src/opts/SkBitmapProcState_opts_none.cpp
+        src/opts/SkUtils_opts_none.cpp
+    )
+endif ()
+
+set(${LIBNAME}_src_ports
+    src/ports/SkDebug_stdio.cpp
+    src/ports/SkGlobals_global.cpp
+    src/ports/SkOSFile_stdio.cpp
+    src/ports/SkThread_pthread.cpp
+    src/ports/SkTime_Unix.cpp
+    src/ports/SkFontHost_fontconfig.cpp
+    src/ports/SkFontHost_gamma_none.cpp
+    src/ports/SkFontHost_FreeType.cpp
+    src/ports/SkFontHost_tables.cpp
+)
+
+set(${LIBNAME}_src_effects
+    src/effects/Sk1DPathEffect.cpp
+    src/effects/Sk2DPathEffect.cpp
+    src/effects/SkTransparentShader.cpp
+    src/effects/SkAvoidXfermode.cpp
+    src/effects/SkBitmapCache.cpp
+    src/effects/SkBlurDrawLooper.cpp
+    src/effects/SkBlurMask.cpp
+    src/effects/SkBlurMaskFilter.cpp
+    src/effects/SkColorFilters.cpp
+    src/effects/SkColorMatrixFilter.cpp
+    src/effects/SkCornerPathEffect.cpp
+    src/effects/SkDashPathEffect.cpp
+    src/effects/SkDiscretePathEffect.cpp
+    src/effects/SkEmbossMask.cpp
+    src/effects/SkEmbossMaskFilter.cpp
+    src/effects/SkGradientShader.cpp
+    src/effects/SkGroupShape.cpp
+    src/effects/SkKernel33MaskFilter.cpp
+    src/effects/SkLayerDrawLooper.cpp
+    src/effects/SkLayerRasterizer.cpp
+    src/effects/SkPaintFlagsDrawFilter.cpp
+    src/effects/SkPixelXorXfermode.cpp
+    src/effects/SkPorterDuff.cpp
+    src/effects/SkRectShape.cpp
+)
+
+set(${LIBNAME}_src_images
+    src/images/SkImageDecoder.cpp
+    src/images/SkImageEncoder.cpp
+    src/images/SkImageDecoder_Factory.cpp
+    src/images/SkImageEncoder_Factory.cpp
+    src/images/SkImageDecoder_libpng.cpp
+    src/images/SkScaledBitmapSampler.cpp
+)
+
+set(${LIBNAME}_src_utils
+    src/utils/SkCamera.cpp
+    src/utils/SkColorMatrix.cpp
+    src/utils/SkCullPoints.cpp
+    src/utils/SkDumpCanvas.cpp
+    src/utils/SkInterpolator.cpp
+    src/utils/SkLayer.cpp
+    src/utils/SkNinePatch.cpp
+    src/utils/SkNWayCanvas.cpp
+    src/utils/SkParse.cpp
+    src/utils/SkParseColor.cpp
+    src/utils/SkParsePath.cpp
+    src/utils/SkProxyCanvas.cpp
+    src/utils/SkSfntUtils.cpp
+    src/utils/SkUnitMappers.cpp
+    src/utils/SkOSFile.cpp
+)
+
+set(${LIBNAME}_ganesh_src_core
+    gpu/src/GrAllocPool.cpp
+    gpu/src/GrAtlas.cpp
+    gpu/src/GrClip.cpp
+    gpu/src/GrContext.cpp
+    gpu/src/GrCreatePathRenderer_none.cpp
+    gpu/src/GrDrawTarget.cpp
+    gpu/src/GrGLIndexBuffer.cpp
+    gpu/src/GrGLInterface.cpp
+    gpu/src/GrGLProgram.cpp
+    gpu/src/GrGLTexture.cpp
+    gpu/src/GrGLVertexBuffer.cpp
+    gpu/src/GrGpu.cpp
+    gpu/src/GrGpuGLFixed.cpp
+    gpu/src/GrGpuFactory.cpp
+    gpu/src/GrGLUtil.cpp
+    gpu/src/GrGpuGL.cpp
+    gpu/src/GrGpuGLShaders.cpp
+    gpu/src/GrInOrderDrawBuffer.cpp
+    gpu/src/GrMatrix.cpp
+    gpu/src/GrMemory.cpp
+    gpu/src/GrPathUtils.cpp
+    gpu/src/GrRectanizer_fifo.cpp
+    gpu/src/GrResource.cpp
+    gpu/src/GrTexture.cpp
+    gpu/src/GrTextureCache.cpp
+    gpu/src/GrTextContext.cpp
+    gpu/src/GrTextStrike.cpp
+    gpu/src/GrBufferAllocPool.cpp
+    gpu/src/GrPathRenderer.cpp
+    gpu/src/GrStencil.cpp
+    gpu/src/GrPrintf_printf.cpp
+    gpu/src/qnx/GrGLDefaultInterface_qnx.cpp
+)
+
+set(${LIBNAME}_ganesh_src_skia
+    src/gpu/SkGpuCanvas.cpp
+    src/gpu/SkGpuDevice.cpp
+    src/gpu/SkGr.cpp
+    src/gpu/SkGrTexturePixelRef.cpp
+    src/gpu/SkGrFontScaler.cpp
+)
+
+include_directories(${CMAKE_SOURCE_DIR}/gpu/include)
+include_directories(${CMAKE_SOURCE_DIR}/include/config)
+include_directories(${CMAKE_SOURCE_DIR}/include/core)
+include_directories(${CMAKE_SOURCE_DIR}/include/effects)
+include_directories(${CMAKE_SOURCE_DIR}/include/gpu)
+include_directories(${CMAKE_SOURCE_DIR}/include/images)
+include_directories(${CMAKE_SOURCE_DIR}/include/utils)
+include_directories(${CMAKE_SOURCE_DIR}/src/core)
+
+add_definitions("-DSKIA_IMPLEMENTATION=1")
+add_definitions("-DGR_IMPLEMENTATION=1")
+add_definitions("-DGR_QNX_BUILD=1")
+add_definitions("-DUSE_GANESH=1")
+
+if (TARGETING_PLAYBOOK)
+    set(${LIBNAME}_srcs
+        ${${LIBNAME}_src}
+        ${${LIBNAME}_src_core}
+        ${${LIBNAME}_src_opts}
+        ${${LIBNAME}_src_ports}
+        ${${LIBNAME}_src_effects}
+        ${${LIBNAME}_src_images}
+        ${${LIBNAME}_src_utils}
+        ${${LIBNAME}_src_gl}
+        ${${LIBNAME}_ganesh_src_core}
+        ${${LIBNAME}_ganesh_src_skia}
+    )
+else ()
+    set(${LIBNAME}_srcs
+        ${${LIBNAME}_src}
+        ${${LIBNAME}_src_core}
+        ${${LIBNAME}_src_opts}
+        ${${LIBNAME}_src_ports}
+        ${${LIBNAME}_src_effects}
+        ${${LIBNAME}_src_images}
+        ${${LIBNAME}_src_utils}
+    )
+endif ()
+
+add_library(${LIBNAME} SHARED
+    ${${LIBNAME}_srcs}
+)
+
+#add_library(${LIBNAME}S STATIC
+#	${${LIBNAME}_srcs}
+#)
+
+# Find a library only in the staging directory (which is the CMAKE_INSTALL_PATH)
+macro (FIND_STAGING_LIBRARY _var _libname)
+  FIND_LIBRARY(${_var} ${_libname}
+    PATHS "${CMAKE_INSTALL_PREFIX}"
+    ENV "QNX_TARGET"
+    PATH_SUFFIXES "${CMAKE_SYSTEM_PROCESSOR}/lib" "${CMAKE_SYSTEM_PROCESSOR}/usr/lib"
+    NO_DEFAULT_PATH)
+endmacro ()
+
+find_staging_library(LIB_FONTCONFIG fontconfig)
+find_staging_library(LIB_PNG png)
+
+if (TARGETING_PLAYBOOK)
+    find_staging_library(LIB_GLES GLESv2)
+    find_staging_library(LIB_EGL EGL)
+
+    target_link_libraries(${LIBNAME}
+        ${LIB_EGL}
+        ${LIB_FONTCONFIG}
+        ${LIB_GLES}
+        ${LIB_PNG}
+    )
+else ()
+    target_link_libraries(${LIBNAME}
+        ${LIB_FONTCONFIG}
+        ${LIB_PNG}
+    )
+endif ()
+
+set_target_properties(${LIBNAME} PROPERTIES VERSION 1.0 SOVERSION 1)
+
+get_target_property(CURRENT_LINK_FLAGS ${LIBNAME} LINK_FLAGS)
+
+if (NOT CURRENT_LINK_FLAGS)
+    set(CURRENT_LINK_FLAGS "")
+endif (NOT CURRENT_LINK_FLAGS)
+
+set_target_properties(${LIBNAME} PROPERTIES LINK_FLAGS "${CURRENT_LINK_FLAGS} -Wl,-zrelro")
+
+install(TARGETS ${LIBNAME} DESTINATION ${CMAKE_SYSTEM_PROCESSOR}/usr/lib)
+#install(TARGETS ${LIBNAME}S DESTINATION ${CMAKE_SYSTEM_PROCESSOR}/usr/lib)
+install(FILES ${${LIBNAME}_publicheaders}
+            DESTINATION usr/include/${LIBNAME}/skia)
