@@ -1,0 +1,8 @@
+Skia is a complete 2D graphic library for drawing Text, Geometries, and Images.
+
+Build Instructions for BlackBerry PlayBook:
+- Import Skia as a project into the NDK.
+- Select the desired build configuration.
+- Build the project.
+
+For other platforms, see full details, and build instructions, at http://code.google.com/p/skia/wiki/DocRoot.
