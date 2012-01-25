@@ -160,10 +160,10 @@ private:
     public:
         uint16_t    fLength;
         uint16_t    fRefCnt;
-        char        fBeginningOfData;
+        char        fBeginningOfData[1];
 
-        char* data() { return &fBeginningOfData; }
-        const char* data() const { return &fBeginningOfData; }
+        char* data() { return fBeginningOfData; }
+        const char* data() const { return fBeginningOfData; }
     };
     Rec* fRec;
 
