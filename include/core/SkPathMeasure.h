@@ -20,7 +20,7 @@
 #include "SkPath.h"
 #include "SkTDArray.h"
 
-class SkPathMeasure : SkNoncopyable {
+class SK_API SkPathMeasure : SkNoncopyable {
 public:
     SkPathMeasure();
     /** Initialize the pathmeasure with the specified path. The path must remain valid
