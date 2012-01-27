@@ -1,0 +1,35 @@
+SkiaSample
+
+========================================================================
+Description:
+
+SkiaSample is a demo application designed to showcase some of Skia's
+capabilities as a 2D drawing API.
+
+========================================================================
+Prerequisites:
+
+BlackBerry Native SDK
+A debug token installed on the PlayBoook.
+
+========================================================================
+Build Instructions:
+
+1. Check out the Skia repository.
+2. Import the grskia project into the NDK. The project is located
+   directly inside of the checked out Skia folder.
+3. Import the SkiaSample project into the NDK. The project is 
+   located in Skia/rim_samples/SkiaSample.
+4. Open the bar-descriptor.xml for the SkiaSample project.
+   Click Set from Debug Token on the General tab and save the file.
+5. Ensure that both grskia and SkiaSample use the same build configuration.
+6. Build the grskia project first and then build SkiaSample.
+7. Deploy the sample executable to the PlayBook by selecting
+   Run -> Run As -> BlackBerry Tablet OS C/C++ Application.
+
+========================================================================
+Toggling hardware acceleration in SkiaSample (Optional)
+
+Open SkiaSample/main.cpp and find the USE_SKIA_OPENGL define near the top.
+To use hardware-accelerated Skia, set USE_SKIA_OPENGL to 1.
+To use software Skia, set USE_SKIA_OPENGL to 0.
