@@ -1,6 +1,6 @@
 /*
     Copyright 2011 Google Inc.
-    Copyright (C) 2011 Research In Motion Limited. All rights reserved.
+    Copyright (C) 2011-2012 Research In Motion Limited. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -615,6 +615,7 @@
 #define GR_GL_DEPTH24_STENCIL8               0x88F0
 
 #define GR_GL_MAX_SAMPLES                    0x8D57
+#define GR_GL_MAX_SAMPLES_IMG                0x9135
 
 #define GR_GL_RENDERBUFFER_WIDTH             0x8D42
 #define GR_GL_RENDERBUFFER_HEIGHT            0x8D43

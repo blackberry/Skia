@@ -1,6 +1,6 @@
 /*
     Copyright 2011 Google Inc.
-    Copyright (C) 2011 Research In Motion Limited. All rights reserved.
+    Copyright (C) 2011-2012 Research In Motion Limited. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -219,7 +219,7 @@ SkGpuDevice::SkGpuDevice(GrContext* context, SkBitmap::Config config, int width,
 #else
     const GrTextureDesc desc = {
         kRenderTarget_GrTextureFlagBit,
-        kNone_GrAALevel,
+        kHigh_GrAALevel,
         width,
         height,
         SkGr::Bitmap2PixelConfig(bm)
