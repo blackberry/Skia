@@ -41,7 +41,7 @@ extern "C" {
 class SkPaint;
 class SkTypeface;
 
-class SkHarfBuzzFont {
+class SK_API SkHarfBuzzFont {
 public:
     /** The subclass returns the typeface for this font, or NULL
      */
