@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies)
+ * Copyright (C) 2011 Research In Motion Limited.
  *
  * This is part of HarfBuzz, an OpenType Layout engine library.
  *
