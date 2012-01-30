@@ -6,8 +6,13 @@ if (CMAKE_COMPILER_IS_GNUCC)
 endif ()
 
 if (TARGETING_PLAYBOOK)
-    set(CMAKE_CXX_FLAGS "-mtune=cortex-a9 -mfpu=vfpv3 -mthumb -mthumb-interwork ${CMAKE_CXX_FLAGS}")
-    set(CMAKE_C_FLAGS "-mtune=cortex-a9 -mfpu=vfpv3 -mthumb -mthumb-interwork ${CMAKE_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "-mtune=cortex-a9 -mfpu=vfpv3 ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS "-mtune=cortex-a9 -mfpu=vfpv3 ${CMAKE_C_FLAGS}")
+    #FIXME: Thumb should be re-enabled for Debug build when PR121509 is fixed
+    if (CMAKE_BUILD_TYPE MATCHES "Release")
+        set(CMAKE_CXX_FLAGS "-mthumb -mthumb-interwork ${CMAKE_CXX_FLAGS}")
+        set(CMAKE_C_FLAGS "-mthumb -mthumb-interwork ${CMAKE_C_FLAGS}")
+    endif ()
 endif ()
 
 add_definitions(-D_FILE_OFFSET_BITS=64)

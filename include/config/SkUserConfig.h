@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
- * Copyright (C) 2011 Research In Motion Limited. All rights reserved.
+ * Copyright (C) 2011-2012 Research In Motion Limited. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -156,6 +156,12 @@
         #define SK_G32_SHIFT    8
         #define SK_B32_SHIFT    0
         #define SK_A32_SHIFT    24
+#endif
+
+// Prefer FreeType's emboldening algorithm to Skia's (which does a hairline
+// outline and doesn't look very good).
+#ifdef SK_BUILD_FOR_UNIX
+#define SK_USE_FREETYPE_EMBOLDEN
 #endif
 
 #endif
