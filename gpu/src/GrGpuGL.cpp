@@ -1,6 +1,6 @@
 /*
     Copyright 2011 Google Inc.
-    Copyright (C) 2011 Research In Motion Limited. All rights reserved.
+    Copyright (C) 2011-2012 Research In Motion Limited. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -380,7 +380,11 @@ GrGpuGL::GrGpuGL(GrPlatform3DContext platformContext) {
 
     if (kNone_MSFBO != fMSFBOType) {
         GrGLint maxSamples;
-        GR_GL_GetIntegerv(GR_GL_MAX_SAMPLES, &maxSamples);
+        if (kIMG_MSFBO == fMSFBOType) {
+            GR_GL_GetIntegerv(GR_GL_MAX_SAMPLES_IMG, &maxSamples);
+        } else {
+            GR_GL_GetIntegerv(GR_GL_MAX_SAMPLES, &maxSamples);
+        }
         if (maxSamples > 1 ) {
             fAASamples[kNone_GrAALevel] = 0;
             fAASamples[kLow_GrAALevel] = GrMax(2,
@@ -719,8 +723,8 @@ const StencilFormat* GrGLStencilFormats(int* count) {
     };
 
     static const StencilFormat esStencilFormats[] = {
-        {GR_GL_STENCIL_INDEX8,     8,   false},
         {GR_GL_DEPTH24_STENCIL8,   8,   true },
+        {GR_GL_STENCIL_INDEX8,     8,   false},
         {GR_GL_STENCIL_INDEX4,     4,   false},
     };
 
@@ -782,15 +786,6 @@ GrTexture* GrGpuGL::onCreateTexture(const GrTextureDesc& desc,
 
     GrAssert(as_size_t(desc.fAALevel) < GR_ARRAY_COUNT(fAASamples));
     GrGLint samples = fAASamples[desc.fAALevel];
-
-#if GR_QNX_BUILD
-    // We have a driver bug and querying for the AA level results in a bogus value
-    samples = 4;
-#endif
-
-    if (kNone_MSFBO == fMSFBOType && desc.fAALevel != kNone_GrAALevel) {
-        GrPrintf("AA RT requested but not supported on this platform.");
-    }
 
     GR_GL(GenTextures(1, &glDesc.fTextureID));
     if (!glDesc.fTextureID) {
