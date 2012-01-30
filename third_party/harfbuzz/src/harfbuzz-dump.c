@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2000, 2007  Red Hat, Inc.
+ * Copyright (C) 2011 Research In Motion Limited.
  *
  * This is part of HarfBuzz, an OpenType Layout engine library.
  *
