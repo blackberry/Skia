@@ -1,0 +1,1 @@
+/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/guimark2.dir

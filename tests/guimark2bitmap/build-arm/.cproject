@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?>
+
+<cproject>
+<storageModule moduleId="org.eclipse.cdt.core.settings">
+<cconfiguration id="org.eclipse.cdt.core.default.config.1">
+<storageModule buildSystemId="org.eclipse.cdt.core.defaultConfigDataProvider" id="org.eclipse.cdt.core.default.config.1" moduleId="org.eclipse.cdt.core.settings" name="Configuration">
+<externalSettings/>
+<extensions>
+<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser">
+<attribute key="addr2line" value="addr2line"/>
+<attribute key="c++filt" value="c++filt"/>
+</extension>
+</extensions>
+</storageModule>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping">
+<project-mappings/>
+</storageModule>
+<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.pathentry">
+<pathentry excluding="**/CMakeFiles/" kind="out" path=""/>
+<pathentry include="/home/asimonov/dev/ganesh/gpu/include" kind="inc" path="" system="true"/>
+<pathentry include="/home/asimonov/dev/ganesh/include/config" kind="inc" path="" system="true"/>
+<pathentry include="/home/asimonov/dev/ganesh/include/core" kind="inc" path="" system="true"/>
+<pathentry include="/home/asimonov/dev/ganesh/include/effects" kind="inc" path="" system="true"/>
+<pathentry include="/home/asimonov/dev/ganesh/include/gpu" kind="inc" path="" system="true"/>
+<pathentry include="/home/asimonov/dev/ganesh/include/images" kind="inc" path="" system="true"/>
+<pathentry include="/home/asimonov/dev/ganesh/include/utils" kind="inc" path="" system="true"/>
+<pathentry include="/home/asimonov/dev/ganesh/src/core" kind="inc" path="" system="true"/>
+<pathentry include="/home/asimonov/dev/staging/usr/include" kind="inc" path="" system="true"/>
+<pathentry include="/home/asimonov/dev/staging/usr/include/skia" kind="inc" path="" system="true"/>
+<pathentry include="/opt/crank/include" kind="inc" path="" system="true"/>
+</storageModule>
+<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+<buildTargets>
+<target name="[exe] guimark2" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>guimark2</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name="[exe] guimark2/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>guimark2/fast</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name=": install" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>install</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name=": install/local" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>install/local</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name=": install/strip" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>install/strip</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name=": list_install_components" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>list_install_components</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name=": rebuild_cache" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>rebuild_cache</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name=": all" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>all</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name=": clean" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>clean</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name="[obj] egl-init.c.o" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>egl-init.c.o</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name="[pre] egl-init.c.i" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>egl-init.c.i</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name="[to asm] egl-init.c.s" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>egl-init.c.s</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name="[obj] guimark2.cpp.o" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>guimark2.cpp.o</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name="[pre] guimark2.cpp.i" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>guimark2.cpp.i</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name="[to asm] guimark2.cpp.s" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make</buildCommand>
+<buildArguments/>
+<buildTarget>guimark2.cpp.s</buildTarget>
+<stopOnError>true</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+</buildTargets>
+</storageModule>
+<storageModule moduleId="scannerConfiguration">
+<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile"/>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="/usr/bin/icecc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="makefileGenerator">
+<runAction arguments="-f ${project_name}_scd.mk" command="/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+</storageModule>
+</cconfiguration>
+</storageModule>
+<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+<project id="Project.null.1" name="Project"/>
+</storageModule>
+</cproject>

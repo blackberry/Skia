@@ -1,0 +1,57 @@
+cmake_minimum_required(VERSION 2.6)
+
+if (CMAKE_COMPILER_IS_GNUCC)
+    set(CMAKE_CXX_FLAGS "-fno-rtti ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+endif ()
+
+if (TARGET_IS_WINCHESTER)
+    set(CMAKE_CXX_FLAGS "-mcpu=cortex-a9 -mfpu=neon ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS "-mcpu=cortex-a9 -mfpu=neon ${CMAKE_C_FLAGS}")
+endif ()
+
+set(PLAYER artemtest)
+
+set(${PLAYER}_srcs
+    egl-init.c
+	guimark2.cpp)
+
+add_executable(${PLAYER} ${${PLAYER}_srcs})
+
+# Find a library only in the staging directory (which is the CMAKE_INSTALL_PATH)
+macro (FIND_STAGING_LIBRARY _var _libname)
+  FIND_LIBRARY(${_var} ${_libname}
+    PATHS "${CMAKE_INSTALL_PREFIX}"
+    ENV "QNX_TARGET"
+    PATH_SUFFIXES "/home/asimonov/ndk-workspace/grskia/Simulator" "${CMAKE_SYSTEM_PROCESSOR}/lib" "${CMAKE_SYSTEM_PROCESSOR}/usr/lib"
+    NO_DEFAULT_PATH)
+endmacro ()
+
+FIND_STAGING_LIBRARY(LIB_GRSKIA grskia)
+FIND_STAGING_LIBRARY(LIB_SCREEN screen)
+FIND_STAGING_LIBRARY(LIB_EGL EGL)
+FIND_STAGING_LIBRARY(LIB_GLESv2 GLESv2)
+FIND_STAGING_LIBRARY(LIB_M m)
+FIND_STAGING_LIBRARY(LIB_PNG png)
+FIND_STAGING_LIBRARY(LIB_FONTCONFIG fontconfig)
+
+include_directories(${CMAKE_SOURCE_DIR}/../../gpu/include)
+include_directories(${CMAKE_SOURCE_DIR}/../../include/config)
+include_directories(${CMAKE_SOURCE_DIR}/../../include/core)
+include_directories(${CMAKE_SOURCE_DIR}/../../include/effects)
+include_directories(${CMAKE_SOURCE_DIR}/../../include/gpu)
+include_directories(${CMAKE_SOURCE_DIR}/../../include/images)
+include_directories(${CMAKE_SOURCE_DIR}/../../include/utils)
+include_directories(${CMAKE_SOURCE_DIR}/../../src/core)
+include_directories(${CMAKE_INCLUDE_PATH})
+
+target_link_libraries(${PLAYER}
+    ${LIB_GRSKIA}
+    ${LIB_SCREEN}
+    ${LIB_EGL}
+    ${LIB_GLESv2}
+    ${LIB_M}
+    ${LIB_PNG}
+    ${LIB_FONTCONFIG}
+)
+install(TARGETS ${PLAYER} DESTINATION ./)

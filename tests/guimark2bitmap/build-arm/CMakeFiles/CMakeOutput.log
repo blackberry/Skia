@@ -1,0 +1,141 @@
+The target system is: QNX - 1 - armle-v7
+The host system is: Linux - 2.6.38-11-generic-pae - i686
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/icecc 
+Build flags: -Vgcc_ntoarmv7le;-g;;;;;;-Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib;;;;;-Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib;;;;;-L/home/asimonov/dev/staging/armle-v7/lib;;;;;-L/home/asimonov/dev/staging/armle-v7/usr/lib;;;;;-I/home/asimonov/dev/staging/usr/include
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/icecc 
+Build flags: -Vgcc_ntoarmv7le_cpp-ne;-g;-lang-c++;;;;;;-Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib;;;;;-Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib;;;;;-L/home/asimonov/dev/staging/armle-v7/lib;;;;;-L/home/asimonov/dev/staging/armle-v7/usr/lib;;;;;-I/home/asimonov/dev/staging/usr/include
+Id flags: 
+
+The output was:
+0
+CMakeCXXCompilerId.cpp:79: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:192: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:193: warning: deprecated conversion from string constant to 'char*'
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp
+
+Run Build Command:/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make "cmTryCompileExec/fast"
+/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/usr/bin/icecc   -Vgcc_ntoarmv7le -g      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include     -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/icecc   -Vgcc_ntoarmv7le -g      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include     CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o  -o cmTryCompileExec  
+make[1]: Leaving directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp
+
+Run Build Command:/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make "cmTryCompileExec/fast"
+/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o
+/usr/bin/icecc   -Vgcc_ntoarmv7le -g      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include     -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/icecc   -Vgcc_ntoarmv7le -g      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include    -v CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec   
+cc: looking for gcc_ntoarmv7le+debug in /home/asimonov/bbndk/host-0.9.3/linux/x86/etc/qcc/gcc/4.4.2/gcc_ntoarmv7le++.conf
+cc: looking for gcc_ntoarmv7le+debug in /home/asimonov/bbndk/host-0.9.3/linux/x86/etc/qcc/gcc/4.4.2/gcc_ntoarmv7le.conf
+/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/ntoarm-ld -EL -m armnto -p --dynamic-linker /usr/lib/ldqnx.so.2 --sysroot=/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7 /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crt1.o /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crti.o /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//crtbegin.o -rpath-link /home/asimonov/dev/staging/armle-v7/lib -rpath-link /home/asimonov/dev/staging/armle-v7/usr/lib -L/home/asimonov/dev/staging/armle-v7/lib -L/home/asimonov/dev/staging/armle-v7/usr/lib CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o -o cmTryCompileExec -rpath-link /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/gcc/4.4.2:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -Y/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -L/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2/ -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/gcc/4.4.2 -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/usr/arm-unknown-nto-qnx6.5.0eabi/lib/ -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//libgcc.a -lc -dn -Bstatic -lc /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//libgcc.a /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//crtend.o /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crtn.o
+make[1]: Leaving directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ntoarmv7-ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make "cmTryCompileExec/fast"]
+  ignore line: [/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build]
+  ignore line: [make[1]: Entering directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/icecc   -Vgcc_ntoarmv7le -g      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include     -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/icecc   -Vgcc_ntoarmv7le -g      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include    -v CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec   ]
+  ignore line: [cc: looking for gcc_ntoarmv7le+debug in /home/asimonov/bbndk/host-0.9.3/linux/x86/etc/qcc/gcc/4.4.2/gcc_ntoarmv7le++.conf]
+  ignore line: [cc: looking for gcc_ntoarmv7le+debug in /home/asimonov/bbndk/host-0.9.3/linux/x86/etc/qcc/gcc/4.4.2/gcc_ntoarmv7le.conf]
+  ignore line: [/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/ntoarm-ld -EL -m armnto -p --dynamic-linker /usr/lib/ldqnx.so.2 --sysroot=/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7 /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crt1.o /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crti.o /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//crtbegin.o -rpath-link /home/asimonov/dev/staging/armle-v7/lib -rpath-link /home/asimonov/dev/staging/armle-v7/usr/lib -L/home/asimonov/dev/staging/armle-v7/lib -L/home/asimonov/dev/staging/armle-v7/usr/lib CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o -o cmTryCompileExec -rpath-link /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/gcc/4.4.2:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -Y/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -L/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2/ -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/gcc/4.4.2 -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/usr/arm-unknown-nto-qnx6.5.0eabi/lib/ -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//libgcc.a -lc -dn -Bstatic -lc /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//libgcc.a /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//crtend.o /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crtn.o]
+  ignore line: [make[1]: Leaving directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp']
+  ignore line: []
+  implicit libs: []
+  implicit dirs: []
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp
+
+Run Build Command:/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make "cmTryCompileExec/fast"
+/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o
+/usr/bin/icecc   -Vgcc_ntoarmv7le_cpp-ne -g -lang-c++      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include     -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o -c /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/icecc    -Vgcc_ntoarmv7le_cpp-ne -g -lang-c++      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include     CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec  
+make[1]: Leaving directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp
+
+Run Build Command:/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make "cmTryCompileExec/fast"
+/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/icecc   -Vgcc_ntoarmv7le_cpp-ne -g -lang-c++      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include     -o CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/icecc    -Vgcc_ntoarmv7le_cpp-ne -g -lang-c++      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include    -v CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec   
+cc: looking for gcc_ntoarmv7le_cpp-ne+debug in /home/asimonov/bbndk/host-0.9.3/linux/x86/etc/qcc/gcc/4.4.2/gcc_ntoarmv7le_cpp-ne++.conf
+cc: looking for gcc_ntoarmv7le_cpp-ne+debug in /home/asimonov/bbndk/host-0.9.3/linux/x86/etc/qcc/gcc/4.4.2/gcc_ntoarmv7le_cpp-ne.conf
+/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/ntoarm-ld -EL -m armnto -p --dynamic-linker /usr/lib/ldqnx.so.2 --sysroot=/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7 /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crt1.o /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crti.o /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//crtbegin.o -rpath-link /home/asimonov/dev/staging/armle-v7/lib -rpath-link /home/asimonov/dev/staging/armle-v7/usr/lib -L/home/asimonov/dev/staging/armle-v7/lib -L/home/asimonov/dev/staging/armle-v7/usr/lib CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -o cmTryCompileExec -rpath-link /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/gcc/4.4.2:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -Y/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -L/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2/ -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/gcc/4.4.2 -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/usr/arm-unknown-nto-qnx6.5.0eabi/lib/ -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -lcpp-ne -lcxa /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//libgcc.a -lcxa -lc -dn -Bstatic -lc /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//libgcc.a /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//crtend.o /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crtn.o
+make[1]: Leaving directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ntoarmv7-ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make "cmTryCompileExec/fast"]
+  ignore line: [/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build]
+  ignore line: [make[1]: Entering directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/icecc   -Vgcc_ntoarmv7le_cpp-ne -g -lang-c++      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include     -o CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/icecc    -Vgcc_ntoarmv7le_cpp-ne -g -lang-c++      -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/lib     -Wl,-rpath-link,/home/asimonov/dev/staging/armle-v7/usr/lib     -L/home/asimonov/dev/staging/armle-v7/lib     -L/home/asimonov/dev/staging/armle-v7/usr/lib     -I/home/asimonov/dev/staging/usr/include    -v CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec   ]
+  ignore line: [cc: looking for gcc_ntoarmv7le_cpp-ne+debug in /home/asimonov/bbndk/host-0.9.3/linux/x86/etc/qcc/gcc/4.4.2/gcc_ntoarmv7le_cpp-ne++.conf]
+  ignore line: [cc: looking for gcc_ntoarmv7le_cpp-ne+debug in /home/asimonov/bbndk/host-0.9.3/linux/x86/etc/qcc/gcc/4.4.2/gcc_ntoarmv7le_cpp-ne.conf]
+  ignore line: [/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/bin/ntoarm-ld -EL -m armnto -p --dynamic-linker /usr/lib/ldqnx.so.2 --sysroot=/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7 /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crt1.o /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crti.o /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//crtbegin.o -rpath-link /home/asimonov/dev/staging/armle-v7/lib -rpath-link /home/asimonov/dev/staging/armle-v7/usr/lib -L/home/asimonov/dev/staging/armle-v7/lib -L/home/asimonov/dev/staging/armle-v7/usr/lib CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -o cmTryCompileExec -rpath-link /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/gcc/4.4.2:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -Y/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib:/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -L/home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2/ -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/gcc/4.4.2 -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/usr/arm-unknown-nto-qnx6.5.0eabi/lib/ -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/usr/lib -L/home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/opt/lib -lcpp-ne -lcxa /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//libgcc.a -lcxa -lc -dn -Bstatic -lc /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//libgcc.a /home/asimonov/bbndk/host-0.9.3/linux/x86/usr/lib/gcc/arm-unknown-nto-qnx6.5.0eabi/4.4.2//crtend.o /home/asimonov/bbndk/target-1_0_7.2942/qnx6/armle-v7/lib/crtn.o]
+  ignore line: [make[1]: Leaving directory `/home/asimonov/dev/ganesh/tests/guimark2bitmap/build-arm/CMakeFiles/CMakeTmp']
+  ignore line: []
+  implicit libs: []
+  implicit dirs: []
+
+

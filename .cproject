@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?>
+
+<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.qnx.qcc.configuration.sharedLib.debug.277529697">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.qnx.qcc.configuration.sharedLib.debug.277529697" moduleId="org.eclipse.cdt.core.settings" name="Device-Debug">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/grskia"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/grskia/Device-Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="grskia"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="com.qnx.tools.ide.qde.core.QDEBynaryParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.qnx.tools.ide.qde.core.QDELinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="" id="com.qnx.qcc.configuration.sharedLib.debug.277529697" name="Device-Debug" parent="com.qnx.qcc.configuration.sharedLib.debug">
+					<folderInfo id="com.qnx.qcc.configuration.sharedLib.debug.277529697." name="/" resourcePath="">
+						<toolChain id="com.qnx.qcc.toolChain.sharedLib.debug.134392600" name="QNX QCC" superClass="com.qnx.qcc.toolChain">
+							<option id="com.qnx.qcc.option.cpu.632766100" name="Target CPU:" superClass="com.qnx.qcc.option.cpu" value="com.qnx.qcc.option.gen.cpu.armle-v7" valueType="enumerated"/>
+							<targetPlatform archList="all" binaryParser="com.qnx.tools.ide.qde.core.QDEBynaryParser" id="com.qnx.qcc.targetPlatform.1739530863" osList="all" superClass="com.qnx.qcc.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/grskia/Device-Debug}" id="com.qnx.nto.1121071896" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="com.qnx.nto"/>
+							<tool id="com.qnx.qcc.tool.compiler.15527901" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler">
+								<option id="com.qnx.qcc.option.compiler.shared.1748548395" name="Shared (-shared)" superClass="com.qnx.qcc.option.compiler.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.optlevel.1428817415" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.0" valueType="enumerated"/>
+								<option id="com.qnx.qcc.option.compile.debug.1037885813" name="Debug (-g)" superClass="com.qnx.qcc.option.compile.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.security.590954466" name="Enhanced Security (-fstack-protector-all)" superClass="com.qnx.qcc.option.compiler.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.defines.553751227" name="Defines (-D)" superClass="com.qnx.qcc.option.compiler.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="_FORTIFY_SOURCE=2"/>
+									<listOptionValue builtIn="false" value="_FILE_OFFSET_BITS=64"/>
+									<listOptionValue builtIn="false" value="grskia_EXPORTS"/>
+									<listOptionValue builtIn="false" value="SKIA_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_QNX_BUILD=1"/>
+									<listOptionValue builtIn="false" value="SK_USE_POSIX_THREADS"/>
+									<listOptionValue builtIn="false" value="_LARGEFILE64_SOURCE"/>
+									<listOptionValue builtIn="false" value="SK_CAN_USE_FLOAT"/>
+									<listOptionValue builtIn="false" value="SK_SCALAR_IS_FLOAT"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.includePath.949760624" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/effects}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/gpu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/images}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/ports}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/utils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/gpu/gl}&quot;"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/usr/include"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.qccoptions.1617997028" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+									<listOptionValue builtIn="false" value="-fno-rtti"/>
+									<listOptionValue builtIn="false" value="-mthumb"/>
+									<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+									<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+									<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+									<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+									<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.compiler.764522721" superClass="com.qnx.qcc.inputType.compiler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.assembler.935833450" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
+								<option id="com.qnx.qcc.option.assembler.debug.350666874" name="Debug (-g)" superClass="com.qnx.qcc.option.assembler.debug" value="true" valueType="boolean"/>
+								<inputType id="com.qnx.qcc.inputType.assembler.37147497" superClass="com.qnx.qcc.inputType.assembler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.linker.1989284221" name="QCC Linker" superClass="com.qnx.qcc.tool.linker">
+								<option id="com.qnx.qcc.option.linker.debug.96938675" name="Debug (-g)" superClass="com.qnx.qcc.option.linker.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.shared.448240616" name="Shared (-shared)" superClass="com.qnx.qcc.option.linker.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.langcpp.2041733016" name="C++ (-lang-c++)" superClass="com.qnx.qcc.option.linker.langcpp" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.security.1855491460" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.libraryPaths.468113678" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/lib"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/usr/lib"/>
+								</option>
+								<option id="com.qnx.qcc.option.linker.libraries.672852975" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
+									<listOptionValue builtIn="false" value="fontconfig"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.linker.606210197" superClass="com.qnx.qcc.inputType.linker">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.qnx.qcc.tool.archiver.1680903900" name="QCC Archiver" superClass="com.qnx.qcc.tool.archiver"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.debug.277529697.1138272407" name="SkBitmapProcState_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBitmapProcState_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.15527901.252442740">
+						<tool command="qcc" commandLinePattern="${COMMAND}  ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS} ${FLAGS}" id="com.qnx.qcc.tool.compiler.15527901.252442740" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.15527901">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.1694501304" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-marm"/>
+								<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+								<listOptionValue builtIn="false" value="-fno-rtti"/>
+								<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+								<listOptionValue builtIn="false" value="-mthumb"/>
+								<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+								<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+								<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.630196560" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.debug.277529697.201425764" name="SkBlitRow_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBlitRow_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.15527901.2046887950">
+						<tool command="qcc" commandLinePattern="${COMMAND}  ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS} ${FLAGS}" id="com.qnx.qcc.tool.compiler.15527901.2046887950" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.15527901">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.964806234" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-fno-rtti"/>
+								<listOptionValue builtIn="false" value="-mthumb"/>
+								<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+								<listOptionValue builtIn="false" value="-marm"/>
+								<listOptionValue builtIn="false" value="-fomit-frame-pointer"/>
+								<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+								<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+								<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+								<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.1297974641" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="opts/memset32_neon.S|opts/memset16_neon.S|opts/memset.arm.S|opts/SkBlitRow_opts_none.cpp|opts/SkBitmapProcState_opts_none.cpp|xml|views|utils|text|svg|sfnt|ports/SkXMLPullParser_expat.cpp|ports/SkXMLParser_tinyxml.cpp|ports/SkXMLParser_expat.cpp|ports/SkXMLParser_empty.cpp|ports/SkTime_win.cpp|ports/SkThread_win.cpp|ports/SkThread_none.cpp|ports/SkOSFile_brew.cpp|ports/SkMemory_brew.cpp|ports/SkImageRef_ashmem.cpp|ports/SkImageDecoder_WIC.cpp|ports/SkImageDecoder_empty.cpp|ports/SkImageDecoder_CG.cpp|ports/SkHarfBuzzFont.cpp|ports/SkGlobalInitialization_chromium.cpp|ports/SkFontHost_win.cpp|ports/SkFontHost_simple.cpp|ports/SkFontHost_none.cpp|ports/SkFontHost_mac.cpp|ports/SkFontHost_mac_coretext.cpp|ports/SkFontHost_mac_atsui.cpp|ports/SkFontHost_linux.cpp|ports/SkFontHost_gamma.cpp|ports/SkFontHost_freetype_mac.cpp|ports/SkFontHost_FONTPATH.cpp|ports/SkFontHost_ascender.cpp|ports/SkFontHost_android.cpp|ports/SkDebug_win.cpp|ports/SkDebug_brew.cpp|ports/SkDebug_android.cpp|ports/FontHostConfiguration_android.cpp|pipe|pdf|opts/SkUtils_opts_SSE2.cpp|opts/SkBlitRow_opts_SSE2.cpp|opts/SkBitmapProcState_opts_SSSE3.cpp|opts/SkBitmapProcState_opts_SSE2.cpp|opts/opts_check_SSE2.cpp|opts/opts_check_arm.cpp|images/SkPageFlipper.cpp|images/SkMovie.cpp|images/SkMovie_gif.cpp|images/SkJpegUtility.cpp|images/SkImageRefPool.cpp|images/SkImageRef.cpp|images/SkImageRef_GlobalPool.cpp|images/SkImageDecoder_wbmp.cpp|images/SkImageDecoder_libjpeg.cpp|images/SkImageDecoder_libico.cpp|images/SkImageDecoder_libgif.cpp|images/SkImageDecoder_libbmp.cpp|images/SkFlipPixelRef.cpp|images/SkFDStream.cpp|images/SkCreateRLEPixelRef.cpp|images/bmpdecoderhelper.cpp|gpu/GrTesselatedPathRenderer.cpp|gpu/GrRectanizer_fifo.cpp|gpu/GrPrintf_printf.cpp|gpu/GrAddPathRenderers_tesselated.cpp|gpu/GrAddPathRenderers_none.cpp|gpu/gr_hello_world.cpp|gpu/win|gpu/unix|gpu/mesa|gpu/mac|gpu/ios|gpu/gl/GrGLDefaultInterface_none.cpp|gpu/gl/GrGLCreateNativeInterface_none.cpp|gpu/FlingState.cpp|gpu/app-android.cpp|gpu/android|effects/SkEffects_none.cpp|device|core/SkRegion_rects.cpp|core/SkMemory_stdlib.cpp|core/SkFlate.cpp|animator" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.qnx.qcc.configuration.sharedLib.release.101010145">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.qnx.qcc.configuration.sharedLib.release.101010145" moduleId="org.eclipse.cdt.core.settings" name="Device-Release">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/grskia"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/grskia/Device-Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="grskia"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="com.qnx.tools.ide.qde.core.QDEBynaryParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.qnx.tools.ide.qde.core.QDELinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="" id="com.qnx.qcc.configuration.sharedLib.release.101010145" name="Device-Release" parent="com.qnx.qcc.configuration.sharedLib.release">
+					<folderInfo id="com.qnx.qcc.configuration.sharedLib.release.101010145." name="/" resourcePath="">
+						<toolChain id="com.qnx.qcc.toolChain.sharedLib.release.1941973456" name="QNX QCC" superClass="com.qnx.qcc.toolChain">
+							<option id="com.qnx.qcc.option.cpu.2125152066" name="Target CPU:" superClass="com.qnx.qcc.option.cpu" value="com.qnx.qcc.option.gen.cpu.armle-v7" valueType="enumerated"/>
+							<targetPlatform archList="all" binaryParser="com.qnx.tools.ide.qde.core.QDEBynaryParser" id="com.qnx.qcc.targetPlatform.18457478" osList="all" superClass="com.qnx.qcc.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/grskia/Device-Release}" id="com.qnx.nto.1024269244" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="com.qnx.nto"/>
+							<tool id="com.qnx.qcc.tool.compiler.1334874395" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler">
+								<option id="com.qnx.qcc.option.compiler.shared.948202069" name="Shared (-shared)" superClass="com.qnx.qcc.option.compiler.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.optlevel.1930453002" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.2" valueType="enumerated"/>
+								<option id="com.qnx.qcc.option.compiler.security.1044870859" name="Enhanced Security (-fstack-protector-all)" superClass="com.qnx.qcc.option.compiler.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.defines.77154430" name="Defines (-D)" superClass="com.qnx.qcc.option.compiler.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="NDEBUG"/>
+									<listOptionValue builtIn="false" value="_FORTIFY_SOURCE=2"/>
+									<listOptionValue builtIn="false" value="_FILE_OFFSET_BITS=64"/>
+									<listOptionValue builtIn="false" value="grskia_EXPORTS"/>
+									<listOptionValue builtIn="false" value="SKIA_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_QNX_BUILD=1"/>
+									<listOptionValue builtIn="false" value="SK_USE_POSIX_THREADS"/>
+									<listOptionValue builtIn="false" value="_LARGEFILE64_SOURCE"/>
+									<listOptionValue builtIn="false" value="SK_CAN_USE_FLOAT"/>
+									<listOptionValue builtIn="false" value="SK_SCALAR_IS_FLOAT"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.includePath.356260072" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/effects}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/gpu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/images}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/ports}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/utils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/gpu/gl}&quot;"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/usr/include"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.qccoptions.1124567807" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+									<listOptionValue builtIn="false" value="-fno-rtti"/>
+									<listOptionValue builtIn="false" value="-mthumb"/>
+									<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+									<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+									<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+									<listOptionValue builtIn="false" value="-fPIC"/>
+									<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+									<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.compiler.106681631" superClass="com.qnx.qcc.inputType.compiler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.assembler.547670308" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
+								<inputType id="com.qnx.qcc.inputType.assembler.52479951" superClass="com.qnx.qcc.inputType.assembler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.linker.1216353383" name="QCC Linker" superClass="com.qnx.qcc.tool.linker">
+								<option id="com.qnx.qcc.option.linker.shared.1809093313" name="Shared (-shared)" superClass="com.qnx.qcc.option.linker.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.langcpp.795812876" name="C++ (-lang-c++)" superClass="com.qnx.qcc.option.linker.langcpp" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.security.1834071235" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.libraryPaths.2103640568" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/lib"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/usr/lib"/>
+								</option>
+								<option id="com.qnx.qcc.option.linker.libraries.1304258082" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
+									<listOptionValue builtIn="false" value="fontconfig"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.linker.873991200" superClass="com.qnx.qcc.inputType.linker">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.qnx.qcc.tool.archiver.440542751" name="QCC Archiver" superClass="com.qnx.qcc.tool.archiver"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.release.101010145.649324569" name="SkBitmapProcState_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBitmapProcState_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.1334874395.902931223">
+						<tool id="com.qnx.qcc.tool.compiler.1334874395.902931223" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.1334874395">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.1005737999" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-marm"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.519046090" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.release.101010145.320490860" name="SkBlitRow_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBlitRow_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.1334874395.589162396">
+						<tool id="com.qnx.qcc.tool.compiler.1334874395.589162396" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.1334874395">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.1388552396" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-fno-rtti"/>
+								<listOptionValue builtIn="false" value="-marm"/>
+								<listOptionValue builtIn="false" value="-mthumb"/>
+								<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+								<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+								<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+								<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+								<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.416200815" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="opts/memset32_neon.S|opts/memset16_neon.S|opts/memset.arm.S|opts/SkBlitRow_opts_none.cpp|opts/SkBitmapProcState_opts_none.cpp|xml|views|utils|text|svg|sfnt|ports/SkXMLPullParser_expat.cpp|ports/SkXMLParser_tinyxml.cpp|ports/SkXMLParser_expat.cpp|ports/SkXMLParser_empty.cpp|ports/SkTime_win.cpp|ports/SkThread_win.cpp|ports/SkThread_none.cpp|ports/SkOSFile_brew.cpp|ports/SkMemory_brew.cpp|ports/SkImageRef_ashmem.cpp|ports/SkImageDecoder_WIC.cpp|ports/SkImageDecoder_empty.cpp|ports/SkImageDecoder_CG.cpp|ports/SkHarfBuzzFont.cpp|ports/SkGlobalInitialization_chromium.cpp|ports/SkFontHost_win.cpp|ports/SkFontHost_simple.cpp|ports/SkFontHost_none.cpp|ports/SkFontHost_mac.cpp|ports/SkFontHost_mac_coretext.cpp|ports/SkFontHost_mac_atsui.cpp|ports/SkFontHost_linux.cpp|ports/SkFontHost_gamma.cpp|ports/SkFontHost_freetype_mac.cpp|ports/SkFontHost_FONTPATH.cpp|ports/SkFontHost_ascender.cpp|ports/SkFontHost_android.cpp|ports/SkDebug_win.cpp|ports/SkDebug_brew.cpp|ports/SkDebug_android.cpp|ports/FontHostConfiguration_android.cpp|pipe|pdf|opts/SkUtils_opts_SSE2.cpp|opts/SkBlitRow_opts_SSE2.cpp|opts/SkBitmapProcState_opts_SSSE3.cpp|opts/SkBitmapProcState_opts_SSE2.cpp|opts/opts_check_SSE2.cpp|opts/opts_check_arm.cpp|images/SkPageFlipper.cpp|images/SkMovie.cpp|images/SkMovie_gif.cpp|images/SkJpegUtility.cpp|images/SkImageRefPool.cpp|images/SkImageRef.cpp|images/SkImageRef_GlobalPool.cpp|images/SkImageDecoder_wbmp.cpp|images/SkImageDecoder_libjpeg.cpp|images/SkImageDecoder_libico.cpp|images/SkImageDecoder_libgif.cpp|images/SkImageDecoder_libbmp.cpp|images/SkFlipPixelRef.cpp|images/SkFDStream.cpp|images/SkCreateRLEPixelRef.cpp|images/bmpdecoderhelper.cpp|gpu/GrTesselatedPathRenderer.cpp|gpu/GrRectanizer_fifo.cpp|gpu/GrPrintf_printf.cpp|gpu/GrAddPathRenderers_tesselated.cpp|gpu/GrAddPathRenderers_none.cpp|gpu/gr_hello_world.cpp|gpu/win|gpu/unix|gpu/mesa|gpu/mac|gpu/ios|gpu/gl/GrGLDefaultInterface_none.cpp|gpu/gl/GrGLCreateNativeInterface_none.cpp|gpu/FlingState.cpp|gpu/app-android.cpp|gpu/android|effects/SkEffects_none.cpp|device|core/SkRegion_rects.cpp|core/SkMemory_stdlib.cpp|core/SkFlate.cpp|animator" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.qnx.qcc.configuration.sharedLib.profile.2142845978">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.qnx.qcc.configuration.sharedLib.profile.2142845978" moduleId="org.eclipse.cdt.core.settings" name="Device-Profile">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/grskia"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/grskia/Device-Profile"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="grskia"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="com.qnx.tools.ide.qde.core.QDEBynaryParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.qnx.tools.ide.qde.core.QDELinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=com.qnx.buildType.profile,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="Build for Profiling" id="com.qnx.qcc.configuration.sharedLib.profile.2142845978" name="Device-Profile" parent="com.qnx.qcc.configuration.sharedLib.profile">
+					<folderInfo id="com.qnx.qcc.configuration.sharedLib.profile.2142845978." name="/" resourcePath="">
+						<toolChain id="com.qnx.qcc.toolChain.sharedLib.profile.872838227" name="QNX QCC" superClass="com.qnx.qcc.toolChain">
+							<option id="com.qnx.qcc.option.cpu.1741812296" name="Target CPU:" superClass="com.qnx.qcc.option.cpu" value="com.qnx.qcc.option.gen.cpu.armle-v7" valueType="enumerated"/>
+							<targetPlatform archList="all" binaryParser="com.qnx.tools.ide.qde.core.QDEBynaryParser" id="com.qnx.qcc.targetPlatform.637369501" osList="all" superClass="com.qnx.qcc.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/grskia/Device-Profile}" id="com.qnx.nto.1889818371" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="com.qnx.nto"/>
+							<tool id="com.qnx.qcc.tool.compiler.1000677138" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler">
+								<option id="com.qnx.qcc.option.compiler.shared.1165730001" name="Shared (-shared)" superClass="com.qnx.qcc.option.compiler.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.optlevel.288593644" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.0" valueType="enumerated"/>
+								<option id="com.qnx.qcc.option.compile.debug.1368277150" name="Debug (-g)" superClass="com.qnx.qcc.option.compile.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.profile2.3409162" name="Build for Profiling (Function Instrumentation) (-finstrument-functions)" superClass="com.qnx.qcc.option.compiler.profile2" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.security.302910294" name="Enhanced Security (-fstack-protector-all)" superClass="com.qnx.qcc.option.compiler.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.defines.176340834" name="Defines (-D)" superClass="com.qnx.qcc.option.compiler.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="_FORTIFY_SOURCE=2"/>
+									<listOptionValue builtIn="false" value="_FILE_OFFSET_BITS=64"/>
+									<listOptionValue builtIn="false" value="grskia_EXPORTS"/>
+									<listOptionValue builtIn="false" value="SKIA_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_QNX_BUILD=1"/>
+									<listOptionValue builtIn="false" value="SK_USE_POSIX_THREADS"/>
+									<listOptionValue builtIn="false" value="_LARGEFILE64_SOURCE"/>
+									<listOptionValue builtIn="false" value="SK_CAN_USE_FLOAT"/>
+									<listOptionValue builtIn="false" value="SK_SCALAR_IS_FLOAT"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.includePath.531768186" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/effects}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/gpu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/images}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/ports}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/utils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/gpu/gl}&quot;"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/usr/include"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.qccoptions.396049575" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+									<listOptionValue builtIn="false" value="-fno-rtti"/>
+									<listOptionValue builtIn="false" value="-mthumb"/>
+									<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+									<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+									<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+									<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+									<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.compiler.17146571" superClass="com.qnx.qcc.inputType.compiler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.assembler.1432769737" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
+								<option id="com.qnx.qcc.option.assembler.debug.1481997245" name="Debug (-g)" superClass="com.qnx.qcc.option.assembler.debug" value="true" valueType="boolean"/>
+								<inputType id="com.qnx.qcc.inputType.assembler.1739243490" superClass="com.qnx.qcc.inputType.assembler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.linker.97065824" name="QCC Linker" superClass="com.qnx.qcc.tool.linker">
+								<option id="com.qnx.qcc.option.linker.debug.831021815" name="Debug (-g)" superClass="com.qnx.qcc.option.linker.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.profile2.1643160438" name="Build for Profiling (Function Instrumentation) (-lprofiling)" superClass="com.qnx.qcc.option.linker.profile2" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.shared.1348373401" name="Shared (-shared)" superClass="com.qnx.qcc.option.linker.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.langcpp.1985754249" name="C++ (-lang-c++)" superClass="com.qnx.qcc.option.linker.langcpp" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.security.281584685" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.libraryPaths.1807611831" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/lib"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/usr/lib"/>
+								</option>
+								<option id="com.qnx.qcc.option.linker.libraries.413099397" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
+									<listOptionValue builtIn="false" value="fontconfig"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.linker.1665044006" superClass="com.qnx.qcc.inputType.linker">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.qnx.qcc.tool.archiver.861144143" name="QCC Archiver" superClass="com.qnx.qcc.tool.archiver"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.profile.2142845978.425220661" name="SkBitmapProcState_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBitmapProcState_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.1000677138.876286303">
+						<tool id="com.qnx.qcc.tool.compiler.1000677138.876286303" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.1000677138">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.746515843" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-marm"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.631878038" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.profile.2142845978.1787377573" name="SkBlitRow_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBlitRow_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.1000677138.2038237281">
+						<tool id="com.qnx.qcc.tool.compiler.1000677138.2038237281" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.1000677138">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.149859078" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-fno-rtti"/>
+								<listOptionValue builtIn="false" value="-marm"/>
+								<listOptionValue builtIn="false" value="-mthumb"/>
+								<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+								<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+								<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+								<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+								<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.1505314825" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="opts/memset32_neon.S|opts/memset16_neon.S|opts/memset.arm.S|opts/SkBlitRow_opts_none.cpp|opts/SkBitmapProcState_opts_none.cpp|xml|views|utils|text|svg|sfnt|ports/SkXMLPullParser_expat.cpp|ports/SkXMLParser_tinyxml.cpp|ports/SkXMLParser_expat.cpp|ports/SkXMLParser_empty.cpp|ports/SkTime_win.cpp|ports/SkThread_win.cpp|ports/SkThread_none.cpp|ports/SkOSFile_brew.cpp|ports/SkMemory_brew.cpp|ports/SkImageRef_ashmem.cpp|ports/SkImageDecoder_WIC.cpp|ports/SkImageDecoder_empty.cpp|ports/SkImageDecoder_CG.cpp|ports/SkHarfBuzzFont.cpp|ports/SkGlobalInitialization_chromium.cpp|ports/SkFontHost_win.cpp|ports/SkFontHost_simple.cpp|ports/SkFontHost_none.cpp|ports/SkFontHost_mac.cpp|ports/SkFontHost_mac_coretext.cpp|ports/SkFontHost_mac_atsui.cpp|ports/SkFontHost_linux.cpp|ports/SkFontHost_gamma.cpp|ports/SkFontHost_freetype_mac.cpp|ports/SkFontHost_FONTPATH.cpp|ports/SkFontHost_ascender.cpp|ports/SkFontHost_android.cpp|ports/SkDebug_win.cpp|ports/SkDebug_brew.cpp|ports/SkDebug_android.cpp|ports/FontHostConfiguration_android.cpp|pipe|pdf|opts/SkUtils_opts_SSE2.cpp|opts/SkBlitRow_opts_SSE2.cpp|opts/SkBitmapProcState_opts_SSSE3.cpp|opts/SkBitmapProcState_opts_SSE2.cpp|opts/opts_check_SSE2.cpp|opts/opts_check_arm.cpp|images/SkPageFlipper.cpp|images/SkMovie.cpp|images/SkMovie_gif.cpp|images/SkJpegUtility.cpp|images/SkImageRefPool.cpp|images/SkImageRef.cpp|images/SkImageRef_GlobalPool.cpp|images/SkImageDecoder_wbmp.cpp|images/SkImageDecoder_libjpeg.cpp|images/SkImageDecoder_libico.cpp|images/SkImageDecoder_libgif.cpp|images/SkImageDecoder_libbmp.cpp|images/SkFlipPixelRef.cpp|images/SkFDStream.cpp|images/SkCreateRLEPixelRef.cpp|images/bmpdecoderhelper.cpp|gpu/GrTesselatedPathRenderer.cpp|gpu/GrRectanizer_fifo.cpp|gpu/GrPrintf_printf.cpp|gpu/GrAddPathRenderers_tesselated.cpp|gpu/GrAddPathRenderers_none.cpp|gpu/gr_hello_world.cpp|gpu/win|gpu/unix|gpu/mesa|gpu/mac|gpu/ios|gpu/gl/GrGLDefaultInterface_none.cpp|gpu/gl/GrGLCreateNativeInterface_none.cpp|gpu/FlingState.cpp|gpu/app-android.cpp|gpu/android|effects/SkEffects_none.cpp|device|core/SkRegion_rects.cpp|core/SkMemory_stdlib.cpp|core/SkFlate.cpp|animator" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.qnx.qcc.configuration.sharedLib.coverage.1606816938">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.qnx.qcc.configuration.sharedLib.coverage.1606816938" moduleId="org.eclipse.cdt.core.settings" name="Device-Coverage">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/grskia"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/grskia/Device-Coverage"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="grskia"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="com.qnx.tools.ide.qde.core.QDEBynaryParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.qnx.tools.ide.qde.core.QDELinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=com.qnx.buildType.coverage,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="Build with Code Coverage" id="com.qnx.qcc.configuration.sharedLib.coverage.1606816938" name="Device-Coverage" parent="com.qnx.qcc.configuration.sharedLib.coverage">
+					<folderInfo id="com.qnx.qcc.configuration.sharedLib.coverage.1606816938." name="/" resourcePath="">
+						<toolChain id="com.qnx.qcc.toolChain.sharedLib.coverage.1374352614" name="QNX QCC" superClass="com.qnx.qcc.toolChain">
+							<option id="com.qnx.qcc.option.cpu.1542435367" name="Target CPU:" superClass="com.qnx.qcc.option.cpu" value="com.qnx.qcc.option.gen.cpu.armle-v7" valueType="enumerated"/>
+							<targetPlatform archList="all" binaryParser="com.qnx.tools.ide.qde.core.QDEBynaryParser" id="com.qnx.qcc.targetPlatform.789858431" osList="all" superClass="com.qnx.qcc.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/grskia/Device-Coverage}" id="com.qnx.nto.28367141" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="com.qnx.nto"/>
+							<tool id="com.qnx.qcc.tool.compiler.242347677" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler">
+								<option id="com.qnx.qcc.option.compiler.shared.1740152664" name="Shared (-shared)" superClass="com.qnx.qcc.option.compiler.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.optlevel.1998321640" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.0" valueType="enumerated"/>
+								<option id="com.qnx.qcc.option.compile.debug.725556580" name="Debug (-g)" superClass="com.qnx.qcc.option.compile.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.coverage.1668141228" name="Build for Code Coverage (-Wc,-ftest-coverage -Wc,-fprofile-arcs)" superClass="com.qnx.qcc.option.compiler.coverage" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.security.54117819" name="Enhanced Security (-fstack-protector-all)" superClass="com.qnx.qcc.option.compiler.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.defines.1950630189" name="Defines (-D)" superClass="com.qnx.qcc.option.compiler.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="_FORTIFY_SOURCE=2"/>
+									<listOptionValue builtIn="false" value="_FILE_OFFSET_BITS=64"/>
+									<listOptionValue builtIn="false" value="grskia_EXPORTS"/>
+									<listOptionValue builtIn="false" value="SKIA_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_QNX_BUILD=1"/>
+									<listOptionValue builtIn="false" value="SK_USE_POSIX_THREADS"/>
+									<listOptionValue builtIn="false" value="_LARGEFILE64_SOURCE"/>
+									<listOptionValue builtIn="false" value="SK_CAN_USE_FLOAT"/>
+									<listOptionValue builtIn="false" value="SK_SCALAR_IS_FLOAT"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.includePath.1076587493" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/effects}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/gpu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/images}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/ports}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/utils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/gpu/gl}&quot;"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/usr/include"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.qccoptions.365783963" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+									<listOptionValue builtIn="false" value="-fno-rtti"/>
+									<listOptionValue builtIn="false" value="-mthumb"/>
+									<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+									<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+									<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+									<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+									<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.compiler.286166499" superClass="com.qnx.qcc.inputType.compiler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.assembler.187026879" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
+								<option id="com.qnx.qcc.option.assembler.debug.634585536" name="Debug (-g)" superClass="com.qnx.qcc.option.assembler.debug" value="true" valueType="boolean"/>
+								<inputType id="com.qnx.qcc.inputType.assembler.2083043986" superClass="com.qnx.qcc.inputType.assembler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.linker.716264008" name="QCC Linker" superClass="com.qnx.qcc.tool.linker">
+								<option id="com.qnx.qcc.option.linker.debug.1369367649" name="Debug (-g)" superClass="com.qnx.qcc.option.linker.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.coverage.318079108" name="Build for Code Coverage (-ftest-coverage -fprofile-arcs -p)" superClass="com.qnx.qcc.option.linker.coverage" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.shared.550548586" name="Shared (-shared)" superClass="com.qnx.qcc.option.linker.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.langcpp.872056150" name="C++ (-lang-c++)" superClass="com.qnx.qcc.option.linker.langcpp" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.security.1035868357" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.libraryPaths.1362183042" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/lib"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/usr/lib"/>
+								</option>
+								<option id="com.qnx.qcc.option.linker.libraries.2083718725" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
+									<listOptionValue builtIn="false" value="fontconfig"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.linker.501102968" superClass="com.qnx.qcc.inputType.linker">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.qnx.qcc.tool.archiver.428067581" name="QCC Archiver" superClass="com.qnx.qcc.tool.archiver"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.coverage.1606816938.1005181370" name="SkBitmapProcState_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBitmapProcState_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.242347677.123746272">
+						<tool id="com.qnx.qcc.tool.compiler.242347677.123746272" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.242347677">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.666484831" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-marm"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.386703557" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.coverage.1606816938.1273430647" name="SkBlitRow_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBlitRow_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.242347677.1876987592">
+						<tool id="com.qnx.qcc.tool.compiler.242347677.1876987592" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.242347677">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.1407925280" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-fno-rtti"/>
+								<listOptionValue builtIn="false" value="-marm"/>
+								<listOptionValue builtIn="false" value="-mthumb"/>
+								<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+								<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+								<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+								<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+								<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.833316817" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="opts/memset32_neon.S|opts/memset16_neon.S|opts/memset.arm.S|opts/SkBlitRow_opts_none.cpp|opts/SkBitmapProcState_opts_none.cpp|xml|views|utils|text|svg|sfnt|ports/SkXMLPullParser_expat.cpp|ports/SkXMLParser_tinyxml.cpp|ports/SkXMLParser_expat.cpp|ports/SkXMLParser_empty.cpp|ports/SkTime_win.cpp|ports/SkThread_win.cpp|ports/SkThread_none.cpp|ports/SkOSFile_brew.cpp|ports/SkMemory_brew.cpp|ports/SkImageRef_ashmem.cpp|ports/SkImageDecoder_WIC.cpp|ports/SkImageDecoder_empty.cpp|ports/SkImageDecoder_CG.cpp|ports/SkHarfBuzzFont.cpp|ports/SkGlobalInitialization_chromium.cpp|ports/SkFontHost_win.cpp|ports/SkFontHost_simple.cpp|ports/SkFontHost_none.cpp|ports/SkFontHost_mac.cpp|ports/SkFontHost_mac_coretext.cpp|ports/SkFontHost_mac_atsui.cpp|ports/SkFontHost_linux.cpp|ports/SkFontHost_gamma.cpp|ports/SkFontHost_freetype_mac.cpp|ports/SkFontHost_FONTPATH.cpp|ports/SkFontHost_ascender.cpp|ports/SkFontHost_android.cpp|ports/SkDebug_win.cpp|ports/SkDebug_brew.cpp|ports/SkDebug_android.cpp|ports/FontHostConfiguration_android.cpp|pipe|pdf|opts/SkUtils_opts_SSE2.cpp|opts/SkBlitRow_opts_SSE2.cpp|opts/SkBitmapProcState_opts_SSSE3.cpp|opts/SkBitmapProcState_opts_SSE2.cpp|opts/opts_check_SSE2.cpp|opts/opts_check_arm.cpp|images/SkPageFlipper.cpp|images/SkMovie.cpp|images/SkMovie_gif.cpp|images/SkJpegUtility.cpp|images/SkImageRefPool.cpp|images/SkImageRef.cpp|images/SkImageRef_GlobalPool.cpp|images/SkImageDecoder_wbmp.cpp|images/SkImageDecoder_libjpeg.cpp|images/SkImageDecoder_libico.cpp|images/SkImageDecoder_libgif.cpp|images/SkImageDecoder_libbmp.cpp|images/SkFlipPixelRef.cpp|images/SkFDStream.cpp|images/SkCreateRLEPixelRef.cpp|images/bmpdecoderhelper.cpp|gpu/GrTesselatedPathRenderer.cpp|gpu/GrRectanizer_fifo.cpp|gpu/GrPrintf_printf.cpp|gpu/GrAddPathRenderers_tesselated.cpp|gpu/GrAddPathRenderers_none.cpp|gpu/gr_hello_world.cpp|gpu/win|gpu/unix|gpu/mesa|gpu/mac|gpu/ios|gpu/gl/GrGLDefaultInterface_none.cpp|gpu/gl/GrGLCreateNativeInterface_none.cpp|gpu/FlingState.cpp|gpu/app-android.cpp|gpu/android|effects/SkEffects_none.cpp|device|core/SkRegion_rects.cpp|core/SkMemory_stdlib.cpp|core/SkFlate.cpp|animator" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.qnx.qcc.configuration.sharedLib.debug.2082969288">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.qnx.qcc.configuration.sharedLib.debug.2082969288" moduleId="org.eclipse.cdt.core.settings" name="Simulator-Debug">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/grskia"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/grskia/Simulator-Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="grskia"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="com.qnx.tools.ide.qde.core.QDEBynaryParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.qnx.tools.ide.qde.core.QDELinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="" id="com.qnx.qcc.configuration.sharedLib.debug.2082969288" name="Simulator-Debug" parent="com.qnx.qcc.configuration.sharedLib.debug">
+					<folderInfo id="com.qnx.qcc.configuration.sharedLib.debug.2082969288." name="/" resourcePath="">
+						<toolChain id="com.qnx.qcc.toolChain.sharedLib.debug.1754023854" name="QNX QCC" superClass="com.qnx.qcc.toolChain">
+							<targetPlatform archList="all" binaryParser="com.qnx.tools.ide.qde.core.QDEBynaryParser" id="com.qnx.qcc.targetPlatform.2085390154" osList="all" superClass="com.qnx.qcc.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/grskia/Simulator-Debug}" id="com.qnx.nto.1941578865" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="com.qnx.nto"/>
+							<tool id="com.qnx.qcc.tool.compiler.1643844119" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler">
+								<option id="com.qnx.qcc.option.compiler.shared.141310782" name="Shared (-shared)" superClass="com.qnx.qcc.option.compiler.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.optlevel.708705237" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.0" valueType="enumerated"/>
+								<option id="com.qnx.qcc.option.compile.debug.486896993" name="Debug (-g)" superClass="com.qnx.qcc.option.compile.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.security.627430159" name="Enhanced Security (-fstack-protector-all)" superClass="com.qnx.qcc.option.compiler.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.defines.678220582" name="Defines (-D)" superClass="com.qnx.qcc.option.compiler.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="_FORTIFY_SOURCE=2"/>
+									<listOptionValue builtIn="false" value="_FILE_OFFSET_BITS=64"/>
+									<listOptionValue builtIn="false" value="grskia_EXPORTS"/>
+									<listOptionValue builtIn="false" value="SKIA_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_QNX_BUILD=1"/>
+									<listOptionValue builtIn="false" value="SK_USE_POSIX_THREADS"/>
+									<listOptionValue builtIn="false" value="_LARGEFILE64_SOURCE"/>
+									<listOptionValue builtIn="false" value="SK_CAN_USE_FLOAT"/>
+									<listOptionValue builtIn="false" value="SK_SCALAR_IS_FLOAT"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.includePath.1847776553" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/effects}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/gpu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/images}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/ports}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/utils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/gpu/gl}&quot;"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/usr/include"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.qccoptions.741910507" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+									<listOptionValue builtIn="false" value="-fno-rtti"/>
+									<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+									<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.compiler.1380028724" superClass="com.qnx.qcc.inputType.compiler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.assembler.496467097" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
+								<option id="com.qnx.qcc.option.assembler.debug.1863678215" name="Debug (-g)" superClass="com.qnx.qcc.option.assembler.debug" value="true" valueType="boolean"/>
+								<inputType id="com.qnx.qcc.inputType.assembler.1853142986" superClass="com.qnx.qcc.inputType.assembler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.linker.2002337685" name="QCC Linker" superClass="com.qnx.qcc.tool.linker">
+								<option id="com.qnx.qcc.option.linker.debug.563802878" name="Debug (-g)" superClass="com.qnx.qcc.option.linker.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.shared.1743580858" name="Shared (-shared)" superClass="com.qnx.qcc.option.linker.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.langcpp.786479526" name="C++ (-lang-c++)" superClass="com.qnx.qcc.option.linker.langcpp" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.security.1287894392" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.libraryPaths.311638048" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/lib"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/usr/lib"/>
+								</option>
+								<option id="com.qnx.qcc.option.linker.libraries.837122973" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
+									<listOptionValue builtIn="false" value="fontconfig"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.linker.533349619" superClass="com.qnx.qcc.inputType.linker">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.qnx.qcc.tool.archiver.2066525642" name="QCC Archiver" superClass="com.qnx.qcc.tool.archiver"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.debug.2082969288.775727415" name="SkBitmapProcState_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBitmapProcState_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.1643844119.1137754939">
+						<tool id="com.qnx.qcc.tool.compiler.1643844119.1137754939" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.1643844119">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.140736248" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-marm"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.171245667" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.debug.2082969288.1708674550" name="SkBlitRow_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBlitRow_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.1643844119.2114548412">
+						<tool id="com.qnx.qcc.tool.compiler.1643844119.2114548412" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.1643844119">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.213931988" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-fno-rtti"/>
+								<listOptionValue builtIn="false" value="-marm"/>
+								<listOptionValue builtIn="false" value="-mthumb"/>
+								<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+								<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+								<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+								<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+								<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.330989684" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="opts/memset32_neon.S|opts/memset16_neon.S|opts/memset.arm.S|opts/SkBlitRow_opts_arm.cpp|opts/SkBitmapProcState_opts_arm.cpp|xml|views|utils|text|svg|sfnt|ports/SkXMLPullParser_expat.cpp|ports/SkXMLParser_tinyxml.cpp|ports/SkXMLParser_expat.cpp|ports/SkXMLParser_empty.cpp|ports/SkTime_win.cpp|ports/SkThread_win.cpp|ports/SkThread_none.cpp|ports/SkOSFile_brew.cpp|ports/SkMemory_brew.cpp|ports/SkImageRef_ashmem.cpp|ports/SkImageDecoder_WIC.cpp|ports/SkImageDecoder_empty.cpp|ports/SkImageDecoder_CG.cpp|ports/SkHarfBuzzFont.cpp|ports/SkGlobalInitialization_chromium.cpp|ports/SkFontHost_win.cpp|ports/SkFontHost_simple.cpp|ports/SkFontHost_none.cpp|ports/SkFontHost_mac.cpp|ports/SkFontHost_mac_coretext.cpp|ports/SkFontHost_mac_atsui.cpp|ports/SkFontHost_linux.cpp|ports/SkFontHost_gamma.cpp|ports/SkFontHost_freetype_mac.cpp|ports/SkFontHost_FONTPATH.cpp|ports/SkFontHost_ascender.cpp|ports/SkFontHost_android.cpp|ports/SkDebug_win.cpp|ports/SkDebug_brew.cpp|ports/SkDebug_android.cpp|ports/FontHostConfiguration_android.cpp|pipe|pdf|opts/SkUtils_opts_SSE2.cpp|opts/SkBlitRow_opts_SSE2.cpp|opts/SkBitmapProcState_opts_SSSE3.cpp|opts/SkBitmapProcState_opts_SSE2.cpp|opts/opts_check_SSE2.cpp|opts/opts_check_arm.cpp|images/SkPageFlipper.cpp|images/SkMovie.cpp|images/SkMovie_gif.cpp|images/SkJpegUtility.cpp|images/SkImageRefPool.cpp|images/SkImageRef.cpp|images/SkImageRef_GlobalPool.cpp|images/SkImageDecoder_wbmp.cpp|images/SkImageDecoder_libjpeg.cpp|images/SkImageDecoder_libico.cpp|images/SkImageDecoder_libgif.cpp|images/SkImageDecoder_libbmp.cpp|images/SkFlipPixelRef.cpp|images/SkFDStream.cpp|images/SkCreateRLEPixelRef.cpp|images/bmpdecoderhelper.cpp|gpu/GrTesselatedPathRenderer.cpp|gpu/GrRectanizer_fifo.cpp|gpu/GrPrintf_printf.cpp|gpu/GrAddPathRenderers_tesselated.cpp|gpu/GrAddPathRenderers_none.cpp|gpu/gr_hello_world.cpp|gpu/win|gpu/unix|gpu/mesa|gpu/mac|gpu/ios|gpu/gl/GrGLDefaultInterface_none.cpp|gpu/gl/GrGLCreateNativeInterface_none.cpp|gpu/FlingState.cpp|gpu/app-android.cpp|gpu/android|effects/SkEffects_none.cpp|device|core/SkRegion_rects.cpp|core/SkMemory_stdlib.cpp|core/SkFlate.cpp|animator" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.qnx.qcc.configuration.sharedLib.profile.1167046925">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.qnx.qcc.configuration.sharedLib.profile.1167046925" moduleId="org.eclipse.cdt.core.settings" name="Simulator-Profile">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/grskia"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/grskia/Simulator-Profile"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="grskia"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="com.qnx.tools.ide.qde.core.QDEBynaryParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.qnx.tools.ide.qde.core.QDELinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=com.qnx.buildType.profile,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="Build for Profiling" id="com.qnx.qcc.configuration.sharedLib.profile.1167046925" name="Simulator-Profile" parent="com.qnx.qcc.configuration.sharedLib.profile">
+					<folderInfo id="com.qnx.qcc.configuration.sharedLib.profile.1167046925." name="/" resourcePath="">
+						<toolChain id="com.qnx.qcc.toolChain.sharedLib.profile.1030890456" name="QNX QCC" superClass="com.qnx.qcc.toolChain">
+							<targetPlatform archList="all" binaryParser="com.qnx.tools.ide.qde.core.QDEBynaryParser" id="com.qnx.qcc.targetPlatform.1722138010" osList="all" superClass="com.qnx.qcc.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/grskia/Simulator-Profile}" id="com.qnx.nto.397017955" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="com.qnx.nto"/>
+							<tool id="com.qnx.qcc.tool.compiler.535521182" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler">
+								<option id="com.qnx.qcc.option.compiler.shared.1484364439" name="Shared (-shared)" superClass="com.qnx.qcc.option.compiler.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.optlevel.1593706723" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.0" valueType="enumerated"/>
+								<option id="com.qnx.qcc.option.compile.debug.224235829" name="Debug (-g)" superClass="com.qnx.qcc.option.compile.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.profile2.425027442" name="Build for Profiling (Function Instrumentation) (-finstrument-functions)" superClass="com.qnx.qcc.option.compiler.profile2" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.security.349943660" name="Enhanced Security (-fstack-protector-all)" superClass="com.qnx.qcc.option.compiler.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.defines.635904869" name="Defines (-D)" superClass="com.qnx.qcc.option.compiler.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="_FORTIFY_SOURCE=2"/>
+									<listOptionValue builtIn="false" value="_FILE_OFFSET_BITS=64"/>
+									<listOptionValue builtIn="false" value="grskia_EXPORTS"/>
+									<listOptionValue builtIn="false" value="SKIA_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_QNX_BUILD=1"/>
+									<listOptionValue builtIn="false" value="SK_USE_POSIX_THREADS"/>
+									<listOptionValue builtIn="false" value="_LARGEFILE64_SOURCE"/>
+									<listOptionValue builtIn="false" value="SK_CAN_USE_FLOAT"/>
+									<listOptionValue builtIn="false" value="SK_SCALAR_IS_FLOAT"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.includePath.621647535" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/effects}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/gpu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/images}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/ports}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/utils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/gpu/gl}&quot;"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/usr/include"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.qccoptions.155290580" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+									<listOptionValue builtIn="false" value="-fno-rtti"/>
+									<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+									<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.compiler.2031242311" superClass="com.qnx.qcc.inputType.compiler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.assembler.993367780" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
+								<option id="com.qnx.qcc.option.assembler.debug.568504261" name="Debug (-g)" superClass="com.qnx.qcc.option.assembler.debug" value="true" valueType="boolean"/>
+								<inputType id="com.qnx.qcc.inputType.assembler.1832747102" superClass="com.qnx.qcc.inputType.assembler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.linker.257420816" name="QCC Linker" superClass="com.qnx.qcc.tool.linker">
+								<option id="com.qnx.qcc.option.linker.debug.799001959" name="Debug (-g)" superClass="com.qnx.qcc.option.linker.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.profile2.1662433042" name="Build for Profiling (Function Instrumentation) (-lprofiling)" superClass="com.qnx.qcc.option.linker.profile2" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.shared.1991774103" name="Shared (-shared)" superClass="com.qnx.qcc.option.linker.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.langcpp.1616809607" name="C++ (-lang-c++)" superClass="com.qnx.qcc.option.linker.langcpp" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.security.148725201" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.libraryPaths.24798042" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/lib"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/usr/lib"/>
+								</option>
+								<option id="com.qnx.qcc.option.linker.libraries.21589533" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
+									<listOptionValue builtIn="false" value="fontconfig"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.linker.1007522059" superClass="com.qnx.qcc.inputType.linker">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.qnx.qcc.tool.archiver.892357949" name="QCC Archiver" superClass="com.qnx.qcc.tool.archiver"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.profile.1167046925.2137800378" name="SkBitmapProcState_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBitmapProcState_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.535521182.994779004">
+						<tool id="com.qnx.qcc.tool.compiler.535521182.994779004" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.535521182">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.553060608" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-marm"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.1036311679" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.profile.1167046925.728038122" name="SkBlitRow_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBlitRow_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.535521182.1722804599">
+						<tool id="com.qnx.qcc.tool.compiler.535521182.1722804599" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.535521182">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.1546608373" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-fno-rtti"/>
+								<listOptionValue builtIn="false" value="-marm"/>
+								<listOptionValue builtIn="false" value="-mthumb"/>
+								<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+								<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+								<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+								<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+								<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.1559093678" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="opts/memset32_neon.S|opts/memset16_neon.S|opts/memset.arm.S|opts/SkBlitRow_opts_arm.cpp|opts/SkBitmapProcState_opts_arm.cpp|xml|views|utils|text|svg|sfnt|ports/SkXMLPullParser_expat.cpp|ports/SkXMLParser_tinyxml.cpp|ports/SkXMLParser_expat.cpp|ports/SkXMLParser_empty.cpp|ports/SkTime_win.cpp|ports/SkThread_win.cpp|ports/SkThread_none.cpp|ports/SkOSFile_brew.cpp|ports/SkMemory_brew.cpp|ports/SkImageRef_ashmem.cpp|ports/SkImageDecoder_WIC.cpp|ports/SkImageDecoder_empty.cpp|ports/SkImageDecoder_CG.cpp|ports/SkHarfBuzzFont.cpp|ports/SkGlobalInitialization_chromium.cpp|ports/SkFontHost_win.cpp|ports/SkFontHost_simple.cpp|ports/SkFontHost_none.cpp|ports/SkFontHost_mac.cpp|ports/SkFontHost_mac_coretext.cpp|ports/SkFontHost_mac_atsui.cpp|ports/SkFontHost_linux.cpp|ports/SkFontHost_gamma.cpp|ports/SkFontHost_freetype_mac.cpp|ports/SkFontHost_FONTPATH.cpp|ports/SkFontHost_ascender.cpp|ports/SkFontHost_android.cpp|ports/SkDebug_win.cpp|ports/SkDebug_brew.cpp|ports/SkDebug_android.cpp|ports/FontHostConfiguration_android.cpp|pipe|pdf|opts/SkUtils_opts_SSE2.cpp|opts/SkBlitRow_opts_SSE2.cpp|opts/SkBitmapProcState_opts_SSSE3.cpp|opts/SkBitmapProcState_opts_SSE2.cpp|opts/opts_check_SSE2.cpp|opts/opts_check_arm.cpp|images/SkPageFlipper.cpp|images/SkMovie.cpp|images/SkMovie_gif.cpp|images/SkJpegUtility.cpp|images/SkImageRefPool.cpp|images/SkImageRef.cpp|images/SkImageRef_GlobalPool.cpp|images/SkImageDecoder_wbmp.cpp|images/SkImageDecoder_libjpeg.cpp|images/SkImageDecoder_libico.cpp|images/SkImageDecoder_libgif.cpp|images/SkImageDecoder_libbmp.cpp|images/SkFlipPixelRef.cpp|images/SkFDStream.cpp|images/SkCreateRLEPixelRef.cpp|images/bmpdecoderhelper.cpp|gpu/GrTesselatedPathRenderer.cpp|gpu/GrRectanizer_fifo.cpp|gpu/GrPrintf_printf.cpp|gpu/GrAddPathRenderers_tesselated.cpp|gpu/GrAddPathRenderers_none.cpp|gpu/gr_hello_world.cpp|gpu/win|gpu/unix|gpu/mesa|gpu/mac|gpu/ios|gpu/gl/GrGLDefaultInterface_none.cpp|gpu/gl/GrGLCreateNativeInterface_none.cpp|gpu/FlingState.cpp|gpu/app-android.cpp|gpu/android|effects/SkEffects_none.cpp|device|core/SkRegion_rects.cpp|core/SkMemory_stdlib.cpp|core/SkFlate.cpp|animator" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.qnx.qcc.configuration.sharedLib.coverage.463809669">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.qnx.qcc.configuration.sharedLib.coverage.463809669" moduleId="org.eclipse.cdt.core.settings" name="Simulator-Coverage">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/grskia"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/grskia/Simulator-Coverage"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="grskia"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="com.qnx.tools.ide.qde.core.QDEBynaryParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.qnx.tools.ide.qde.core.QDELinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=com.qnx.buildType.coverage,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="Build with Code Coverage" id="com.qnx.qcc.configuration.sharedLib.coverage.463809669" name="Simulator-Coverage" parent="com.qnx.qcc.configuration.sharedLib.coverage">
+					<folderInfo id="com.qnx.qcc.configuration.sharedLib.coverage.463809669." name="/" resourcePath="">
+						<toolChain id="com.qnx.qcc.toolChain.sharedLib.coverage.254331338" name="QNX QCC" superClass="com.qnx.qcc.toolChain">
+							<targetPlatform archList="all" binaryParser="com.qnx.tools.ide.qde.core.QDEBynaryParser" id="com.qnx.qcc.targetPlatform.1998502701" osList="all" superClass="com.qnx.qcc.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/grskia/Simulator-Coverage}" id="com.qnx.nto.2040668607" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="com.qnx.nto"/>
+							<tool id="com.qnx.qcc.tool.compiler.1000049373" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler">
+								<option id="com.qnx.qcc.option.compiler.shared.1324072104" name="Shared (-shared)" superClass="com.qnx.qcc.option.compiler.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.optlevel.317667665" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.0" valueType="enumerated"/>
+								<option id="com.qnx.qcc.option.compile.debug.855006564" name="Debug (-g)" superClass="com.qnx.qcc.option.compile.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.coverage.1333793523" name="Build for Code Coverage (-Wc,-ftest-coverage -Wc,-fprofile-arcs)" superClass="com.qnx.qcc.option.compiler.coverage" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.security.286482567" name="Enhanced Security (-fstack-protector-all)" superClass="com.qnx.qcc.option.compiler.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.compiler.defines.798481206" name="Defines (-D)" superClass="com.qnx.qcc.option.compiler.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="_FORTIFY_SOURCE=2"/>
+									<listOptionValue builtIn="false" value="_FILE_OFFSET_BITS=64"/>
+									<listOptionValue builtIn="false" value="grskia_EXPORTS"/>
+									<listOptionValue builtIn="false" value="SKIA_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_IMPLEMENTATION=1"/>
+									<listOptionValue builtIn="false" value="GR_QNX_BUILD=1"/>
+									<listOptionValue builtIn="false" value="SK_USE_POSIX_THREADS"/>
+									<listOptionValue builtIn="false" value="_LARGEFILE64_SOURCE"/>
+									<listOptionValue builtIn="false" value="SK_CAN_USE_FLOAT"/>
+									<listOptionValue builtIn="false" value="SK_SCALAR_IS_FLOAT"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.includePath.277296814" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/effects}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/gpu}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/images}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/ports}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/utils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/gpu/gl}&quot;"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/usr/include"/>
+								</option>
+								<option id="com.qnx.qcc.option.compiler.qccoptions.829125163" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+									<listOptionValue builtIn="false" value="-fno-rtti"/>
+									<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+									<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.compiler.2021637010" superClass="com.qnx.qcc.inputType.compiler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.assembler.1068150555" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
+								<option id="com.qnx.qcc.option.assembler.debug.969699478" name="Debug (-g)" superClass="com.qnx.qcc.option.assembler.debug" value="true" valueType="boolean"/>
+								<inputType id="com.qnx.qcc.inputType.assembler.1510223444" superClass="com.qnx.qcc.inputType.assembler"/>
+							</tool>
+							<tool id="com.qnx.qcc.tool.linker.995293155" name="QCC Linker" superClass="com.qnx.qcc.tool.linker">
+								<option id="com.qnx.qcc.option.linker.debug.2119366361" name="Debug (-g)" superClass="com.qnx.qcc.option.linker.debug" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.coverage.351542511" name="Build for Code Coverage (-ftest-coverage -fprofile-arcs -p)" superClass="com.qnx.qcc.option.linker.coverage" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.shared.591748407" name="Shared (-shared)" superClass="com.qnx.qcc.option.linker.shared" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.langcpp.1639386381" name="C++ (-lang-c++)" superClass="com.qnx.qcc.option.linker.langcpp" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.security.779545930" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="true" valueType="boolean"/>
+								<option id="com.qnx.qcc.option.linker.libraryPaths.462118484" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/lib"/>
+									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/usr/lib"/>
+								</option>
+								<option id="com.qnx.qcc.option.linker.libraries.594296222" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
+									<listOptionValue builtIn="false" value="fontconfig"/>
+								</option>
+								<inputType id="com.qnx.qcc.inputType.linker.2052099368" superClass="com.qnx.qcc.inputType.linker">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.qnx.qcc.tool.archiver.239818794" name="QCC Archiver" superClass="com.qnx.qcc.tool.archiver"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.coverage.463809669.1475229820" name="SkBitmapProcState_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBitmapProcState_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.1000049373.1991685568">
+						<tool id="com.qnx.qcc.tool.compiler.1000049373.1991685568" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.1000049373">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.715595928" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-marm"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.207278987" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="com.qnx.qcc.configuration.sharedLib.coverage.463809669.305027984" name="SkBlitRow_opts_arm.cpp" rcbsApplicability="disable" resourcePath="src/opts/SkBlitRow_opts_arm.cpp" toolsToInvoke="com.qnx.qcc.tool.compiler.1000049373.330463776">
+						<tool id="com.qnx.qcc.tool.compiler.1000049373.330463776" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler.1000049373">
+							<option id="com.qnx.qcc.option.compiler.qccoptions.2023229435" name="QCC Options" superClass="com.qnx.qcc.option.compiler.qccoptions" valueType="stringList">
+								<listOptionValue builtIn="false" value="-fno-rtti"/>
+								<listOptionValue builtIn="false" value="-marm"/>
+								<listOptionValue builtIn="false" value="-mthumb"/>
+								<listOptionValue builtIn="false" value="-mthumb-interwork"/>
+								<listOptionValue builtIn="false" value="-mtune=cortex-a9"/>
+								<listOptionValue builtIn="false" value="-mfpu=vfpv3"/>
+								<listOptionValue builtIn="false" value="-fno-strict-aliasing"/>
+								<listOptionValue builtIn="false" value="-fvisibility=hidden"/>
+							</option>
+							<inputType id="com.qnx.qcc.inputType.compiler.363919751" superClass="com.qnx.qcc.inputType.compiler"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="opts/memset32_neon.S|opts/memset16_neon.S|opts/memset.arm.S|opts/SkBlitRow_opts_arm.cpp|opts/SkBitmapProcState_opts_arm.cpp|xml|views|utils|text|svg|sfnt|ports/SkXMLPullParser_expat.cpp|ports/SkXMLParser_tinyxml.cpp|ports/SkXMLParser_expat.cpp|ports/SkXMLParser_empty.cpp|ports/SkTime_win.cpp|ports/SkThread_win.cpp|ports/SkThread_none.cpp|ports/SkOSFile_brew.cpp|ports/SkMemory_brew.cpp|ports/SkImageRef_ashmem.cpp|ports/SkImageDecoder_WIC.cpp|ports/SkImageDecoder_empty.cpp|ports/SkImageDecoder_CG.cpp|ports/SkHarfBuzzFont.cpp|ports/SkGlobalInitialization_chromium.cpp|ports/SkFontHost_win.cpp|ports/SkFontHost_simple.cpp|ports/SkFontHost_none.cpp|ports/SkFontHost_mac.cpp|ports/SkFontHost_mac_coretext.cpp|ports/SkFontHost_mac_atsui.cpp|ports/SkFontHost_linux.cpp|ports/SkFontHost_gamma.cpp|ports/SkFontHost_freetype_mac.cpp|ports/SkFontHost_FONTPATH.cpp|ports/SkFontHost_ascender.cpp|ports/SkFontHost_android.cpp|ports/SkDebug_win.cpp|ports/SkDebug_brew.cpp|ports/SkDebug_android.cpp|ports/FontHostConfiguration_android.cpp|pipe|pdf|opts/SkUtils_opts_SSE2.cpp|opts/SkBlitRow_opts_SSE2.cpp|opts/SkBitmapProcState_opts_SSSE3.cpp|opts/SkBitmapProcState_opts_SSE2.cpp|opts/opts_check_SSE2.cpp|opts/opts_check_arm.cpp|images/SkPageFlipper.cpp|images/SkMovie.cpp|images/SkMovie_gif.cpp|images/SkJpegUtility.cpp|images/SkImageRefPool.cpp|images/SkImageRef.cpp|images/SkImageRef_GlobalPool.cpp|images/SkImageDecoder_wbmp.cpp|images/SkImageDecoder_libjpeg.cpp|images/SkImageDecoder_libico.cpp|images/SkImageDecoder_libgif.cpp|images/SkImageDecoder_libbmp.cpp|images/SkFlipPixelRef.cpp|images/SkFDStream.cpp|images/SkCreateRLEPixelRef.cpp|images/bmpdecoderhelper.cpp|gpu/GrTesselatedPathRenderer.cpp|gpu/GrRectanizer_fifo.cpp|gpu/GrPrintf_printf.cpp|gpu/GrAddPathRenderers_tesselated.cpp|gpu/GrAddPathRenderers_none.cpp|gpu/gr_hello_world.cpp|gpu/win|gpu/unix|gpu/mesa|gpu/mac|gpu/ios|gpu/gl/GrGLDefaultInterface_none.cpp|gpu/gl/GrGLCreateNativeInterface_none.cpp|gpu/FlingState.cpp|gpu/app-android.cpp|gpu/android|effects/SkEffects_none.cpp|device|core/SkRegion_rects.cpp|core/SkMemory_stdlib.cpp|core/SkFlate.cpp|animator" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="grskia.null.1610874347" name="grskia"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.qnx.tools.ide.qde.managedbuilder.core.qccScannerInfo"/>
+		<scannerConfigBuildInfo instanceId="com.qnx.qcc.configuration.sharedLib.profile.2142845978">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.qnx.tools.ide.qde.managedbuilder.core.qccScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.qnx.qcc.configuration.sharedLib.coverage.1606816938">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.qnx.tools.ide.qde.managedbuilder.core.qccScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.qnx.qcc.configuration.sharedLib.profile.1167046925">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.qnx.tools.ide.qde.managedbuilder.core.qccScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.qnx.qcc.configuration.sharedLib.release.101010145">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.qnx.tools.ide.qde.managedbuilder.core.qccScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.qnx.qcc.configuration.sharedLib.debug.2082969288">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.qnx.tools.ide.qde.managedbuilder.core.qccScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.qnx.qcc.configuration.sharedLib.coverage.463809669">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.qnx.tools.ide.qde.managedbuilder.core.qccScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.qnx.qcc.configuration.sharedLib.debug.277529697">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.qnx.tools.ide.qde.managedbuilder.core.qccScannerInfo"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="refreshScope" versionNumber="1">
+		<resource resourceType="PROJECT" workspacePath="/grskia"/>
+	</storageModule>
+</cproject>

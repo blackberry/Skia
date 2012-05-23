@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/asimonov/dev/ganesh/tests/guimark2bitmap/egl-init.c
+ctype.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+time.h
+-
+EGL/egl.h
+-
+GLES2/gl2.h
+-
+screen/screen.h
+-
+
