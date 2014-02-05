@@ -1209,17 +1209,19 @@ static bool clipPathHelper(const SkCanvas* canvas, SkRasterClip* currClip,
 }
 
 bool SkCanvas::clipRRect(const SkRRect& rrect, SkRegion::Op op, bool doAA) {
-    if (rrect.isRect()) {
-        // call the non-virtual version
-        return this->SkCanvas::clipRect(rrect.getBounds(), op, doAA);
-    } else {
-        SkPath path;
-        path.addRRect(rrect);
-        // call the non-virtual version
-        return this->SkCanvas::clipPath(path, op, doAA);
-    }
-}
+       if (rrect.isRect()) {
+          return this->SkCanvas::clipRect(rrect.getBounds(), op, doAA);
+       } else {
+           SkRRect transformed;
+           rrect.transform(*fMCRec->fMatrix, &transformed);
+           fClipStack.clipDevRRect(transformed, op, doAA);
 
+           SkPath path;
+           path.addRRect(rrect);
+           path.transform(*fMCRec->fMatrix, &path);
+           return clipPathHelper(this, fMCRec->fRasterClip, path, op, doAA);
+       }
+}
 bool SkCanvas::clipPath(const SkPath& path, SkRegion::Op op, bool doAA) {
 #ifdef SK_ENABLE_CLIP_QUICKREJECT
     if (SkRegion::kIntersect_Op == op && !path.isInverseFillType()) {
@@ -1410,6 +1412,8 @@ void SkCanvas::validateClip() const {
                 element->getRect().round(&ir);
                 tmpClip.op(ir, element->getOp());
                 break;
+            case SkClipStack::Element::kRRect_Type:
+                break;
             case SkClipStack::Element::kEmpty_Type:
                 tmpClip.setEmpty();
                 break;
@@ -1433,6 +1437,9 @@ void SkCanvas::replayClips(ClipVisitor* visitor) const {
         switch (element->getType()) {
             case SkClipStack::Element::kPath_Type:
                 visitor->clipPath(element->getPath(), element->getOp(), element->isAA());
+                break;
+            case SkClipStack::Element::kRRect_Type:
+                visitor->clipRect(element->getRRect().rect(), element->getOp(), element->isAA());
                 break;
             case SkClipStack::Element::kRect_Type:
                 visitor->clipRect(element->getRect(), element->getOp(), element->isAA());

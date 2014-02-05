@@ -309,6 +309,25 @@ bool GrClipMaskManager::drawElement(GrTexture* target,
             pr->drawPath(element->getPath(), stroke, fGpu, element->isAA());
             break;
         }
+        case Element::kRRect_Type: {
+            SkPath path;
+            path.addRRect(element->getRRect());
+            if (path.isInverseFillType()) {
+                path.toggleInverseFillType();
+            }
+            SkStrokeRec stroke(SkStrokeRec::kFill_InitStyle);
+            if (NULL == pr) {
+                GrPathRendererChain::DrawType type;
+                type = element->isAA() ? GrPathRendererChain::kColorAntiAlias_DrawType :
+                                         GrPathRendererChain::kColor_DrawType;
+                pr = this->getContext()->getPathRenderer(path, stroke, fGpu, false, type);
+            }
+            if (NULL == pr) {
+                return false;
+            }
+            pr->drawPath(path, stroke, fGpu, element->isAA());
+            break;
+        }
         default:
             // something is wrong if we're trying to draw an empty element.
             GrCrash("Unexpected element type");
@@ -336,6 +355,19 @@ bool GrClipMaskManager::canStencilAndDrawElement(GrTexture* target,
                 GrPathRendererChain::kStencilAndColorAntiAlias_DrawType :
                 GrPathRendererChain::kStencilAndColor_DrawType;
             *pr = this->getContext()->getPathRenderer(*path, stroke, fGpu, false, type);
+            return NULL != *pr;
+        }
+        case Element::kRRect_Type: {
+            SkPath path;
+            path.addRRect(element->getRRect());
+            if (path.isInverseFillType()) {
+                path.toggleInverseFillType();
+            }
+            SkStrokeRec stroke(SkStrokeRec::kFill_InitStyle);
+            GrPathRendererChain::DrawType type = element->isAA() ?
+                GrPathRendererChain::kStencilAndColorAntiAlias_DrawType :
+                GrPathRendererChain::kStencilAndColor_DrawType;
+            *pr = this->getContext()->getPathRenderer(path, stroke, fGpu, false, type);
             return NULL != *pr;
         }
         default:

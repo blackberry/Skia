@@ -24,6 +24,7 @@
       ],
       'sources': [
         '../samplecode/GMSampleView.h',
+        '../samplecode/SampleSkPicture.cpp',
         '../samplecode/ClockFaceView.cpp',
         '../samplecode/OverView.cpp',
         '../samplecode/OverView.h',
@@ -301,6 +302,13 @@
           'sources': [
             '../../nacl/src/nacl_sample.cpp',
           ],
+        }],
+        [ 'skia_os == "qnx"', {
+          'link_settings': {
+            'libraries': [
+              '-lbps',
+            ],
+          },
         }],
       ],
       'msvs_settings': {

@@ -38,6 +38,10 @@ class SkRasterizer;
 class SkShader;
 class SkTypeface;
 
+namespace Gentl {
+class GentlContext;
+}
+
 typedef const SkGlyph& (*SkDrawCacheProc)(SkGlyphCache*, const char**,
                                            SkFixed x, SkFixed y);
 
@@ -1071,6 +1075,7 @@ private:
     friend class SkDraw;
     friend class SkGraphics; // So Term() can be called.
     friend class SkPDFDevice;
+    friend class Gentl::GentlContext;
     friend class GrBitmapTextContext;
     friend class GrDistanceFieldTextContext;
     friend class SkTextToPathIter;

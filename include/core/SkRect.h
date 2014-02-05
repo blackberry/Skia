@@ -722,6 +722,16 @@ struct SK_API SkRect {
     }
 
     /**
+     *  Return true if this rectangle contains x and y.
+     */
+    bool contains(SkScalar x, SkScalar y) const {
+        // todo: can we eliminate the this->isEmpty check?
+        return  !this->isEmpty() &&
+                fLeft <= x && fTop <= y &&
+                fRight >= x && fBottom >= y;
+    }
+
+    /**
      *  Set the dst rectangle by rounding this rectangle's coordinates to their
      *  nearest integer values using SkScalarRoundToInt.
      */

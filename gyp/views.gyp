@@ -29,6 +29,7 @@
         '../include/views/SkOSMenu.h',
         '../include/views/SkOSWindow_Mac.h',
         '../include/views/SkOSWindow_NaCl.h',
+        '../include/views/SkOSWindow_Qnx.h',
         '../include/views/SkOSWindow_SDL.h',
         '../include/views/SkOSWindow_Unix.h',
         '../include/views/SkOSWindow_Win.h',
@@ -74,6 +75,10 @@
         # Windows
         '../src/views/win/SkOSWindow_win.cpp',
         '../src/views/win/skia_win.cpp',
+
+        # Qnx
+        '../src/views/qnx/SkOSWindow_Qnx.cpp',
+        '../src/views/qnx/skia_qnx.cpp',
 
       ],
       'sources!' : [
@@ -124,6 +129,13 @@
         }, {
           'sources!': [
             '../src/views/nacl/SkOSWindow_NaCl.cpp',
+          ],
+        }],
+        [ 'skia_os == "qnx"', {
+        },{
+          'sources!': [
+            '../src/views/qnx/SkOSWindow_Qnx.cpp',
+            '../src/views/qnx/skia_qnx.cpp',
           ],
         }],
         [ 'skia_gpu == 1', {

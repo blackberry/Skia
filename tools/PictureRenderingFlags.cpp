@@ -289,6 +289,14 @@ sk_tools::PictureRenderer* parseRenderer(SkString& error, PictureTool tool) {
             }
             sampleCount = 16;
         }
+        else if (0 == strcmp(FLAGS_config[0], "Gentl")) {
+            deviceType = sk_tools::PictureRenderer::kGentl_DeviceType;
+            if (FLAGS_multi > 1) {
+                error.printf("GPU not compatible with multithreaded tiling.\n");
+                return NULL;
+            }
+            sampleCount = 16;
+        }
 #if SK_ANGLE
         else if (0 == strcmp(FLAGS_config[0], "angle")) {
             deviceType = sk_tools::PictureRenderer::kAngle_DeviceType;

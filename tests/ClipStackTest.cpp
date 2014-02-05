@@ -843,6 +843,9 @@ static void add_elem_to_stack(const SkClipStack::Element& element, SkClipStack* 
             SkDEBUGFAIL("Why did the reducer produce an explicit empty.");
             stack->clipEmpty();
             break;
+        case SkClipStack::Element::kRRect_Type:
+            stack->clipDevRRect(element.getRRect(), element.getOp(), element.isAA());
+            break;
     }
 }
 
@@ -862,6 +865,12 @@ static void add_elem_to_region(const SkClipStack::Element& element,
         case SkClipStack::Element::kPath_Type:
             elemRegion.setPath(element.getPath(), boundsRgn);
             break;
+        case SkClipStack::Element::kRRect_Type: {
+            SkPath path;
+            path.addRRect(element.getRRect(), SkPath::kUnknown_Direction);
+            elemRegion.setPath(path, boundsRgn);
+            break;
+        }
         case SkClipStack::Element::kEmpty_Type:
             //
             region->setEmpty();

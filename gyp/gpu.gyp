@@ -21,6 +21,10 @@
         'sources/': [ ['exclude', '_android.(h|cpp)$'],
         ],
       }],
+      ['skia_os != "qnx"', {
+        'sources/': [ ['exclude', '_qnx.(h|cpp)$'],
+        ],
+      }],
       ['skia_os != "nacl"', {
         'sources/': [ ['exclude', '_nacl.(h|cpp)$'],
         ],
@@ -218,6 +222,18 @@
           'export_dependent_settings!': [
             'angle.gyp:*',
           ],
+        }],
+        [ 'skia_os == "qnx"', {
+          'sources!': [
+            '../src/gpu/gl/GrGLDefaultInterface_none.cpp',
+            '../src/gpu/gl/GrGLCreateNativeInterface_none.cpp',
+          ],
+          'link_settings': {
+            'libraries': [
+              '-lGLESv2',
+              '-lEGL',
+            ],
+          },
         }],
         [ 'skia_os == "android"', {
           'sources!': [

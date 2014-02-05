@@ -512,6 +512,13 @@ void GraphicStackState::updateClip(const SkClipStack& clipStack,
                     emit_clip(&translatedPath, NULL, fContentStream);
                     break;
                 }
+                case SkClipStack::Element::kRRect_Type: {
+                    SkPath translatedPath;
+                    translatedPath.addRRect(clipEntry->getRRect());
+                    translatedPath.transform(transform, &translatedPath);
+                    emit_clip(&translatedPath, NULL, fContentStream);
+                    break;
+                }
                 default:
                     SkASSERT(false);
             }

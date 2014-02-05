@@ -114,6 +114,8 @@ private:
     #include "SkOSWindow_SDL.h"
 #elif defined(SK_BUILD_FOR_IOS)
     #include "SkOSWindow_iOS.h"
+#elif defined(SK_BUILD_FOR_QNX)
+    #include "SkOSWindow_Qnx.h"
 #endif
 
 #endif

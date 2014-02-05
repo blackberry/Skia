@@ -81,14 +81,14 @@ static bool cubic_too_curvy(const SkPoint pts[4]) {
 }
 
 SkScalar SkPathMeasure::compute_quad_segs(const SkPoint pts[3],
-                          SkScalar distance, int mint, int maxt, int ptIndex) {
+                          SkScalar distance, int mint, int maxt, int ptIndex, SkScalar& curvedSegments) {
     if (tspan_big_enough(maxt - mint) && quad_too_curvy(pts)) {
         SkPoint tmp[5];
         int     halft = (mint + maxt) >> 1;
 
         SkChopQuadAtHalf(pts, tmp);
-        distance = this->compute_quad_segs(tmp, distance, mint, halft, ptIndex);
-        distance = this->compute_quad_segs(&tmp[2], distance, halft, maxt, ptIndex);
+        distance = this->compute_quad_segs(tmp, distance, mint, halft, ptIndex, curvedSegments);
+        distance = this->compute_quad_segs(&tmp[2], distance, halft, maxt, ptIndex, curvedSegments);
     } else {
         SkScalar d = SkPoint::Distance(pts[0], pts[2]);
         SkScalar prevD = distance;
@@ -99,20 +99,21 @@ SkScalar SkPathMeasure::compute_quad_segs(const SkPoint pts[3],
             seg->fPtIndex = ptIndex;
             seg->fType = kQuad_SegType;
             seg->fTValue = maxt;
+            ++curvedSegments;
         }
     }
     return distance;
 }
 
 SkScalar SkPathMeasure::compute_cubic_segs(const SkPoint pts[4],
-                           SkScalar distance, int mint, int maxt, int ptIndex) {
+                           SkScalar distance, int mint, int maxt, int ptIndex, SkScalar& curvedSegments) {
     if (tspan_big_enough(maxt - mint) && cubic_too_curvy(pts)) {
         SkPoint tmp[7];
         int     halft = (mint + maxt) >> 1;
 
         SkChopCubicAtHalf(pts, tmp);
-        distance = this->compute_cubic_segs(tmp, distance, mint, halft, ptIndex);
-        distance = this->compute_cubic_segs(&tmp[3], distance, halft, maxt, ptIndex);
+        distance = this->compute_cubic_segs(tmp, distance, mint, halft, ptIndex, curvedSegments);
+        distance = this->compute_cubic_segs(&tmp[3], distance, halft, maxt, ptIndex, curvedSegments);
     } else {
         SkScalar d = SkPoint::Distance(pts[0], pts[3]);
         SkScalar prevD = distance;
@@ -123,6 +124,7 @@ SkScalar SkPathMeasure::compute_cubic_segs(const SkPoint pts[4],
             seg->fPtIndex = ptIndex;
             seg->fType = kCubic_SegType;
             seg->fTValue = maxt;
+            ++curvedSegments;
         }
     }
     return distance;
@@ -131,7 +133,7 @@ SkScalar SkPathMeasure::compute_cubic_segs(const SkPoint pts[4],
 void SkPathMeasure::buildSegments() {
     SkPoint         pts[4];
     int             ptIndex = fFirstPtIndex;
-    SkScalar        distance = 0;
+    SkScalar        distance = 0, curvedSegments = 0;
     bool            isClosed = fForceClosed;
     bool            firstMoveTo = ptIndex < 0;
     Segment*        seg;
@@ -144,9 +146,11 @@ void SkPathMeasure::buildSegments() {
      *  We do this check below, and in compute_quad_segs and compute_cubic_segs
      */
     fSegments.reset();
+    fPathSegments.reset();
     bool done = false;
     do {
-        switch (fIter.next(pts)) {
+        SkPath::Verb verb = fIter.next(pts);
+        switch (verb) {
             case SkPath::kConic_Verb:
                 SkASSERT(0);
                 break;
@@ -174,26 +178,31 @@ void SkPathMeasure::buildSegments() {
                     fPts.append(1, pts + 1);
                     ptIndex++;
                 }
+                addPathSegment(verb, 0);
             } break;
 
             case SkPath::kQuad_Verb: {
+                curvedSegments = 0;
                 SkScalar prevD = distance;
                 distance = this->compute_quad_segs(pts, distance, 0,
-                                                   kMaxTValue, ptIndex);
+                                                   kMaxTValue, ptIndex, curvedSegments);
                 if (distance > prevD) {
                     fPts.append(2, pts + 1);
                     ptIndex += 2;
                 }
+                addPathSegment(verb, curvedSegments);
             } break;
 
             case SkPath::kCubic_Verb: {
+                curvedSegments = 0;
                 SkScalar prevD = distance;
                 distance = this->compute_cubic_segs(pts, distance, 0,
-                                                    kMaxTValue, ptIndex);
+                                                    kMaxTValue, ptIndex, curvedSegments);
                 if (distance > prevD) {
                     fPts.append(3, pts + 1);
                     ptIndex += 3;
                 }
+                addPathSegment(verb, curvedSegments);
             } break;
 
             case SkPath::kClose_Verb:
@@ -236,6 +245,14 @@ void SkPathMeasure::buildSegments() {
     //  SkDebugf("\n");
     }
 #endif
+}
+
+void SkPathMeasure::addPathSegment(SkPath::Verb verb, SkScalar curvedSegments)
+{
+    SkPathSegment* pathSegment = fPathSegments.append();
+    pathSegment->fDistance = fSegments.count() ? fSegments.top().fDistance : 0;
+    pathSegment->fVerb = verb;
+    pathSegment->fCurvedSegments = curvedSegments;
 }
 
 static void compute_pos_tan(const SkPoint pts[], int segType,
@@ -365,6 +382,7 @@ void SkPathMeasure::setPath(const SkPath* path, bool forceClosed) {
         fIter.setPath(*path, forceClosed);
     }
     fSegments.reset();
+    fPathSegments.reset();
     fPts.reset();
 }
 
@@ -516,6 +534,13 @@ bool SkPathMeasure::isClosed() {
 bool SkPathMeasure::nextContour() {
     fLength = -1;
     return this->getLength() > 0;
+}
+
+const SkTDArray<SkPathSegment>& SkPathMeasure::segments() {
+    if (fPath != NULL && fLength < 0) {
+        this->buildSegments();
+    }
+    return fPathSegments;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

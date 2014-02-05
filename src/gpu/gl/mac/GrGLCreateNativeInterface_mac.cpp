@@ -59,6 +59,7 @@ const GrGLInterface* GrGLCreateNativeInterface() {
 
     GET_PROC(ActiveTexture);
     GET_PROC(AttachShader);
+    GET_PROC(DetachShader);
     GET_PROC(BeginQuery);
     GET_PROC(BindAttribLocation);
     GET_PROC(BindBuffer);
@@ -67,6 +68,7 @@ const GrGLInterface* GrGLCreateNativeInterface() {
     }
     GET_PROC(BindTexture);
     GET_PROC(BlendFunc);
+    GET_PROC(BlendFuncSeparate);
 
     if (ver >= GR_GL_VER(1,4) ||
         extensions.has("GL_ARB_imaging") ||
@@ -101,6 +103,7 @@ const GrGLInterface* GrGLCreateNativeInterface() {
     GET_PROC(DrawBuffers);
     GET_PROC(DrawElements);
     GET_PROC(Enable);
+    GET_PROC(IsEnabled);
     GET_PROC(EnableClientState);
     GET_PROC(EnableVertexAttribArray);
     GET_PROC(EndQuery);
@@ -119,12 +122,14 @@ const GrGLInterface* GrGLCreateNativeInterface() {
     GET_PROC(GetQueryObjectiv);
     GET_PROC(GetQueryObjectuiv);
     GET_PROC(GetShaderInfoLog);
+    GET_PROC(GetShaderSource);
     GET_PROC(GetShaderiv);
     GET_PROC(GetString);
     GET_PROC(GetStringi);
     GET_PROC(GetTexLevelParameteriv);
     GET_PROC(GenTextures);
     GET_PROC(GetUniformLocation);
+    GET_PROC(GetAttribLocation);
     GET_PROC(LineWidth);
     GET_PROC(LinkProgram);
     GET_PROC(LoadIdentity);

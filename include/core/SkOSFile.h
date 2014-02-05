@@ -14,7 +14,7 @@
 
 #include "SkString.h"
 
-#if defined(SK_BUILD_FOR_MAC) || defined(SK_BUILD_FOR_UNIX) || defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_IOS)
+#if defined(SK_BUILD_FOR_MAC) || defined(SK_BUILD_FOR_UNIX) || defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_IOS) || defined(SK_BUILD_FOR_QNX)
     #include <dirent.h>
 #endif
 
@@ -111,7 +111,7 @@ public:
 #ifdef SK_BUILD_FOR_WIN
         HANDLE      fHandle;
         uint16_t*   fPath16;
-#elif defined(SK_BUILD_FOR_MAC) || defined(SK_BUILD_FOR_UNIX) || defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_IOS)
+#elif defined(SK_BUILD_FOR_MAC) || defined(SK_BUILD_FOR_UNIX) || defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_IOS) || defined(SK_BUILD_FOR_QNX)
         DIR*        fDIR;
         SkString    fPath, fSuffix;
 #endif

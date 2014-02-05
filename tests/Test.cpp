@@ -89,6 +89,15 @@ private:
     Reporter* fReporter;  // Unowned.
     SkTArray<SkString> fFailures;
 };
+#if defined(SK_BUILD_FOR_QNX)
+static void enableIEEE754Denormal() {
+    // Clear the ARM_VFP_FPSCR_FZ flag in FPSCR.
+    unsigned fpscr;
+    asm volatile("vmrs %0, fpscr" : "=r"(fpscr));
+    fpscr &= ~0x01000000u;
+    asm volatile("vmsr fpscr, %0" : : "r"(fpscr));
+}
+#endif
 
 void Test::run() {
     // Clear the Skia error callback before running any test, to ensure that tests
@@ -101,6 +110,9 @@ void Test::run() {
     const SkMSec start = SkTime::GetMSecs();
     // Run the test into a LocalReporter so we know if it's passed or failed without interference
     // from other tests that might share fReporter.
+#if defined(SK_BUILD_FOR_QNX)
+    enableIEEE754Denormal();
+#endif
     LocalReporter local(fReporter);
     this->onRun(&local);
     fPassed = local.numFailures() == 0;

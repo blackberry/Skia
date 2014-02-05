@@ -57,6 +57,7 @@ public:
         kNonRendering_Backend,
         kRaster_Backend,
         kGPU_Backend,
+        kGentl_Backend,
         kPDF_Backend,
     };
 

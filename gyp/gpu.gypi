@@ -225,6 +225,7 @@
       '<(skia_src_path)/gpu/gl/unix/GrGLCreateNativeInterface_unix.cpp',
       '<(skia_src_path)/gpu/gl/iOS/GrGLCreateNativeInterface_iOS.cpp',
       '<(skia_src_path)/gpu/gl/android/GrGLCreateNativeInterface_android.cpp',
+      '<(skia_src_path)/gpu/gl/qnx/GrGLCreateNativeInterface_qnx.cpp',
 
       # Sk files
       '<(skia_include_path)/gpu/gl/SkNativeGLContext.h',
@@ -234,6 +235,7 @@
       '<(skia_src_path)/gpu/gl/unix/SkNativeGLContext_unix.cpp',
       '<(skia_src_path)/gpu/gl/android/SkNativeGLContext_android.cpp',
       '<(skia_src_path)/gpu/gl/iOS/SkNativeGLContext_iOS.mm',
+      '<(skia_src_path)/gpu/gl/qnx/SkNativeGLContext_qnx.cpp',
     ],
     'skgpu_mesa_gl_sources': [
       '<(skia_src_path)/gpu/gl/mesa/GrGLCreateMesaInterface.cpp',

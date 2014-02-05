@@ -1,0 +1,213 @@
+
+                        Gentl Skia Backend README
+
+    May 9, 2014
+    Mike Lattanzio <mlattanzio@blackberry.com>
+
+--------------------------------------------------------------------------------
+
+Contributors (Alphabetical Order):
+
+    Tyler Abbott            googolp@gmail.com
+    Eli Fidler              efidler@blackberry.com
+    Mike Lattanzio          mlattanzio@blackberry.com
+    Maxim Mogilnitsky       mmogilnitsky@blackberry.com
+    Konrad Piascik          kpiascik@blackberry.com
+    Christian Wywiorski     cwywiorski@blackberry.com
+
+--------------------------------------------------------------------------------
+
+Gentl Vision:
+
+    Opening up the Gentl source as a Skia backend gives provides a proof of
+    concept vision about how 2D content can be GPU rasterized in a way that
+    allows us to animate fluidly, even as the content itself changes in some
+    ways. Today a version of Gentl powers the BlackBerry 10 browser. Each frame
+    of a pinch zoom we can calcuate the transformation to map a tile to where it
+    will appear on the display. However, instead of just scaling a bitmap like
+    other ports, we can give this transformation to the DisplayList object and
+    just re-issue all the GL calls to draw the content larger.
+
+    Solid colour boxes retain their sharp edges. Rounded corners, rendered with
+    special shaders, retain their 1px antialiasing, and text as distance fields
+    remain 1px anti-aliased as well. Text never loses its crispness, but the
+    contour itself can become obviously incorrect at massive zoom.
+
+    What this experience has taught us however is that we can easily animate not
+    just the transformation and alpha, but also any uniform value for a Gentl
+    command. That could be text colour, or the blur radius on anything as well.
+    With additional commands we could animate just about any property without
+    requiring a re-generation of the geometry or completely rerunning the whole
+    SkPicture. Today this isn't possible because of the Skia API. Skia gives the
+    caller no mechanism to say "Redo everything I just did but twice as large."
+    But behind the scenes Gentl absolutely can do this.
+
+    Tomorrow it could not only do that but something more sophisticated like,
+    "Redraw everything twice as large, and animate the text in the second
+    paragraph from black to blue over the next second." These kinds of uniform
+    changes are virtually cost-free, and are essentially how graphics cards are
+    "supposed" to work. Running dozens of programs to build one flat bitmap
+    and texturing it onto the screen are what 2D renderers do, but what a GPU
+    really wants to do is take some constant geometry, and simply transform it
+    in different ways each frame.
+
+    By building a geometric representation of the commands, Gentl plays well
+    with the hardware pipelines already in place inside the typical GPU and
+    can crank out solid framerates when zooming because all of the geometry
+    gets uploaded once, and reused for each frame.
+
+    With Gentl, or something like it, the chromium rendering pipeline could
+    store its tiles as InstructionSet data objects rather than pixels. When
+    zooming, or animating a CSS property, the appropriate transforms could
+    be applied per-frame and then composited real time. This could ultimately
+    result in not only a higher quality animation, but also a lot less CPU
+    usage and reduced memory. A 256x256x4 channel bitmap uses 256KB of RAM,
+    but the average InstructionSet object is under 10K on a typical static
+    webpage like Google Search results or Wikipedia articles. Why transfer
+    and blit 256KB when you can transfer 10KB once, and then re-use it on
+    a frame by frame basis?
+
+--------------------------------------------------------------------------------
+
+Gentl in Brief:
+
+    BuffChain.cpp
+    BuffChain.h
+
+    The BuffChain is an arena allocation scheme used by the InstructionSet and
+    Generator classes to allow dynamic allocation of memory without resorting to
+    malloc to grow when necessary. BuffChunks are 16KB blocks that are cast to
+    whatever data type as required and come from a shared pool per GrGPU.
+
+    Clip.cpp
+    Clip.h
+
+    The Clip objects perform line clipping on all geometry that passes through
+    the Gentl pipeline before getting stored in InstructionSets. The SkClipStack
+    is converted into a Gentl::Clip at the time of the draw call. All geometry
+    is clipped in this way before being given to the GPU to draw so that we do
+    not require the stencil buffer to clip. This class most especially can clip
+    a rounded rectangle primitive resulting in additional texture coordinates and
+    what Gentl calls "rounded variants" to draw anti-aliased curves without
+    any stencil.
+
+    DisplayList.cpp
+    DisplayList.h
+
+    The DisplayList class is responsible for owning and drawing an InstructionSet
+    onto the root framebuffer. Of particular importance is the DisplayList::draw
+    method which allows the caller to specify a transformation and an alpha. This
+    is how we implemented scrolling and alpha animations. In Gentl a tile is not
+    represented by pixels, but rather a low level Shader+Uniforms+VertexAttribute
+    format that allows us to perform some transformation for each frame.
+
+    What is particular special about this is that it allows us to re-rasterize the
+    InstructionSet on every frame of a pinch zoom, meaning that text will stay
+    crisp through the zooming interaction. To my knowledge there is no browser
+    besides the BlackBerry 10 Browser that provides this experience.
+
+    FramebufferStack.cpp
+    FramebufferStack.h
+
+    A small class that represents a stack of offscreen buffers used when required.
+    All offscreen rendering is performed before the final pass which renders to the
+    root framebuffer. Every OpenGL hint sheet in the world recommends changing the
+    destination framebuffer as infrequently as possible so when drawing a set of
+    instructions we first pass through it and perform the offscreen work, and then
+    pass through it a second time rendering to the root framebuffer, and also
+    using the finished offscreen buffers and blending them as appropriate.
+
+    Generators.cpp
+    Generators.h
+    GentlCommands.h
+    GentlContext.cpp
+    GentlContext.h
+    GentlDevice.cpp
+
+    The generators file contains all of the Inserter classes which are closely
+    coupled to the Clip code. As the clipping code clips out geometry it tweaks
+    texture coordinates and creates additional triangles. The Inserter classes
+    take the resulting geometry and push appropriate information into the
+    InstructionSet objects for a given command.
+
+    The Control flow is as follows:
+
+    GentlDevice extends SkBitmapDevice (like SkGPUDevice) and implements all the
+    various drawXXXX methods by calling into its GentlContext. A GentlContext owns
+    a Gentl::Clip and Gentl::InstructionSet. It takes the command, applies the
+    current matrix, and then clips the resulting geometry. The clip methods filter
+    the geometry through the clip and then pass resulting quads and triangles into
+    the Inserter objects along for the appropriate GentlCommand struct. The uniform
+    data gets pushed into the InstructionSet along with the vertex attributes per
+    vertex per triangle or quad that makes it into the InstructionSet.
+
+    GentlFloatUtils.h
+
+    Miscellaneous floating point utils that could probably go away some day.
+
+    GentlPath.cpp
+    GentlPath.h
+
+    Just a wrapper around SkPath with some Gentl helpers. This class can tesselate
+    paths depending on if they are rectangles, all straight lines, or worse-case,
+    curving. libtess is used to tesselate convex paths for fills.
+
+    GentlTrace.h
+    GentlTrace_none.cpp
+    GentlTrace_qnx.cpp
+
+    A tracing utilty only present on QNX. This does nothing on other OSes.
+
+    GlyphCache.cpp
+    GlyphCache.h
+
+    An implementation of a texture atlas using GrTextures in the format required
+    by Gentl. All glyphs are cached at 32 pixel distance fields and then rasterized
+    with a shader that guarantees a 1px antialiased edge at any resolution. The
+    GlyphCache uses a fixed amount of memory, discarding old pages as it fills up.
+
+    GraphicsPrimitives.h
+
+    A couple of random helpers.
+
+    InstructionSet.cpp
+    InstructionSet.h
+
+    A class that encapsulates the low level language Gentl uses to represent a tile.
+    InstructionSet objects are a collection of ordered commands, some of which change
+    GL state and some of which draw primitives, as well as data that is uniform for
+    a given command, and per-vertex data for each command. An instruction set is
+    shaped by a GentlContext, and then handed off to a DisplayList to be drawn.
+    Its vertex data is then uploaded into a VertexBufferObject in the GPU so that if
+    it is drawn repeatedly during an animation the copying is already done - repeated
+    draws of the same instructions can be done therefore quite cheaply, of course
+    depending on the complexity of the commands themselves.
+
+    Layers.cpp
+    Layers.h
+
+    A stack kept by a GentlContext of any currently in-use offscreen layers.
+
+    Precompile.cpp
+    Precompile.h
+
+    Gentl likes to precompile all of its commonly used shaders so that it can load them
+    in 1ms, instead of spending 40ms compiling and linking the first time they are used.
+    Shader compilation on mobile devices is devilishly slow.
+
+    Shaders.cpp
+    Shaders.h
+    ShadersCache.cpp
+    ShadersCache.h
+
+    All the Gentl shader source and the cache thereof. A Shaders object is kept around
+    per GrGPU.
+
+    VertexBufferCache.cpp
+    VertexBufferCache.h
+
+    A small wrapper around the GrGLVertexBuffer for Gentl usage.
+
+    tess
+
+    A third-party library nested in Gentl used to tesselate paths when filling them.

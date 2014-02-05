@@ -62,7 +62,7 @@ public:
                                 SkIPoint* margin = NULL);
 
     static SkScalar ConvertRadiusToSigma(SkScalar radius);
-
+    static SkScalar ConvertSigmaToRadius(SkScalar radius);
     /* Helper functions for analytic rectangle blurs */
 
     /** Look up the intensity of the (one dimnensional) blurred half-plane.

@@ -63,12 +63,14 @@ protected:
      * Subclass should destroy the underlying GL context.
      */
     virtual void destroyGLContext() = 0;
+    void deleteBuffers();
 
 private:
     GrGLuint fFBO;
     GrGLuint fColorBufferID;
     GrGLuint fDepthStencilBufferID;
     const GrGLInterface* fGL;
+    bool fDeleted;
 
     typedef SkRefCnt INHERITED;
 };

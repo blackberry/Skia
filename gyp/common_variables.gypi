@@ -95,6 +95,8 @@
       'skia_directwrite%': 0,
       'skia_gpu%': 1,
       'skia_osx_deployment_target%': '',
+      'skia_gentl%': 1,
+      'skia_osx_sdkroot%': '',
       'skia_profile_enabled%': 0,
       'skia_win_debuggers_path%': '',
       'skia_shared_lib%': 0,
@@ -109,7 +111,7 @@
 
     'conditions': [
       [ 'skia_os == "win" and skia_arch_width == 32 or '
-        'skia_os in ["linux", "freebsd", "openbsd", "solaris", "android"] or '
+        'skia_os in ["linux", "freebsd", "openbsd", "solaris", "android", "qnx"] or '
         'skia_os == "mac" and skia_arch_width == 32', {
         'skia_warnings_as_errors%': 1,
       }, {
@@ -157,6 +159,8 @@
     'skia_gpu%': '<(skia_gpu)',
     'skia_win_exceptions%': 0,
     'skia_osx_deployment_target%': '<(skia_osx_deployment_target)',
+    'skia_gentl%': '<(skia_gentl)',
+    'skia_osx_sdkroot%': '<(skia_osx_sdkroot)',
     'skia_profile_enabled%': '<(skia_profile_enabled)',
     'skia_shared_lib%': '<(skia_shared_lib)',
     'skia_opencl%': '<(skia_opencl)',

@@ -75,6 +75,7 @@ public:
         kBitmap_DeviceType,
 #if SK_SUPPORT_GPU
         kGPU_DeviceType,
+        kGentl_DeviceType,
 #endif
     };
 
@@ -174,6 +175,7 @@ public:
                 return true;
 #if SK_SUPPORT_GPU
             case kGPU_DeviceType:
+            case kGentl_DeviceType:
                 // Already set to GrContextFactory::kNative_GLContextType, above.
                 break;
 #if SK_ANGLE

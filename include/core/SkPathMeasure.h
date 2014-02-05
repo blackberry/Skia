@@ -11,6 +11,13 @@
 #include "SkPath.h"
 #include "SkTDArray.h"
 
+class SK_API SkPathSegment {
+public:
+    SkScalar     fDistance;  // total distance up to this point
+    SkPath::Verb fVerb;
+    SkScalar     fCurvedSegments;
+};
+
 class SK_API SkPathMeasure : SkNoncopyable {
 public:
     SkPathMeasure();
@@ -77,6 +84,8 @@ public:
     void    dump();
 #endif
 
+    const SkTDArray<SkPathSegment>& segments();
+
 private:
     SkPath::Iter    fIter;
     const SkPath*   fPath;
@@ -95,14 +104,16 @@ private:
     };
     SkTDArray<Segment>  fSegments;
     SkTDArray<SkPoint>  fPts; // Points used to define the segments
+    SkTDArray<SkPathSegment> fPathSegments;
 
     static const Segment* NextSegment(const Segment*);
 
     void     buildSegments();
+    void     addPathSegment(SkPath::Verb, SkScalar curvedSegments);
     SkScalar compute_quad_segs(const SkPoint pts[3], SkScalar distance,
-                                int mint, int maxt, int ptIndex);
+                                int mint, int maxt, int ptIndex, SkScalar& curvedSegments);
     SkScalar compute_cubic_segs(const SkPoint pts[3], SkScalar distance,
-                                int mint, int maxt, int ptIndex);
+                                int mint, int maxt, int ptIndex, SkScalar& curvedSegments);
     const Segment* distanceToSegment(SkScalar distance, SkScalar* t);
 };
 

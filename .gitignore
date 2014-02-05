@@ -8,3 +8,5 @@ out
 third_party/externals/
 xcodebuild/
 TAGS
+platform_tools/qnx/bin/out*
+platform_tools/qnx/skbb10/assets/.assets.index

@@ -33,6 +33,7 @@ public:
         kPicture_DeviceType,
 #if SK_SUPPORT_GPU
         kGPU_DeviceType,
+        kGENTL_DeviceType,
 #if SK_ANGLE
         kANGLE_DeviceType,
 #endif // SK_ANGLE
@@ -46,6 +47,7 @@ public:
     #if SK_SUPPORT_GPU
         switch (devType) {
             case kGPU_DeviceType:
+            case kGENTL_DeviceType:
     #if SK_ANGLE
             case kANGLE_DeviceType:
     #endif // SK_ANGLE

@@ -108,6 +108,7 @@ inline uint32_t convert_pixel(uint32_t pixel) {
             return 0;
             break;
     }
+    return 0;
 }
 
 template <SkCanvas::Config8888 OUT_CFG, SkCanvas::Config8888 IN_CFG>
@@ -136,6 +137,7 @@ inline uint32_t convert_pixel(uint32_t pixel) {
             return 0;
             break;
     }
+    return 0;
 }
 
 /**

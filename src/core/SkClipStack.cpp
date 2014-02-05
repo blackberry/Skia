@@ -24,6 +24,12 @@ void SkClipStack::Element::invertShapeFillType() {
             fPath.setFillType(SkPath::kInverseWinding_FillType);
             fType = kPath_Type;
             break;
+        case kRRect_Type:
+            fPath.reset();
+            fPath.addRRect(fRRect);
+            fPath.setFillType(SkPath::kInverseWinding_FillType);
+            fType = kPath_Type;
+            break;
         case kPath_Type:
             fPath.toggleInverseFillType();
         case kEmpty_Type:
@@ -52,7 +58,7 @@ bool SkClipStack::Element::canBeIntersectedInPlace(int saveCount, SkRegion::Op o
 }
 
 bool SkClipStack::Element::rectRectIntersectAllowed(const SkRect& newR, bool newAA) const {
-    SkASSERT(kRect_Type == fType);
+    SkASSERT(kRect_Type == fType || kRRect_Type == fType);
 
     if (fDoAA == newAA) {
         // if the AA setting is the same there is no issue
@@ -268,10 +274,17 @@ void SkClipStack::Element::updateBoundAndGenID(const Element* prior) {
                 prior->rectRectIntersectAllowed(fRect, fDoAA))) {
             fIsIntersectionOfRects = true;
         }
-
+    } else if (fType == kRRect_Type){
+        fFiniteBound = fRRect.rect();
+        fFiniteBoundType = kNormal_BoundsType;
+        if (SkRegion::kReplace_Op == fOp ||
+            (SkRegion::kIntersect_Op == fOp && NULL == prior) ||
+            (SkRegion::kIntersect_Op == fOp && prior->fIsIntersectionOfRects &&
+                prior->rectRectIntersectAllowed(fRect, fDoAA))) {
+            fIsIntersectionOfRects = true;
+        }
     } else {
-        SkASSERT(kPath_Type == fType);
-
+        SkASSERT(fType==kPath_Type);
         fFiniteBound = fPath.getBounds();
 
         if (fPath.isInverseFillType()) {
@@ -553,6 +566,12 @@ void SkClipStack::clipDevRect(const SkRect& rect, SkRegion::Op op, bool doAA) {
                         return;
                     }
                     break;
+                case Element::kRRect_Type:
+                    if (!SkRect::Intersects(element->fRRect.getBounds(), rect)) {
+                        element->setEmpty();
+                        return;
+                    }
+                    break;
                 case Element::kPath_Type:
                     if (!SkRect::Intersects(element->fPath.getBounds(), rect)) {
                         element->setEmpty();
@@ -567,6 +586,44 @@ void SkClipStack::clipDevRect(const SkRect& rect, SkRegion::Op op, bool doAA) {
     }
     new (fDeque.push_back()) Element(fSaveCount, rect, op, doAA);
     ((Element*) fDeque.back())->updateBoundAndGenID(element);
+}
+
+bool SkClipStack::clipDevRRect(const SkRRect& rrect, SkRegion::Op op, bool doAA) {
+
+    // Use reverse iterator instead of back because Rect path may need previous
+    SkDeque::Iter iter(fDeque, SkDeque::Iter::kBack_IterStart);
+    Element* element = (Element*) iter.prev();
+
+    if (element && element->canBeIntersectedInPlace(fSaveCount, op)) {
+        switch (element->fType) {
+            case Element::kEmpty_Type:
+                element->checkEmpty();
+                return false;
+            case Element::kRect_Type:
+                if (!SkRect::Intersects(element->fRect, rrect.rect())) {
+                    element->setEmpty();
+                    return false;
+                }
+                break;
+            case Element::kRRect_Type:
+                if (!SkRect::Intersects(element->fRect, rrect.rect())) {
+                    element->setEmpty();
+                    return false;
+                }
+                break;
+            case Element::kPath_Type:
+                if (!SkRect::Intersects(element->fPath.getBounds(), rrect.rect())) {
+                    element->setEmpty();
+                    return false;
+                }
+                break;
+        }
+    }
+
+    new (fDeque.push_back()) Element(fSaveCount, rrect, op, doAA);
+    ((Element*) fDeque.back())->updateBoundAndGenID(element);
+
+    return true;
 }
 
 void SkClipStack::clipDevPath(const SkPath& path, SkRegion::Op op, bool doAA) {
@@ -588,6 +645,8 @@ void SkClipStack::clipDevPath(const SkPath& path, SkRegion::Op op, bool doAA) {
                         element->setEmpty();
                         return;
                     }
+                    break;
+                case Element::kRRect_Type:
                     break;
                 case Element::kPath_Type:
                     if (!SkRect::Intersects(element->fPath.getBounds(), pathBounds)) {
@@ -615,6 +674,7 @@ void SkClipStack::clipEmpty() {
                 element->checkEmpty();
                 return;
             case Element::kRect_Type:
+            case Element::kRRect_Type:
             case Element::kPath_Type:
                 element->setEmpty();
                 return;

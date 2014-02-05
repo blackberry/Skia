@@ -614,6 +614,7 @@
 /* Shader Binary */
 #define GR_GL_SHADER_BINARY_FORMATS          0x8DF8
 #define GR_GL_NUM_SHADER_BINARY_FORMATS      0x8DF9
+#define GR_GL_PROGRAM_BINARY_LENGTH          0x8741
 
 /* Shader Precision-Specified Types */
 #define GR_GL_LOW_FLOAT                      0x8DF0

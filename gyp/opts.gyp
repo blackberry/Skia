@@ -34,7 +34,7 @@
       'conditions': [
         [ 'skia_arch_type == "x86" and skia_os != "ios"', {
           'conditions': [
-            [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl", "chromeos", "android"]', {
+            [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl", "chromeos", "android", "qnx"]', {
               'cflags': [
                 '-msse2',
               ],
@@ -128,7 +128,7 @@
         '../src/core',
       ],
       'conditions': [
-        [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl", "chromeos", "android"]', {
+        [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl", "chromeos", "android", "qnx"]', {
           'cflags': [
             '-mssse3',
           ],
@@ -163,6 +163,7 @@
         '-mfpu=vfp',  # remove them all, just in case.
         '-mfpu=vfpv3',
         '-mfpu=vfpv3-d16',
+        '-finstrument-functions',
       ],
       'cflags': [
         '-mfpu=neon',

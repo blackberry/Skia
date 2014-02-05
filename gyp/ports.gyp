@@ -76,6 +76,35 @@
             '../src/ports/SkFontConfigInterface_direct.cpp',
           ],
         }],
+        [ 'skia_os == "qnx"', {
+          'dependencies': [
+            'freetype.gyp:freetype',
+          ],
+          'link_settings': {
+            'libraries': [
+              '-lfontconfig',
+              '-lpng',
+              '-lgif',
+            ],
+          },
+          'sources!': [
+            '../src/ports/SkDebug_stdio.cpp',
+          ],
+          'sources': [
+            '../src/ports/SkDebug_qnx.cpp',
+            '../src/fonts/SkFontMgr_fontconfig.cpp',
+            '../src/ports/SkFontHost_FreeType.cpp',
+            '../src/ports/SkFontHost_FreeType_common.cpp',
+            '../src/ports/SkFontHost_fontconfig.cpp',
+            '../src/ports/SkFontConfigInterface_direct.cpp',
+            '../src/ports/SkOSFile_posix.cpp',
+#            '../src/ports/SkThread_pthread.cpp',
+            '../src/core/SkAdvancedTypefaceMetrics.cpp',
+          ],
+          'include_dirs': [
+            '../third_party/externals/freetype/include',
+          ],
+        }],
         [ 'skia_os == "nacl"', {
           'sources': [
             '../src/ports/SkFontHost_linux.cpp',

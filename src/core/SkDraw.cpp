@@ -1422,26 +1422,6 @@ void SkDraw::drawSprite(const SkBitmap& bitmap, int x, int y,
 #include "SkTextToPathIter.h"
 #include "SkUtils.h"
 
-static void measure_text(SkGlyphCache* cache, SkDrawCacheProc glyphCacheProc,
-                const char text[], size_t byteLength, SkVector* stopVector) {
-    SkFixed     x = 0, y = 0;
-    const char* stop = text + byteLength;
-
-    SkAutoKern  autokern;
-
-    while (text < stop) {
-        // don't need x, y here, since all subpixel variants will have the
-        // same advance
-        const SkGlyph& glyph = glyphCacheProc(cache, &text, 0, 0);
-
-        x += autokern.adjust(glyph) + glyph.fAdvanceX;
-        y += glyph.fAdvanceY;
-    }
-    stopVector->set(SkFixedToScalar(x), SkFixedToScalar(y));
-
-    SkASSERT(text == stop);
-}
-
 bool SkDraw::ShouldDrawTextAsPaths(const SkPaint& paint, const SkMatrix& ctm) {
     // hairline glyphs are fast enough so we don't need to cache them
     if (SkPaint::kStroke_Style == paint.getStyle() && 0 == paint.getStrokeWidth()) {
@@ -1729,8 +1709,6 @@ void SkDraw::drawText(const char text[], size_t byteLength,
     // need to measure first
     if (paint.getTextAlign() != SkPaint::kLeft_Align) {
         SkVector    stop;
-
-        measure_text(cache, glyphCacheProc, text, byteLength, &stop);
 
         SkScalar    stopX = stop.fX;
         SkScalar    stopY = stop.fY;

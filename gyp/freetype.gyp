@@ -22,7 +22,7 @@
             }
           },
         }],
-        [ 'skia_os in ["android", "nacl"]', {
+        [ 'skia_os in ["android", "nacl", "qnx"]', {
           'dependencies': [
             'freetype_static'
           ],
@@ -61,7 +61,7 @@
         ],
       },
       'conditions': [
-        [ 'skia_os == "android"', {
+        [ 'skia_os == "android" or skia_os == "qnx"', {
           # These flags are used by the Android OS.  They are probably overkill
           # for Skia, but we add them for consistency.
           'cflags': [

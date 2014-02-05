@@ -28,6 +28,7 @@
 #include "GrRenderTarget.h"
 #include "GrContext.h"
 #include "SkGpuDevice.h"
+#include "GentlDevice.h"
 #else
 class GrContext;
 #endif
@@ -188,6 +189,7 @@ public:
             case kGPU_DeviceType:
                 // fallthrough
             case kNullGPU_DeviceType:
+            case kGENTL_DeviceType:
                 // all these guys use the native backend
                 fBackend = kNativeGL_BackEndType;
                 break;
@@ -217,6 +219,7 @@ public:
             case kPicture_DeviceType:
                 // fallthrough
             case kGPU_DeviceType:
+            case kGENTL_DeviceType:
                 // all these guys use the native interface
                 glInterface.reset(GrGLCreateNativeInterface());
                 break;
@@ -274,8 +277,13 @@ public:
                                    SampleWindow* win) {
 #if SK_SUPPORT_GPU
         if (IsGpuDeviceType(dType) && NULL != fCurContext) {
-            SkAutoTUnref<SkBaseDevice> device(new SkGpuDevice(fCurContext, fCurRenderTarget));
-            return new SkCanvas(device);
+            if (dType == kGENTL_DeviceType) {
+                SkAutoTUnref<SkBaseDevice> device(new GentlDevice(fCurContext, fCurRenderTarget));
+                return new SkCanvas(device);
+            } else {
+                SkAutoTUnref<SkBaseDevice> device(new SkGpuDevice(fCurContext, fCurRenderTarget));
+                return new SkCanvas(device);
+            }
         } else
 #endif
         {
@@ -288,6 +296,8 @@ public:
                                SampleWindow* win) {
 #if SK_SUPPORT_GPU
         if (fCurContext) {
+            // FIXME: this is only needed for Gentl, it should be flushed through the same means as the other devices.
+            canvas->flush();
             // in case we have queued drawing calls
             fCurContext->flush();
 
@@ -738,6 +748,7 @@ static inline SampleWindow::DeviceType cycle_devicetype(SampleWindow::DeviceType
         SampleWindow::kPicture_DeviceType,
 #if SK_SUPPORT_GPU
         SampleWindow::kGPU_DeviceType,
+        SampleWindow::kGENTL_DeviceType,
 #if SK_ANGLE
         SampleWindow::kANGLE_DeviceType,
 #endif // SK_ANGLE
@@ -917,7 +928,7 @@ SampleWindow::SampleWindow(void* hwnd, int argc, char** argv, DeviceManager* dev
     int itemID;
 
     itemID =fAppMenu->appendList("Device Type", "Device Type", sinkID, 0,
-                                "Raster", "Picture", "OpenGL",
+                                "Raster", "Picture", "OpenGL", "Gentl", 
 #if SK_ANGLE
                                 "ANGLE",
 #endif
@@ -2144,6 +2155,7 @@ static const char* gDeviceTypePrefix[] = {
     "picture: ",
 #if SK_SUPPORT_GPU
     "opengl: ",
+    "gentl: ",
 #if SK_ANGLE
     "angle: ",
 #endif // SK_ANGLE

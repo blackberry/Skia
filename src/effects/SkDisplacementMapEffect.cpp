@@ -524,6 +524,7 @@ void GrGLDisplacementMapEffect::emitCode(GrGLShaderBuilder* builder,
     builder->fsCodeAppendf("\t\t%s.rgb = (%s.a < %s) ? vec3(0.0) : clamp(%s.rgb / %s.a, 0.0, 1.0);",
                            dColor, dColor, nearZero, dColor, dColor);
 
+    builder->fsCodeAppend("\n");
     builder->fsCodeAppendf("\t\tvec2 %s = %s + %s*(%s.",
                            cCoords, coords[1].c_str(), scaleUni, dColor);
 
@@ -562,13 +563,15 @@ void GrGLDisplacementMapEffect::emitCode(GrGLShaderBuilder* builder,
       default:
         SkDEBUGFAIL("Unknown Y channel selector");
     }
-    builder->fsCodeAppend("-vec2(0.5));\t\t");
+    builder->fsCodeAppend("-vec2(0.5));");
 
+    builder->fsCodeAppend("\n\t\t");
     // FIXME : This can be achieved with a "clamp to border" texture repeat mode and
     //         a 0 border color instead of computing if cCoords is out of bounds here.
     builder->fsCodeAppendf(
-        "bool %s = (%s.x < 0.0) || (%s.y < 0.0) || (%s.x > 1.0) || (%s.y > 1.0);\t\t",
+        "bool %s = (%s.x < 0.0) || (%s.y < 0.0) || (%s.x > 1.0) || (%s.y > 1.0);",
         outOfBounds, cCoords, cCoords, cCoords, cCoords);
+    builder->fsCodeAppend("\n\t\t");
     builder->fsCodeAppendf("%s = %s ? vec4(0.0) : ", outputColor, outOfBounds);
     builder->fsAppendTextureLookup(samplers[1], cCoords, coords[1].type());
     builder->fsCodeAppend(";\n");

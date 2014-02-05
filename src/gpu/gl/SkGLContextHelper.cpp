@@ -12,24 +12,34 @@ SkGLContextHelper::SkGLContextHelper()
     : fFBO(0)
     , fColorBufferID(0)
     , fDepthStencilBufferID(0)
-    , fGL(NULL) {
+    , fGL(NULL)
+    , fDeleted(true) {
 }
 
 SkGLContextHelper::~SkGLContextHelper() {
+    deleteBuffers();
+}
 
-    if (fGL) {
+void SkGLContextHelper::deleteBuffers() {
+    if (fGL && !fDeleted) {
         // TODO: determine why DeleteFramebuffers is generating a GL error in tests
         SK_GL_NOERRCHECK(*this, DeleteFramebuffers(1, &fFBO));
         SK_GL_NOERRCHECK(*this, DeleteRenderbuffers(1, &fColorBufferID));
         SK_GL_NOERRCHECK(*this, DeleteRenderbuffers(1, &fDepthStencilBufferID));
+        fFBO = 0;
+        fColorBufferID = 0;
+        fDepthStencilBufferID = 0;
     }
-
-    SkSafeUnref(fGL);
+    if (!fDeleted) {
+        fDeleted = true;
+        SkSafeUnref(fGL);
+    }
 }
 
 bool SkGLContextHelper::init(int width, int height) {
     if (fGL) {
         fGL->unref();
+        deleteBuffers();
         this->destroyGLContext();
     }
 
@@ -128,6 +138,7 @@ bool SkGLContextHelper::init(int width, int height) {
             this->destroyGLContext();
             return false;
         } else {
+            fDeleted = false;
             return true;
         }
     }

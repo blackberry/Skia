@@ -11,11 +11,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 void SkRRect::setRectXY(const SkRect& rect, SkScalar xRad, SkScalar yRad) {
-    if (rect.isEmpty()) {
-        this->setEmpty();
-        return;
-    }
-
     if (xRad <= 0 || yRad <= 0) {
         // all corners are square in this case
         this->setRect(rect);
@@ -44,11 +39,6 @@ void SkRRect::setRectXY(const SkRect& rect, SkScalar xRad, SkScalar yRad) {
 }
 
 void SkRRect::setRectRadii(const SkRect& rect, const SkVector radii[4]) {
-    if (rect.isEmpty()) {
-        this->setEmpty();
-        return;
-    }
-
     fRect = rect;
     memcpy(fRadii, radii, sizeof(fRadii));
 
@@ -197,11 +187,6 @@ bool SkRRect::contains(const SkRect& rect) const {
 void SkRRect::computeType() const {
     SkDEBUGCODE(this->validate();)
 
-    if (fRect.isEmpty()) {
-        fType = kEmpty_Type;
-        return;
-    }
-
     bool allRadiiEqual = true; // are all x radii equal and all y radii?
     bool allCornersSquare = 0 == fRadii[0].fX || 0 == fRadii[0].fY;
 
@@ -319,10 +304,6 @@ void SkRRect::inset(SkScalar dx, SkScalar dy, SkRRect* dst) const {
     SkRect r = fRect;
 
     r.inset(dx, dy);
-    if (r.isEmpty()) {
-        dst->setEmpty();
-        return;
-    }
 
     SkVector radii[4];
     memcpy(radii, fRadii, sizeof(radii));
@@ -394,7 +375,6 @@ void SkRRect::validate() const {
                      0 == fRect.fRight && 0 == fRect.fBottom);
             break;
         case kRect_Type:
-            SkASSERT(!fRect.isEmpty());
             SkASSERT(allRadiiZero && allRadiiSame && allCornersSquare);
             break;
         case kOval_Type:

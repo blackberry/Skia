@@ -35,6 +35,7 @@ static GrGLInterface* create_es_interface(GrGLVersion version,
     functions->fBindVertexArray = glBindVertexArrayOES;
     functions->fBlendColor = glBlendColor;
     functions->fBlendFunc = glBlendFunc;
+    functions->fBlendFuncSeparate = glBlendFuncSeparate;
     functions->fBufferData = glBufferData;
     functions->fBufferSubData = glBufferSubData;
     functions->fClear = glClear;
@@ -45,6 +46,8 @@ static GrGLInterface* create_es_interface(GrGLVersion version,
     functions->fCompressedTexImage2D = glCompressedTexImage2D;
     functions->fCopyTexSubImage2D = glCopyTexSubImage2D;
     functions->fCreateProgram = glCreateProgram;
+    functions->fProgramBinary = glProgramBinaryOES;
+    functions->fGetProgramBinary = glGetProgramBinaryOES;
     functions->fCreateShader = glCreateShader;
     functions->fCullFace = glCullFace;
     functions->fDeleteBuffers = glDeleteBuffers;
@@ -58,6 +61,7 @@ static GrGLInterface* create_es_interface(GrGLVersion version,
     functions->fDrawArrays = glDrawArrays;
     functions->fDrawElements = glDrawElements;
     functions->fEnable = glEnable;
+    functions->fIsEnabled = glIsEnabled;
     functions->fEnableVertexAttribArray = glEnableVertexAttribArray;
     functions->fFinish = glFinish;
     functions->fFlush = glFlush;
@@ -79,6 +83,7 @@ static GrGLInterface* create_es_interface(GrGLVersion version,
 #else
     functions->fGetStringi = (GrGLGetStringiProc) eglGetProcAddress("glGetStringi");
 #endif
+    functions->fGetAttribLocation = glGetAttribLocation;
     functions->fGetUniformLocation = glGetUniformLocation;
     functions->fLineWidth = glLineWidth;
     functions->fLinkProgram = glLinkProgram;
@@ -87,6 +92,8 @@ static GrGLInterface* create_es_interface(GrGLVersion version,
     functions->fScissor = glScissor;
 #if GR_GL_USE_NEW_SHADER_SOURCE_SIGNATURE
     functions->fShaderSource = (GrGLShaderSourceProc) glShaderSource;
+    functions->fGetShaderSource = (GrGLGetShaderSourceProc) glGetShaderSource;
+    functions->fDetachShader = (GrGLDetachShaderProc) glDetachShader;
 #else
     functions->fShaderSource = glShaderSource;
 #endif
@@ -218,6 +225,7 @@ static GrGLInterface* create_desktop_interface(GrGLVersion version,
     functions->fBindVertexArray = (GrGLBindVertexArrayProc) eglGetProcAddress("glBindVertexArray");
     functions->fBlendColor = (GrGLBlendColorProc) eglGetProcAddress("glBlendColor");
     functions->fBlendFunc = (GrGLBlendFuncProc) eglGetProcAddress("glBlendFunc");
+    functions->fBlendFuncSeparate = (GrGLBlendFuncSeparateProc) eglGetProcAddress("glBlendFuncSeparate");
     functions->fBlitFramebuffer = (GrGLBlitFramebufferProc) eglGetProcAddress("glBlitFramebuffer");
     functions->fBufferData = (GrGLBufferDataProc) eglGetProcAddress("glBufferData");
     functions->fBufferSubData = (GrGLBufferSubDataProc) eglGetProcAddress("glBufferSubData");
@@ -229,6 +237,8 @@ static GrGLInterface* create_desktop_interface(GrGLVersion version,
     functions->fColorMask = (GrGLColorMaskProc) eglGetProcAddress("glColorMask");
     functions->fCompileShader = (GrGLCompileShaderProc) eglGetProcAddress("glCompileShader");
     functions->fCompressedTexImage2D = (GrGLCompressedTexImage2DProc) eglGetProcAddress("glCompressedTexImage2D");
+    functions->fProgramBinary = (GrGLProgramBinaryProc) eglGetProcAddress("glProgramBinary");
+    functions->fGetProgramBinary = (GrGLGetProgramBinaryProc) eglGetProcAddress("glGetProgramBinary");
     functions->fCopyTexSubImage2D = (GrGLCopyTexSubImage2DProc) eglGetProcAddress("glCopyTexSubImage2D");
     functions->fCreateProgram = (GrGLCreateProgramProc) eglGetProcAddress("glCreateProgram");
     functions->fCreateShader = (GrGLCreateShaderProc) eglGetProcAddress("glCreateShader");
@@ -250,6 +260,7 @@ static GrGLInterface* create_desktop_interface(GrGLVersion version,
     functions->fDrawBuffers = (GrGLDrawBuffersProc) eglGetProcAddress("glDrawBuffers");
     functions->fDrawElements = (GrGLDrawElementsProc) eglGetProcAddress("glDrawElements");
     functions->fEnable = (GrGLEnableProc) eglGetProcAddress("glEnable");
+    functions->fIsEnabled = (GrGLIsEnabledProc) eglGetProcAddress("glIsEnabled");
     functions->fEnableClientState = (GrGLEnableClientStateProc) eglGetProcAddress("glEnableClientState");
     functions->fEnableVertexAttribArray = (GrGLEnableVertexAttribArrayProc) eglGetProcAddress("glEnableVertexAttribArray");
     functions->fEndQuery = (GrGLEndQueryProc) eglGetProcAddress("glEndQuery");
@@ -282,6 +293,7 @@ static GrGLInterface* create_desktop_interface(GrGLVersion version,
     functions->fGetString = (GrGLGetStringProc) eglGetProcAddress("glGetString");
     functions->fGetStringi = (GrGLGetStringiProc) eglGetProcAddress("glGetStringi");
     functions->fGetTexLevelParameteriv = (GrGLGetTexLevelParameterivProc) eglGetProcAddress("glGetTexLevelParameteriv");
+    functions->fGetAttribLocation = (GrGLGetAttribLocationProc) eglGetProcAddress("glGetAttribLocation");
     functions->fGetUniformLocation = (GrGLGetUniformLocationProc) eglGetProcAddress("glGetUniformLocation");
     functions->fLineWidth = (GrGLLineWidthProc) eglGetProcAddress("glLineWidth");
     functions->fLinkProgram = (GrGLLinkProgramProc) eglGetProcAddress("glLinkProgram");
@@ -297,6 +309,8 @@ static GrGLInterface* create_desktop_interface(GrGLVersion version,
     functions->fRenderbufferStorageMultisample = (GrGLRenderbufferStorageMultisampleProc) eglGetProcAddress("glRenderbufferStorageMultisample");
     functions->fScissor = (GrGLScissorProc) eglGetProcAddress("glScissor");
     functions->fShaderSource = (GrGLShaderSourceProc) eglGetProcAddress("glShaderSource");
+    functions->fGetShaderSource = (GrGLGetShaderSourceProc) eglGetProcAddress("glGetShaderSource");
+    functions->fDetachShader = (GrGLDetachShaderProc) eglGetProcAddress("glDetachShader");
     functions->fStencilFunc = (GrGLStencilFuncProc) eglGetProcAddress("glStencilFunc");
     functions->fStencilFuncSeparate = (GrGLStencilFuncSeparateProc) eglGetProcAddress("glStencilFuncSeparate");
     functions->fStencilMask = (GrGLStencilMaskProc) eglGetProcAddress("glStencilMask");

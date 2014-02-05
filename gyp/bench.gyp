@@ -114,6 +114,13 @@
             ],
           },
         ],
+        ['skia_gentl == 1',
+          {
+            'include_dirs' : [
+              '../src/gentl',
+            ],
+          },
+        ],
       ],
       'includes': [
         'gmslides.gypi',
@@ -146,7 +153,7 @@
             '../bench/BenchSysTimer_mach.cpp',
           ],
         }],
-        [ 'skia_os not in ["linux", "freebsd", "openbsd", "solaris", "android", "chromeos"]', {
+        [ 'skia_os not in ["linux", "freebsd", "openbsd", "solaris", "android", "chromeos", "qnx"]', {
           'sources!': [
             '../bench/BenchSysTimer_posix.h',
             '../bench/BenchSysTimer_posix.cpp',

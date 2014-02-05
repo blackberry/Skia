@@ -151,6 +151,7 @@ public:
     struct Functions {
         GLPtr<GrGLActiveTextureProc> fActiveTexture;
         GLPtr<GrGLAttachShaderProc> fAttachShader;
+        GLPtr<GrGLDetachShaderProc> fDetachShader;
         GLPtr<GrGLBeginQueryProc> fBeginQuery;
         GLPtr<GrGLBindAttribLocationProc> fBindAttribLocation;
         GLPtr<GrGLBindBufferProc> fBindBuffer;
@@ -162,6 +163,7 @@ public:
         GLPtr<GrGLBindVertexArrayProc> fBindVertexArray;
         GLPtr<GrGLBlendColorProc> fBlendColor;
         GLPtr<GrGLBlendFuncProc> fBlendFunc;
+        GLPtr<GrGLBlendFuncSeparateProc> fBlendFuncSeparate;
         GLPtr<GrGLBlitFramebufferProc> fBlitFramebuffer;
         GLPtr<GrGLBufferDataProc> fBufferData;
         GLPtr<GrGLBufferSubDataProc> fBufferSubData;
@@ -193,6 +195,7 @@ public:
         GLPtr<GrGLDrawBufferProc> fDrawBuffer;
         GLPtr<GrGLDrawBuffersProc> fDrawBuffers;
         GLPtr<GrGLDrawElementsProc> fDrawElements;
+        GLPtr<GrGLIsEnabledProc> fIsEnabled;
         GLPtr<GrGLEnableProc> fEnable;
         GLPtr<GrGLEnableClientStateProc> fEnableClientState;
         GLPtr<GrGLEnableVertexAttribArrayProc> fEnableVertexAttribArray;
@@ -228,6 +231,7 @@ public:
         GLPtr<GrGLGetStringiProc> fGetStringi;
         GLPtr<GrGLGetTexLevelParameterivProc> fGetTexLevelParameteriv;
         GLPtr<GrGLGetUniformLocationProc> fGetUniformLocation;
+        GLPtr<GrGLGetAttribLocationProc> fGetAttribLocation;
         GLPtr<GrGLLineWidthProc> fLineWidth;
         GLPtr<GrGLLinkProgramProc> fLinkProgram;
         GLPtr<GrGLLoadIdentityProc> fLoadIdentity;
@@ -269,6 +273,7 @@ public:
         GLPtr<GrGLResolveMultisampleFramebufferProc> fResolveMultisampleFramebuffer;
         GLPtr<GrGLScissorProc> fScissor;
         GLPtr<GrGLShaderSourceProc> fShaderSource;
+        GLPtr<GrGLGetShaderSourceProc> fGetShaderSource;
         GLPtr<GrGLStencilFuncProc> fStencilFunc;
         GLPtr<GrGLStencilFuncSeparateProc> fStencilFuncSeparate;
         GLPtr<GrGLStencilMaskProc> fStencilMask;
@@ -362,12 +367,15 @@ public:
         GLPtr<GrGLIsPointInStrokePathProc> fIsPointInStrokePath;
         GLPtr<GrGLGetPathLengthProc> fGetPathLength;
         GLPtr<GrGLPointAlongPathProc> fPointAlongPath;
+        GLPtr<GrGLProgramBinaryProc> fProgramBinary;
+        GLPtr<GrGLGetProgramBinaryProc> fGetProgramBinary;
     } fFunctions;
 
     // Temporary workaround aliases to keep Chromium GrGLInterface factories compiling until they
     // assign the members of fFunctions.
     GLPtrAlias<GrGLActiveTextureProc> fActiveTexture;
     GLPtrAlias<GrGLAttachShaderProc> fAttachShader;
+    GLPtrAlias<GrGLDetachShaderProc> fDetachShader;
     GLPtrAlias<GrGLBeginQueryProc> fBeginQuery;
     GLPtrAlias<GrGLBindAttribLocationProc> fBindAttribLocation;
     GLPtrAlias<GrGLBindBufferProc> fBindBuffer;
@@ -379,6 +387,7 @@ public:
     GLPtrAlias<GrGLBindVertexArrayProc> fBindVertexArray;
     GLPtrAlias<GrGLBlendColorProc> fBlendColor;
     GLPtrAlias<GrGLBlendFuncProc> fBlendFunc;
+    GLPtrAlias<GrGLBlendFuncSeparateProc> fBlendFuncSeparate;
     GLPtrAlias<GrGLBlitFramebufferProc> fBlitFramebuffer;
     GLPtrAlias<GrGLBufferDataProc> fBufferData;
     GLPtrAlias<GrGLBufferSubDataProc> fBufferSubData;
@@ -411,6 +420,7 @@ public:
     GLPtrAlias<GrGLDrawBuffersProc> fDrawBuffers;
     GLPtrAlias<GrGLDrawElementsProc> fDrawElements;
     GLPtrAlias<GrGLEnableProc> fEnable;
+    GLPtrAlias<GrGLIsEnabledProc> fIsEnabled;
     GLPtrAlias<GrGLEnableClientStateProc> fEnableClientState;
     GLPtrAlias<GrGLEnableVertexAttribArrayProc> fEnableVertexAttribArray;
     GLPtrAlias<GrGLEndQueryProc> fEndQuery;
@@ -444,6 +454,7 @@ public:
     GLPtrAlias<GrGLGetStringProc> fGetString;
     GLPtrAlias<GrGLGetStringiProc> fGetStringi;
     GLPtrAlias<GrGLGetTexLevelParameterivProc> fGetTexLevelParameteriv;
+    GLPtrAlias<GrGLGetAttribLocationProc> fGetAttribLocation;
     GLPtrAlias<GrGLGetUniformLocationProc> fGetUniformLocation;
     GLPtrAlias<GrGLLineWidthProc> fLineWidth;
     GLPtrAlias<GrGLLinkProgramProc> fLinkProgram;
@@ -463,6 +474,7 @@ public:
     GLPtrAlias<GrGLResolveMultisampleFramebufferProc> fResolveMultisampleFramebuffer;
     GLPtrAlias<GrGLScissorProc> fScissor;
     GLPtrAlias<GrGLShaderSourceProc> fShaderSource;
+    GLPtrAlias<GrGLGetShaderSourceProc> fGetShaderSource;
     GLPtrAlias<GrGLStencilFuncProc> fStencilFunc;
     GLPtrAlias<GrGLStencilFuncSeparateProc> fStencilFuncSeparate;
     GLPtrAlias<GrGLStencilMaskProc> fStencilMask;
@@ -552,6 +564,8 @@ public:
     GLPtrAlias<GrGLIsPointInStrokePathProc> fIsPointInStrokePath;
     GLPtrAlias<GrGLGetPathLengthProc> fGetPathLength;
     GLPtrAlias<GrGLPointAlongPathProc> fPointAlongPath;
+    GLPtrAlias<GrGLProgramBinaryProc> fProgramBinary;
+    GLPtrAlias<GrGLGetProgramBinaryProc> fGetProgramBinary;
 
     // Per-GL func callback
 #if GR_GL_PER_GL_FUNC_CALLBACK

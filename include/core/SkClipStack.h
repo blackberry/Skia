@@ -11,6 +11,7 @@
 #include "SkDeque.h"
 #include "SkPath.h"
 #include "SkRect.h"
+#include "SkRRect.h"
 #include "SkRegion.h"
 #include "SkTDArray.h"
 
@@ -43,6 +44,7 @@ public:
             kRect_Type,
             //!< This element combines a path with the current clip using a set operation
             kPath_Type,
+            kRRect_Type
         };
 
         Element() {
@@ -52,6 +54,10 @@ public:
 
         Element(const SkRect& rect, SkRegion::Op op, bool doAA) {
             this->initRect(0, rect, op, doAA);
+        }
+
+        Element(const SkRRect& rrect, SkRegion::Op op, bool doAA) {
+            this->initRRect(0, rrect, op, doAA);
         }
 
         Element(const SkPath& path, SkRegion::Op op, bool doAA) {
@@ -73,6 +79,8 @@ public:
                     return fPath == element.fPath;
                 case kRect_Type:
                     return fRect == element.fRect;
+                case kRRect_Type:
+                    return fRRect == element.fRRect;
                 case kEmpty_Type:
                     return true;
                 default:
@@ -90,6 +98,8 @@ public:
 
         //!< Call if getType() is kRect to get the rect.
         const SkRect& getRect() const { return fRect; }
+
+        const SkRRect& getRRect() const { return fRRect; }
 
         //!< Call if getType() is not kEmpty to get the set operation used to combine this element.
         SkRegion::Op getOp() const { return fOp; }
@@ -122,6 +132,8 @@ public:
                     return fRect;
                 case kPath_Type:
                     return fPath.getBounds();
+                case kRRect_Type:
+                    return fRRect.getBounds();
                 case kEmpty_Type:
                     return kEmpty;
                 default:
@@ -142,6 +154,8 @@ public:
                     return fPath.conservativelyContainsRect(rect);
                 case kEmpty_Type:
                     return false;
+                case kRRect_Type:
+                    return fRRect.contains(rect);
                 default:
                     SkDEBUGFAIL("Unexpected type.");
                     return false;
@@ -160,6 +174,7 @@ public:
 
         SkPath          fPath;
         SkRect          fRect;
+        SkRRect         fRRect;
         int             fSaveCount; // save count of stack when this element was added.
         SkRegion::Op    fOp;
         Type            fType;
@@ -193,6 +208,10 @@ public:
             this->initRect(saveCount, rect, op, doAA);
         }
 
+        Element(int saveCount, const SkRRect& rrect, SkRegion::Op op, bool doAA) {
+            this->initRRect(saveCount, rrect, op, doAA);
+        }
+
         Element(int saveCount, const SkPath& path, SkRegion::Op op, bool doAA) {
             this->initPath(saveCount, path, op, doAA);
         }
@@ -212,6 +231,12 @@ public:
         void initRect(int saveCount, const SkRect& rect, SkRegion::Op op, bool doAA) {
             fRect = rect;
             fType = kRect_Type;
+            this->initCommon(saveCount, op, doAA);
+        }
+
+        void initRRect(int saveCount, const SkRRect& rrect, SkRegion::Op op, bool doAA) {
+            fRRect = rrect;
+            fType = kRRect_Type;
             this->initCommon(saveCount, op, doAA);
         }
 
@@ -305,6 +330,7 @@ public:
         this->clipDevRect(r, op, false);
     }
     void clipDevRect(const SkRect&, SkRegion::Op, bool doAA);
+    bool clipDevRRect(const SkRRect&, SkRegion::Op, bool doAA);
     void clipDevPath(const SkPath&, SkRegion::Op, bool doAA);
     // An optimized version of clipDevRect(emptyRect, kIntersect, ...)
     void clipEmpty();

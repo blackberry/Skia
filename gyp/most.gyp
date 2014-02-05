@@ -29,6 +29,11 @@
         ['skia_gpu == 1', {
           'dependencies': [ 'dm.gyp:dm' ],
         }],
+        ['skia_os == "qnx"', {
+          'dependencies': [ 'qnx.gyp:skbb10' ],
+          'dependencies': [ 'qnx.gyp:skbb10-grskia' ],
+          'dependencies': [ 'qnx.gyp:skbb10-software' ],
+        }],
       ],
     },
   ],

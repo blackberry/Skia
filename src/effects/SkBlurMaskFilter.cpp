@@ -58,6 +58,8 @@ public:
     SkDEVCODE(virtual void toString(SkString* str) const SK_OVERRIDE;)
     SK_DECLARE_PUBLIC_FLATTENABLE_DESERIALIZATION_PROCS(SkBlurMaskFilterImpl)
 
+    virtual BlurType asABlur(BlurInfo*) const;
+
 protected:
     virtual FilterReturn filterRectsToNine(const SkRect[], int count, const SkMatrix&,
                                            const SkIRect& clipBounds,
@@ -92,6 +94,22 @@ private:
 
     typedef SkMaskFilter INHERITED;
 };
+
+static const SkMaskFilter::BlurType gBlurStyle2BlurType[] = {
+    SkMaskFilter::kNormal_BlurType,
+    SkMaskFilter::kSolid_BlurType,
+    SkMaskFilter::kOuter_BlurType,
+    SkMaskFilter::kInner_BlurType,
+};
+
+SkMaskFilter::BlurType SkBlurMaskFilterImpl::asABlur(BlurInfo* info) const {
+    if (info) {
+        info->fRadius = SkBlurMask::ConvertSigmaToRadius(fSigma);
+        info->fIgnoreTransform = SkToBool(fBlurFlags & SkBlurMaskFilter::kIgnoreTransform_BlurFlag);
+        info->fHighQuality = SkToBool(fBlurFlags & SkBlurMaskFilter::kHighQuality_BlurFlag);
+    }
+    return gBlurStyle2BlurType[fBlurStyle];
+}
 
 const SkScalar SkBlurMaskFilterImpl::kMAX_BLUR_SIGMA = SkIntToScalar(128);
 

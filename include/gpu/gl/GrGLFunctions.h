@@ -81,6 +81,7 @@ extern "C" {
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLBindFragDataLocationIndexedProc)(GrGLuint program, GrGLuint colorNumber, GrGLuint index, const GrGLchar * name);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLBindVertexArrayProc)(GrGLuint array);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLBlendFuncProc)(GrGLenum sfactor, GrGLenum dfactor);
+    typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLBlendFuncSeparateProc)(GrGLenum srcRGB, GrGLenum dstRGB, GrGLenum srcAlpha, GrGLenum dstAlpha);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLBlitFramebufferProc)(GrGLint srcX0, GrGLint srcY0, GrGLint srcX1, GrGLint srcY1, GrGLint dstX0, GrGLint dstY0, GrGLint dstX1, GrGLint dstY1, GrGLbitfield mask, GrGLenum filter);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLBufferDataProc)(GrGLenum target, GrGLsizeiptr size, const GrGLvoid* data, GrGLenum usage);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLBufferSubDataProc)(GrGLenum target, GrGLintptr offset, GrGLsizeiptr size, const GrGLvoid* data);
@@ -112,6 +113,7 @@ extern "C" {
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLDrawBufferProc)(GrGLenum mode);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLDrawBuffersProc)(GrGLsizei n, const GrGLenum* bufs);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLDrawElementsProc)(GrGLenum mode, GrGLsizei count, GrGLenum type, const GrGLvoid* indices);
+    typedef GrGLboolean (GR_GL_FUNCTION_TYPE* GrGLIsEnabledProc)(GrGLenum cap);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLEnableProc)(GrGLenum cap);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLEnableClientStateProc)(GrGLenum cap);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLEnableVertexAttribArrayProc)(GrGLuint index);
@@ -147,6 +149,7 @@ extern "C" {
     typedef const GrGLubyte* (GR_GL_FUNCTION_TYPE* GrGLGetStringiProc)(GrGLenum name, GrGLuint index);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLGetTexLevelParameterivProc)(GrGLenum target, GrGLint level, GrGLenum pname, GrGLint* params);
     typedef GrGLint (GR_GL_FUNCTION_TYPE* GrGLGetUniformLocationProc)(GrGLuint program, const char* name);
+    typedef GrGLint (GR_GL_FUNCTION_TYPE* GrGLGetAttribLocationProc)(GrGLuint program, const char* name);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLLineWidthProc)(GrGLfloat width);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLLinkProgramProc)(GrGLuint program);
     typedef GrGLvoid* (GR_GL_FUNCTION_TYPE* GrGLMapBufferProc)(GrGLenum target, GrGLenum access);
@@ -165,6 +168,8 @@ extern "C" {
 #else
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLShaderSourceProc)(GrGLuint shader, GrGLsizei count, const char** str, const GrGLint* length);
 #endif
+    typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLGetShaderSourceProc)(GrGLuint shader, GrGLsizei bufSize, GrGLsizei* length, char* source);
+    typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLDetachShaderProc)(GrGLuint program, GrGLuint shader);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLStencilFuncProc)(GrGLenum func, GrGLint ref, GrGLuint mask);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLStencilFuncSeparateProc)(GrGLenum face, GrGLenum func, GrGLint ref, GrGLuint mask);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLStencilMaskProc)(GrGLuint mask);
@@ -257,6 +262,8 @@ extern "C" {
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLGetPathColorGenfvProc)(GrGLenum color, GrGLenum pname, GrGLfloat *value);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLGetPathTexGenivProc)(GrGLenum texCoordSet, GrGLenum pname, GrGLint *value);
     typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLGetPathTexGenfvProc)(GrGLenum texCoordSet, GrGLenum pname, GrGLfloat *value);
+    typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLGetProgramBinaryProc) (GrGLuint program, GrGLsizei bufsize, GrGLsizei *length, GrGLenum *binaryFormat, void *binary);
+    typedef GrGLvoid (GR_GL_FUNCTION_TYPE* GrGLProgramBinaryProc) (GrGLuint program, GrGLenum binaryFormat, const void *binary, GrGLsizei length);
     typedef GrGLboolean (GR_GL_FUNCTION_TYPE* GrGLIsPointInFillPathProc)(GrGLuint path, GrGLuint mask, GrGLfloat x, GrGLfloat y);
     typedef GrGLboolean (GR_GL_FUNCTION_TYPE* GrGLIsPointInStrokePathProc)(GrGLuint path, GrGLfloat x, GrGLfloat y);
     typedef GrGLfloat (GR_GL_FUNCTION_TYPE* GrGLGetPathLengthProc)(GrGLuint path, GrGLsizei startSegment, GrGLsizei numSegments);

@@ -17,6 +17,7 @@
 #if SK_SUPPORT_GPU
 #include "gl/GrGLDefines.h"
 #include "SkGpuDevice.h"
+#include "GentlDevice.h"
 #endif
 #include "SkGraphics.h"
 #include "SkImageEncoder.h"
@@ -170,6 +171,11 @@ SkCanvas* PictureRenderer::setupCanvas(int width, int height) {
             }
 
             SkAutoTUnref<SkGpuDevice> device(SkGpuDevice::Create(target));
+            canvas = SkNEW_ARGS(SkCanvas, (device.get()));
+            break;
+        }
+        case kGentl_DeviceType: {
+            SkAutoTUnref<GentlDevice> device(new GentlDevice(fGrContext, SkBitmap::kARGB_8888_Config, width, height));
             canvas = SkNEW_ARGS(SkCanvas, (device.get()));
             break;
         }
@@ -418,6 +424,9 @@ bool SimplePictureRenderer::render(const SkString* path, SkBitmap** out) {
     if (NULL == fCanvas.get() || NULL == fPicture) {
         return false;
     }
+    if (fDeviceType == kGentl_DeviceType) {
+		fCanvas->clear(SK_ColorTRANSPARENT);
+	}
 
     fCanvas->drawPicture(*fPicture);
     fCanvas->flush();

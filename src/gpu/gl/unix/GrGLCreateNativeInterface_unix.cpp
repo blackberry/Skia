@@ -56,6 +56,7 @@ const GrGLInterface* GrGLCreateNativeInterface() {
             extensions.has("GL_ARB_imaging") ||
             extensions.has("GL_EXT_blend_color")) {
             GR_GL_GET_PROC(BlendColor);
+            GR_GL_GET_PROC(BlendFuncSeparate);
         }
 
         GR_GL_GET_PROC(BufferData);
@@ -76,6 +77,7 @@ const GrGLInterface* GrGLCreateNativeInterface() {
         GR_GL_GET_PROC(DeleteQueries);
         GR_GL_GET_PROC(DeleteShader);
         functions->fDeleteTextures = glDeleteTextures;
+        GR_GL_GET_PROC(DetachShader);
         functions->fDepthMask = glDepthMask;
         functions->fDisable = glDisable;
         functions->fDisableClientState = glDisableClientState;
@@ -93,6 +95,7 @@ const GrGLInterface* GrGLCreateNativeInterface() {
         functions->fFrontFace = glFrontFace;
         GR_GL_GET_PROC(GenBuffers);
         GR_GL_GET_PROC(GenerateMipmap);
+        GR_GL_GET_PROC(GetAttribLocation);
         GR_GL_GET_PROC(GetBufferParameteriv);
         functions->fGetError = glGetError;
         functions->fGetIntegerv = glGetIntegerv;
@@ -110,6 +113,7 @@ const GrGLInterface* GrGLCreateNativeInterface() {
         GR_GL_GET_PROC(GetProgramInfoLog);
         GR_GL_GET_PROC(GetProgramiv);
         GR_GL_GET_PROC(GetShaderInfoLog);
+        GR_GL_GET_PROC(GetShaderSource);
         GR_GL_GET_PROC(GetShaderiv);
         functions->fGetString = glGetString;
         GR_GL_GET_PROC(GetStringi);
@@ -118,6 +122,7 @@ const GrGLInterface* GrGLCreateNativeInterface() {
         functions->fGenTextures = glGenTextures;
         GR_GL_GET_PROC(GetUniformLocation);
         functions->fLineWidth = glLineWidth;
+        GR_GL_GET_PROC(IsEnabled);
         GR_GL_GET_PROC(LinkProgram);
         GR_GL_GET_PROC(MapBuffer);
         functions->fPixelStorei = glPixelStorei;

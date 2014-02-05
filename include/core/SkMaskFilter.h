@@ -135,6 +135,26 @@ public:
     SkDEVCODE(virtual void toString(SkString* str) const = 0;)
     SK_DEFINE_FLATTENABLE_TYPE(SkMaskFilter)
 
+    struct BlurInfo {
+        SkScalar fRadius;
+        bool     fIgnoreTransform;
+        bool     fHighQuality;
+    };
+    enum BlurType {
+        kNone_BlurType,    //!< this maskfilter is not a blur
+        kNormal_BlurType,  //!< fuzzy inside and outside
+        kSolid_BlurType,   //!< solid inside, fuzzy outside
+        kOuter_BlurType,   //!< nothing inside, fuzzy outside
+        kInner_BlurType    //!< fuzzy inside, nothing outside
+    };
+    /**
+     *  Optional method for maskfilters that can be described as a blur. If so,
+     *  they return the corresponding BlurType and set the fields in BlurInfo
+     *  (if not null). If they cannot be described as a blur, they return
+     *  kNone_BlurType and ignore the info parameter.
+     */
+    virtual BlurType asABlur(BlurInfo*) const { return kNone_BlurType; };
+
 protected:
     // empty for now, but lets get our subclass to remember to init us for the future
     SkMaskFilter(SkReadBuffer& buffer) : INHERITED(buffer) {}

@@ -159,7 +159,7 @@
 #endif
 
 #if !defined(GR_GL_USE_NEW_SHADER_SOURCE_SIGNATURE)
-    #define GR_GL_USE_NEW_SHADER_SOURCE_SIGNATURE       0
+    #define GR_GL_USE_NEW_SHADER_SOURCE_SIGNATURE       1
 #endif
 
 /**

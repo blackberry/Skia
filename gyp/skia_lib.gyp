@@ -27,6 +27,11 @@
           'gpu.gyp:skgpu',
         ],
       }],
+      [ 'skia_gentl', {
+        'component_libs': [
+          'gentl.gyp:gentl',
+        ],
+      }],
     ],
   },
   'targets': [

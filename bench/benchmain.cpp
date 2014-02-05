@@ -27,6 +27,10 @@
 #include "GrRenderTarget.h"
 #include "SkGpuDevice.h"
 #include "gl/GrGLDefines.h"
+
+#if SK_SUPPORT_GENTL
+#include "GentlDevice.h"
+#endif
 #else
 class GrContext;
 #endif // SK_SUPPORT_GPU
@@ -89,6 +93,8 @@ enum BenchMode {
 const char* BenchMode_Name[] = {
     "normal", "deferred", "deferredSilent", "record", "picturerecord"
 };
+
+
 
 static const char kDefaultsConfigStr[] = "defaults";
 
@@ -232,6 +238,10 @@ static SkBaseDevice* make_device(SkBitmap::Config config, const SkIPoint& size,
             device = SkNEW_ARGS(SkGpuDevice, (context, texture.get()));
             break;
         }
+        case SkBenchmark::kGentl_Backend: {
+            device = SkNEW_ARGS(GentlDevice, (context, SkBitmap::kARGB_8888_Config, size.fX, size.fY));
+            break;
+        }
 #endif
         case SkBenchmark::kPDF_Backend:
         default:
@@ -274,6 +284,7 @@ static const struct Config {
     { SkBitmap::kRGB_565_Config,   "565",          0, SkBenchmark::kRaster_Backend,       kNative, true},
 #if SK_SUPPORT_GPU
     { SkBitmap::kARGB_8888_Config, "GPU",          0, SkBenchmark::kGPU_Backend,          kNative, true},
+    { SkBitmap::kARGB_8888_Config, "Gentl",        0, SkBenchmark::kGentl_Backend,        kNative, true},
     { SkBitmap::kARGB_8888_Config, "MSAA4",        4, SkBenchmark::kGPU_Backend,          kNative, false},
     { SkBitmap::kARGB_8888_Config, "MSAA16",      16, SkBenchmark::kGPU_Backend,          kNative, false},
     { SkBitmap::kARGB_8888_Config, "NVPRMSAA4",    4, SkBenchmark::kGPU_Backend,          kNVPR,   true},
@@ -424,7 +435,7 @@ int tool_main(int argc, char** argv) {
     for (int i = 0; i < configs.count(); ++i) {
         const Config& config = gConfigs[configs[i]];
 
-        if (SkBenchmark::kGPU_Backend == config.backend) {
+        if (SkBenchmark::kGPU_Backend == config.backend || SkBenchmark::kGentl_Backend == config.backend) {
             GrContext* context = gContextFactory.get(config.contextType);
             if (NULL == context) {
                 logger.logError(SkStringPrintf(
@@ -483,7 +494,7 @@ int tool_main(int argc, char** argv) {
     for (size_t i = 0; i < SK_ARRAY_COUNT(gConfigs); ++i) {
 #if SK_SUPPORT_GPU
         const Config& config = gConfigs[i];
-        if (SkBenchmark::kGPU_Backend != config.backend) {
+        if (SkBenchmark::kGPU_Backend != config.backend && SkBenchmark::kGentl_Backend != config.backend) {
             continue;
         }
         GrContext* context = gContextFactory.get(config.contextType);
@@ -531,7 +542,7 @@ int tool_main(int argc, char** argv) {
             GrContext* context = NULL;
 #if SK_SUPPORT_GPU
             SkGLContextHelper* glContext = NULL;
-            if (SkBenchmark::kGPU_Backend == config.backend) {
+            if (SkBenchmark::kGPU_Backend == config.backend || SkBenchmark::kGentl_Backend == config.backend) {
                 context = gContextFactory.get(config.contextType);
                 if (NULL == context) {
                     continue;
@@ -594,7 +605,7 @@ int tool_main(int argc, char** argv) {
 
 #if SK_SUPPORT_GPU
             SkGLContextHelper* contextHelper = NULL;
-            if (SkBenchmark::kGPU_Backend == config.backend) {
+            if (SkBenchmark::kGPU_Backend == config.backend || SkBenchmark::kGentl_Backend == config.backend) {
                 contextHelper = gContextFactory.getGLContext(config.contextType);
             }
             BenchTimer timer(contextHelper);
@@ -647,6 +658,9 @@ int tool_main(int argc, char** argv) {
                     } else {
                         loops = loopCount;
                         loopCount = 0;
+                    }
+                    if (SkBenchmark::kGentl_Backend == config.backend) {
+                        canvas->clear(SK_ColorTRANSPARENT);
                     }
 
                     if (benchMode == kPictureRecord_BenchMode) {

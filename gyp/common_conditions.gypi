@@ -6,6 +6,7 @@
     'SK_SUPPORT_GPU=<(skia_gpu)',
     'SK_SUPPORT_OPENCL=<(skia_opencl)',
     'SK_DISTANCEFIELD_FONTS=<(skia_distancefield_fonts)',
+    'SK_SUPPORT_GENTL=<(skia_gentl)',
   ],
   'conditions' : [
     [ 'skia_os == "win"',
@@ -117,7 +118,7 @@
     ],
 
     # The following section is common to linux + derivatives and android
-    [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl", "chromeos", "android"]',
+    [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl", "chromeos", "android", "qnx"]',
       {
         'cflags': [
           '-g',
@@ -140,6 +141,8 @@
           [ 'skia_warnings_as_errors', {
             'cflags': [
               '-Werror',
+              '-Wno-maybe-uninitialized',
+              '-Wno-array-bounds',
             ],
           }],
           [ 'skia_arch_type == "arm" and arm_thumb == 1', {
@@ -463,6 +466,66 @@
           }],
           [ 'skia_profile_enabled == 1', {
             'cflags': ['-g', '-fno-omit-frame-pointer', '-marm', '-mapcs'],
+          }],
+        ],
+      },
+    ],
+
+    [ 'skia_os == "qnx"',
+      {
+        'defines': [
+          'SK_BUILD_FOR_QNX',
+        ],
+        'configurations': {
+          'Debug': {
+          },
+          'Release': {
+            'cflags': ['-O2'],
+            'defines': [ 'NDEBUG' ],
+          },
+          'Profile': {
+            'cflags': [ '-finstrument-functions', '-fno-omit-frame-pointer', '-finstrument-functions-exclude-file-list=arm_neon.h' ],
+            'defines': [
+              'SK_DEBUG',
+              'GR_DEBUG=1',
+              'SK_DEVELOPER=1',
+            ],
+          },
+        },
+        'libraries': [
+          '-lcpp-ne',
+          '-lm',
+          '-lscreen',
+          '-liType',
+          '-lprofilingS',
+        ],
+        'cxxflags': [
+          '-fno-rtti',
+        ],
+        'cflags': [
+          '-Wno-psabi',
+          '-Wall',
+          '-fPIC',
+          '-mthumb',
+          '-mthumb-interwork',
+          '-fno-exceptions',
+          '-fno-strict-aliasing',
+          '-g',
+          #'-fuse-ld=gold',
+        ],
+        'conditions': [
+          [ 'skia_warnings_as_errors', {
+            'cflags': [
+              '-Werror',
+            ],
+          }],
+          [ 'skia_profile_enabled == 1', {
+            'cflags': ['-g', '-fno-omit-frame-pointer', '-marm', '-mapcs'],
+          }],
+          [ 'skia_arch_type == "arm" and arm_thumb == 1', {
+            'cflags': [
+              '-mthumb',
+            ],
           }],
         ],
       },

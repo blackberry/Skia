@@ -12,9 +12,12 @@
 
 #if defined(SK_BUILD_FOR_MAC)
     #include <OpenGL/OpenGL.h>
-#elif defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_NACL)
+#elif defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_NACL) || defined(SK_BUILD_FOR_QNX)
     #include <GLES2/gl2.h>
     #include <EGL/egl.h>
+#if defined(SK_BUILD_FOR_QNX)
+    #include <screen/screen.h>
+#endif
 #elif defined(SK_BUILD_FOR_UNIX)
     #include <X11/Xlib.h>
     #include <GL/glx.h>
@@ -40,7 +43,7 @@ public:
     private:
     #if defined(SK_BUILD_FOR_MAC)
         CGLContextObj fOldCGLContext;
-    #elif defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_NACL)
+    #elif defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_NACL) || defined(SK_BUILD_FOR_QNX)
         EGLContext fOldEGLContext;
         EGLDisplay fOldDisplay;
         EGLSurface fOldSurface;
@@ -64,10 +67,18 @@ protected:
 private:
 #if defined(SK_BUILD_FOR_MAC)
     CGLContextObj fContext;
-#elif defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_NACL)
+#elif defined(SK_BUILD_FOR_ANDROID) || defined(SK_BUILD_FOR_NACL) || defined(SK_BUILD_FOR_QNX)
     EGLContext fContext;
     EGLDisplay fDisplay;
     EGLSurface fSurface;
+#if defined(SK_BUILD_FOR_QNX)
+    screen_context_t fScreenCtx;
+    screen_window_t fScreenWin;
+#endif
+public:
+    EGLSurface surface() { return fSurface;}
+    EGLDisplay display() { return fDisplay;}
+    EGLContext context() { return fContext;}
 #elif defined(SK_BUILD_FOR_UNIX)
     GLXContext fContext;
     Display* fDisplay;

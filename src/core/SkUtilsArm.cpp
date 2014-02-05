@@ -79,7 +79,7 @@ static bool sk_cpu_arm_check_neon(void) {
 #if USE_ANDROID_NDK_CPU_FEATURES
 
   result = (android_getCpuFeatures() & ANDROID_CPU_ARM_FEATURE_NEON) != 0;
-
+#elif defined SK_BUILD_FOR_QNX
 #else  // USE_ANDROID_NDK_CPU_FEATURES
 
     // There is no user-accessible CPUID instruction on ARM that we can use.

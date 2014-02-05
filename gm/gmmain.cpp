@@ -58,6 +58,9 @@ typedef GrContextFactory::GLContextType GLContextType;
 #define DEFAULT_CACHE_VALUE -1
 static int gGpuCacheSizeBytes;
 static int gGpuCacheSizeCount;
+#if SK_SUPPORT_GENTL
+#include "GentlDevice.h"
+#endif
 #else
 class GrContextFactory;
 class GrContext;
@@ -129,6 +132,7 @@ const static char kPNG_FileExtension[] = "png";
 enum Backend {
     kRaster_Backend,
     kGPU_Backend,
+    kGENTL_Backend,
     kPDF_Backend,
     kXPS_Backend,
 };
@@ -575,6 +579,11 @@ public:
 #if SK_SUPPORT_GPU
         else {  // GPU
             SkAutoTUnref<SkBaseDevice> device(SkGpuDevice::Create(gpuTarget));
+#if SK_SUPPORT_GENTL
+            if (gRec.fBackend == kGENTL_Backend) {
+                device.reset(GentlDevice::Create(gpuTarget));
+            }
+#endif
             if (deferred) {
                 canvas.reset(SkDeferredCanvas::Create(device));
             } else {
@@ -1050,7 +1059,8 @@ public:
         SkString path;
 
         if (gRec.fBackend == kRaster_Backend ||
-            gRec.fBackend == kGPU_Backend) {
+            gRec.fBackend == kGPU_Backend ||
+            gRec.fBackend == kGENTL_Backend) {
             // Early exit if we can't generate the image.
             errors.add(generate_image(gm, gRec, gpuTarget, bitmap, false));
             if (!errors.isEmpty()) {
@@ -1132,7 +1142,8 @@ public:
                                            const SkBitmap& referenceBitmap,
                                            GrSurface* gpuTarget) {
         if (gRec.fBackend == kRaster_Backend ||
-            gRec.fBackend == kGPU_Backend) {
+            gRec.fBackend == kGPU_Backend ||
+            gRec.fBackend == kGENTL_Backend) {
             const char renderModeDescriptor[] = "-deferred";
             SkBitmap bitmap;
             // Early exit if we can't generate the image, but this is
@@ -1288,6 +1299,9 @@ static const ConfigData gRec[] = {
     { SkBitmap::kRGB_565_Config,   kRaster_Backend, kDontCare_GLContextType,                  0, kRW_ConfigFlag,    "565",          true },
 #if SK_SUPPORT_GPU
     { SkBitmap::kARGB_8888_Config, kGPU_Backend,    GrContextFactory::kNative_GLContextType,  0, kRW_ConfigFlag,    "gpu",          true },
+#if SK_SUPPORT_GENTL
+    { SkBitmap::kARGB_8888_Config, kGENTL_Backend,  GrContextFactory::kNative_GLContextType,  0, kRW_ConfigFlag,    "gentl",        true },
+#endif //SK_SUPPORT_GENTL
     { SkBitmap::kARGB_8888_Config, kGPU_Backend,    GrContextFactory::kNative_GLContextType, 16, kRW_ConfigFlag,    "msaa16",       false},
     { SkBitmap::kARGB_8888_Config, kGPU_Backend,    GrContextFactory::kNative_GLContextType,  4, kRW_ConfigFlag,    "msaa4",        false},
     { SkBitmap::kARGB_8888_Config, kGPU_Backend,    GrContextFactory::kNVPR_GLContextType,    4, kRW_ConfigFlag,    "nvprmsaa4",   true },
@@ -1731,7 +1745,7 @@ ErrorCombination run_multiple_configs(GMMain &gmmain, GM *gm,
         GrSurface* gpuTarget = NULL;
 #if SK_SUPPORT_GPU
         SkAutoTUnref<GrSurface> auGpuTarget;
-        if ((errorsForThisConfig.isEmpty()) && (kGPU_Backend == config.fBackend)) {
+        if ((errorsForThisConfig.isEmpty()) && (kGPU_Backend == config.fBackend || kGENTL_Backend == config.fBackend)) {
             if (FLAGS_resetGpuContext) {
                 grFactory->destroyContexts();
             }
